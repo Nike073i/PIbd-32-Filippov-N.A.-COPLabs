@@ -46,5 +46,34 @@ namespace COPTestView
                 controlSelectedComboBoxTest.ClearItems();
             }
         }
+
+        private void buttonEnter_Click(object sender, System.EventArgs e)
+        {
+
+        }
+
+        private void buttonCreatePattern_Click(object sender, System.EventArgs e)
+        {
+            string pattern = textBoxPattern.Text;
+            if (string.IsNullOrEmpty(pattern))
+            {
+                MessageBox.Show("Введите шаблон", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            controlInputRegexPhoneNumberTest.Pattern = pattern;
+            textBoxPattern.Text = string.Empty;
+        }
+
+        private void buttonCreatePrompt_Click(object sender, System.EventArgs e)
+        {
+            string prompt = textBoxPrompt.Text;
+            if (string.IsNullOrEmpty(prompt))
+            {
+                MessageBox.Show("Введите подсказку", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            controlInputRegexPhoneNumberTest.SetToolTip(prompt);
+            textBoxPrompt.Text = string.Empty;
+        }
     }
 }
