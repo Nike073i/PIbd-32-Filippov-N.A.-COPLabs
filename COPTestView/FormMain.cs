@@ -1,13 +1,19 @@
-﻿using System.Windows.Forms;
+﻿using System;
+using System.Windows.Forms;
 
 namespace COPTestView
 {
     public partial class FormMain : Form
     {
+        private const string patern = @"^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$";
+        private const string toolTip = "+79999999999";
+
         public FormMain()
         {
             InitializeComponent();
             controlSelectedComboBoxTest.Items.AddRange(new string[] { "Первый", "Второй", "Третий", "Четвертый" });
+            controlInputRegexPhoneNumberTest.Pattern = patern;
+            controlInputRegexPhoneNumberTest.SetToolTip(toolTip);
         }
 
         private void controlComboBoxSelected_ComboBoxSelectedElementChange(object sender, System.EventArgs e)
@@ -49,7 +55,19 @@ namespace COPTestView
 
         private void buttonEnter_Click(object sender, System.EventArgs e)
         {
-
+            try
+            {
+                string value = controlInputRegexPhoneNumberTest.Value;
+                MessageBox.Show("Введеный номер корректен", "Успешно", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            catch (ArgumentException aEx)
+            {
+                MessageBox.Show("Введеный номер некорректен", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Неизвестная ошибка", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void buttonCreatePattern_Click(object sender, System.EventArgs e)

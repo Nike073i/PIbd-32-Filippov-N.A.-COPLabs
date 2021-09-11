@@ -11,38 +11,34 @@ namespace ClassLibraryControlsFilippov
         public string Pattern { get; set; } = string.Empty;
 
         [Category("Свойства textBox"), Description("Значение")]
+        private string value = string.Empty;
         public string Value
         {
             get
             {
-                string text;
-                if (string.IsNullOrEmpty(textBoxPhoneNumber.Text))
+                string outputText;
+                if (!string.IsNullOrEmpty(value))
                 {
-                    if (!Regex.IsMatch(textBoxPhoneNumber.Text, Pattern))
+                    if (!Regex.IsMatch(value, Pattern))
                     {
                         throw new ArgumentException();
                     }
-                    text = textBoxPhoneNumber.Text;
+                    outputText = value;
                 }
                 else
                 {
-                    text = string.Empty;
+                    outputText = string.Empty;
                 }
-                return text;
+                return outputText;
             }
             set
             {
-                if (Regex.IsMatch(textBoxPhoneNumber.Text, Pattern))
-                {
-                    textBoxPhoneNumber.Text = value;
-                }
-
+                this.value = value;
             }
         }
         public ControlInputRegexPhoneNumber()
         {
             InitializeComponent();
-
         }
         public void SetToolTip(string prompt)
         {
@@ -50,7 +46,7 @@ namespace ClassLibraryControlsFilippov
         }
         private void TextBoxInput_TextChanged(object sender, EventArgs e)
         {
-            this.Value = ((TextBox)sender).Text;
+            Value = ((TextBox)sender).Text;
         }
     }
 }
