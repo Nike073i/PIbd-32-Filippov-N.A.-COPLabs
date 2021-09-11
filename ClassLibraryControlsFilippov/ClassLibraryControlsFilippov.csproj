@@ -48,6 +48,13 @@
     <Compile Include="ControlInputRegexPhoneNumber.Designer.cs">
       <DependentUpon>ControlInputRegexPhoneNumber.cs</DependentUpon>
     </Compile>
+    <Compile Include="ControlOutputListBoxLayout.cs" />
+    <Compile Include="ControlOutputlListBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ControlOutputlListBox.Designer.cs">
+      <DependentUpon>ControlOutputlListBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="ControlSelectedComboBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -60,6 +67,9 @@
   <ItemGroup>
     <EmbeddedResource Include="ControlInputRegexPhoneNumber.resx">
       <DependentUpon>ControlInputRegexPhoneNumber.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ControlOutputlListBox.resx">
+      <DependentUpon>ControlOutputlListBox.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ControlSelectedComboBox.resx">
       <DependentUpon>ControlSelectedComboBox.cs</DependentUpon>

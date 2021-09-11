@@ -1,7 +1,10 @@
 ﻿
+using System.Drawing;
+using System.Windows.Forms;
+
 namespace ClassLibraryControlsFilippov
 {
-    partial class ControlInputRegexPhoneNumber
+    partial class ControlOutputlListBox
     {
         /// <summary> 
         /// Обязательная переменная конструктора.
@@ -29,36 +32,33 @@ namespace ClassLibraryControlsFilippov
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.textBoxPhoneNumber = new System.Windows.Forms.TextBox();
-            this.toolTipInput = new System.Windows.Forms.ToolTip(this.components);
+            this.listBox = new System.Windows.Forms.ListBox();
             this.SuspendLayout();
             // 
-            // textBoxPhoneNumber
+            // listBox
             // 
-            this.textBoxPhoneNumber.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.textBoxPhoneNumber.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.textBoxPhoneNumber.Location = new System.Drawing.Point(0, 0);
-            this.textBoxPhoneNumber.Name = "textBoxPhoneNumber";
-            this.textBoxPhoneNumber.Size = new System.Drawing.Size(250, 26);
-            this.textBoxPhoneNumber.TabIndex = 0;
-            this.textBoxPhoneNumber.TextChanged += new System.EventHandler(this.TextBoxInput_TextChanged);
+            this.listBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.listBox.FormattingEnabled = true;
+            this.listBox.ItemHeight = 16;
+            this.listBox.Location = new System.Drawing.Point(0, 0);
+            this.listBox.Margin = new System.Windows.Forms.Padding(0, 0, 0, 0);
+            this.listBox.Name = "listBox";
+            this.listBox.Size = new System.Drawing.Size(250, 236);
+            this.listBox.TabIndex = 0;
             // 
-            // ControlInputRegexPhoneNumber
+            // ControlOutputlListBox
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.textBoxPhoneNumber);
-            this.Name = "ControlInputRegexPhoneNumber";
-            this.Size = new System.Drawing.Size(250, 26);
+            this.Controls.Add(this.listBox);
+            this.Name = "ControlOutputlListBox";
+            this.Size = new System.Drawing.Size(250, 250);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.TextBox textBoxPhoneNumber;
-        private System.Windows.Forms.ToolTip toolTipInput;
+        private System.Windows.Forms.ListBox listBox;
     }
 }

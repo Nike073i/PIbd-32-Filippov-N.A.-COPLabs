@@ -32,30 +32,31 @@ namespace COPTestView
             this.buttonTest = new System.Windows.Forms.Button();
             this.textBoxChooce = new System.Windows.Forms.TextBox();
             this.groupBoxControlComboBox = new System.Windows.Forms.GroupBox();
-            this.labelEnter = new System.Windows.Forms.Label();
-            this.buttonClear = new System.Windows.Forms.Button();
             this.labelAdd = new System.Windows.Forms.Label();
             this.buttonAdd = new System.Windows.Forms.Button();
             this.textBoxAdd = new System.Windows.Forms.TextBox();
-            this.groupBoxInputTest = new System.Windows.Forms.GroupBox();
+            this.buttonClear = new System.Windows.Forms.Button();
+            this.labelEnter = new System.Windows.Forms.Label();
             this.controlSelectedComboBoxTest = new ClassLibraryControlsFilippov.ControlSelectedComboBox();
-            this.controlInputRegexPhoneNumberTest = new ClassLibraryControlsFilippov.ControlInputRegexPhoneNumber();
-            this.buttonEnter = new System.Windows.Forms.Button();
-            this.buttonCreatePattern = new System.Windows.Forms.Button();
-            this.labelPattern = new System.Windows.Forms.Label();
-            this.textBoxPattern = new System.Windows.Forms.TextBox();
+            this.groupBoxInputTest = new System.Windows.Forms.GroupBox();
             this.labelPrompt = new System.Windows.Forms.Label();
             this.buttonCreatePrompt = new System.Windows.Forms.Button();
             this.textBoxPrompt = new System.Windows.Forms.TextBox();
+            this.labelPattern = new System.Windows.Forms.Label();
+            this.buttonCreatePattern = new System.Windows.Forms.Button();
+            this.textBoxPattern = new System.Windows.Forms.TextBox();
+            this.buttonEnter = new System.Windows.Forms.Button();
+            this.controlInputRegexPhoneNumberTest = new ClassLibraryControlsFilippov.ControlInputRegexPhoneNumber();
             this.groupBoxControlComboBox.SuspendLayout();
             this.groupBoxInputTest.SuspendLayout();
             this.SuspendLayout();
             // 
             // buttonTest
             // 
-            this.buttonTest.Location = new System.Drawing.Point(221, 60);
+            this.buttonTest.Location = new System.Drawing.Point(295, 72);
+            this.buttonTest.Margin = new System.Windows.Forms.Padding(4);
             this.buttonTest.Name = "buttonTest";
-            this.buttonTest.Size = new System.Drawing.Size(87, 23);
+            this.buttonTest.Size = new System.Drawing.Size(116, 28);
             this.buttonTest.TabIndex = 1;
             this.buttonTest.Text = "Выбрать";
             this.buttonTest.UseVisualStyleBackColor = true;
@@ -63,9 +64,10 @@ namespace COPTestView
             // 
             // textBoxChooce
             // 
-            this.textBoxChooce.Location = new System.Drawing.Point(14, 61);
+            this.textBoxChooce.Location = new System.Drawing.Point(19, 75);
+            this.textBoxChooce.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxChooce.Name = "textBoxChooce";
-            this.textBoxChooce.Size = new System.Drawing.Size(200, 20);
+            this.textBoxChooce.Size = new System.Drawing.Size(265, 22);
             this.textBoxChooce.TabIndex = 2;
             // 
             // groupBoxControlComboBox
@@ -78,46 +80,31 @@ namespace COPTestView
             this.groupBoxControlComboBox.Controls.Add(this.buttonTest);
             this.groupBoxControlComboBox.Controls.Add(this.textBoxChooce);
             this.groupBoxControlComboBox.Controls.Add(this.controlSelectedComboBoxTest);
-            this.groupBoxControlComboBox.Location = new System.Drawing.Point(12, 12);
+            this.groupBoxControlComboBox.Location = new System.Drawing.Point(16, 15);
+            this.groupBoxControlComboBox.Margin = new System.Windows.Forms.Padding(4);
             this.groupBoxControlComboBox.Name = "groupBoxControlComboBox";
-            this.groupBoxControlComboBox.Size = new System.Drawing.Size(325, 156);
+            this.groupBoxControlComboBox.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBoxControlComboBox.Size = new System.Drawing.Size(433, 192);
             this.groupBoxControlComboBox.TabIndex = 3;
             this.groupBoxControlComboBox.TabStop = false;
             this.groupBoxControlComboBox.Text = "Тест компонента выбора";
             // 
-            // labelEnter
-            // 
-            this.labelEnter.AutoSize = true;
-            this.labelEnter.Location = new System.Drawing.Point(11, 47);
-            this.labelEnter.Name = "labelEnter";
-            this.labelEnter.Size = new System.Drawing.Size(97, 13);
-            this.labelEnter.TabIndex = 3;
-            this.labelEnter.Text = "Выбрать элемент";
-            // 
-            // buttonClear
-            // 
-            this.buttonClear.Location = new System.Drawing.Point(94, 125);
-            this.buttonClear.Name = "buttonClear";
-            this.buttonClear.Size = new System.Drawing.Size(131, 25);
-            this.buttonClear.TabIndex = 4;
-            this.buttonClear.Text = "Очистить список";
-            this.buttonClear.UseVisualStyleBackColor = true;
-            this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
-            // 
             // labelAdd
             // 
             this.labelAdd.AutoSize = true;
-            this.labelAdd.Location = new System.Drawing.Point(11, 85);
+            this.labelAdd.Location = new System.Drawing.Point(15, 105);
+            this.labelAdd.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelAdd.Name = "labelAdd";
-            this.labelAdd.Size = new System.Drawing.Size(103, 13);
+            this.labelAdd.Size = new System.Drawing.Size(131, 17);
             this.labelAdd.TabIndex = 7;
             this.labelAdd.Text = "Добавить элемент";
             // 
             // buttonAdd
             // 
-            this.buttonAdd.Location = new System.Drawing.Point(221, 98);
+            this.buttonAdd.Location = new System.Drawing.Point(295, 119);
+            this.buttonAdd.Margin = new System.Windows.Forms.Padding(4);
             this.buttonAdd.Name = "buttonAdd";
-            this.buttonAdd.Size = new System.Drawing.Size(87, 23);
+            this.buttonAdd.Size = new System.Drawing.Size(116, 28);
             this.buttonAdd.TabIndex = 5;
             this.buttonAdd.Text = "Добавить";
             this.buttonAdd.UseVisualStyleBackColor = true;
@@ -125,10 +112,42 @@ namespace COPTestView
             // 
             // textBoxAdd
             // 
-            this.textBoxAdd.Location = new System.Drawing.Point(14, 99);
+            this.textBoxAdd.Location = new System.Drawing.Point(19, 122);
+            this.textBoxAdd.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxAdd.Name = "textBoxAdd";
-            this.textBoxAdd.Size = new System.Drawing.Size(200, 20);
+            this.textBoxAdd.Size = new System.Drawing.Size(265, 22);
             this.textBoxAdd.TabIndex = 6;
+            // 
+            // buttonClear
+            // 
+            this.buttonClear.Location = new System.Drawing.Point(125, 154);
+            this.buttonClear.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonClear.Name = "buttonClear";
+            this.buttonClear.Size = new System.Drawing.Size(175, 31);
+            this.buttonClear.TabIndex = 4;
+            this.buttonClear.Text = "Очистить список";
+            this.buttonClear.UseVisualStyleBackColor = true;
+            this.buttonClear.Click += new System.EventHandler(this.buttonClear_Click);
+            // 
+            // labelEnter
+            // 
+            this.labelEnter.AutoSize = true;
+            this.labelEnter.Location = new System.Drawing.Point(15, 58);
+            this.labelEnter.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelEnter.Name = "labelEnter";
+            this.labelEnter.Size = new System.Drawing.Size(124, 17);
+            this.labelEnter.TabIndex = 3;
+            this.labelEnter.Text = "Выбрать элемент";
+            // 
+            // controlSelectedComboBoxTest
+            // 
+            this.controlSelectedComboBoxTest.Location = new System.Drawing.Point(18, 24);
+            this.controlSelectedComboBoxTest.Margin = new System.Windows.Forms.Padding(5);
+            this.controlSelectedComboBoxTest.Name = "controlSelectedComboBoxTest";
+            this.controlSelectedComboBoxTest.SelectedItem = "";
+            this.controlSelectedComboBoxTest.Size = new System.Drawing.Size(393, 34);
+            this.controlSelectedComboBoxTest.TabIndex = 0;
+            this.controlSelectedComboBoxTest.ComboBoxSelectedElementChange += new System.EventHandler(this.controlComboBoxSelected_ComboBoxSelectedElementChange);
             // 
             // groupBoxInputTest
             // 
@@ -140,80 +159,31 @@ namespace COPTestView
             this.groupBoxInputTest.Controls.Add(this.textBoxPattern);
             this.groupBoxInputTest.Controls.Add(this.buttonEnter);
             this.groupBoxInputTest.Controls.Add(this.controlInputRegexPhoneNumberTest);
-            this.groupBoxInputTest.Location = new System.Drawing.Point(361, 17);
+            this.groupBoxInputTest.Location = new System.Drawing.Point(481, 21);
+            this.groupBoxInputTest.Margin = new System.Windows.Forms.Padding(4);
             this.groupBoxInputTest.Name = "groupBoxInputTest";
-            this.groupBoxInputTest.Size = new System.Drawing.Size(307, 150);
+            this.groupBoxInputTest.Padding = new System.Windows.Forms.Padding(4);
+            this.groupBoxInputTest.Size = new System.Drawing.Size(409, 185);
             this.groupBoxInputTest.TabIndex = 4;
             this.groupBoxInputTest.TabStop = false;
             this.groupBoxInputTest.Text = "Тест компонента ввода";
             // 
-            // controlSelectedComboBoxTest
-            // 
-            this.controlSelectedComboBoxTest.Location = new System.Drawing.Point(11, 19);
-            this.controlSelectedComboBoxTest.Name = "controlSelectedComboBoxTest";
-            this.controlSelectedComboBoxTest.SelectedItem = "";
-            this.controlSelectedComboBoxTest.Size = new System.Drawing.Size(308, 28);
-            this.controlSelectedComboBoxTest.TabIndex = 0;
-            this.controlSelectedComboBoxTest.ComboBoxSelectedElementChange += new System.EventHandler(this.controlComboBoxSelected_ComboBoxSelectedElementChange);
-            // 
-            // controlInputRegexPhoneNumberTest
-            // 
-            this.controlInputRegexPhoneNumberTest.Location = new System.Drawing.Point(6, 19);
-            this.controlInputRegexPhoneNumberTest.Name = "controlInputRegexPhoneNumberTest";
-            this.controlInputRegexPhoneNumberTest.Size = new System.Drawing.Size(210, 34);
-            this.controlInputRegexPhoneNumberTest.TabIndex = 0;
-            this.controlInputRegexPhoneNumberTest.Value = "";
-            // 
-            // buttonEnter
-            // 
-            this.buttonEnter.Location = new System.Drawing.Point(222, 24);
-            this.buttonEnter.Name = "buttonEnter";
-            this.buttonEnter.Size = new System.Drawing.Size(75, 23);
-            this.buttonEnter.TabIndex = 1;
-            this.buttonEnter.Text = "Ввод";
-            this.buttonEnter.UseVisualStyleBackColor = true;
-            this.buttonEnter.Click += new System.EventHandler(this.buttonEnter_Click);
-            // 
-            // buttonCreatePattern
-            // 
-            this.buttonCreatePattern.Location = new System.Drawing.Point(222, 70);
-            this.buttonCreatePattern.Name = "buttonCreatePattern";
-            this.buttonCreatePattern.Size = new System.Drawing.Size(75, 23);
-            this.buttonCreatePattern.TabIndex = 2;
-            this.buttonCreatePattern.Text = "Применить";
-            this.buttonCreatePattern.UseVisualStyleBackColor = true;
-            this.buttonCreatePattern.Click += new System.EventHandler(this.buttonCreatePattern_Click);
-            // 
-            // labelPattern
-            // 
-            this.labelPattern.AutoSize = true;
-            this.labelPattern.Location = new System.Drawing.Point(9, 52);
-            this.labelPattern.Name = "labelPattern";
-            this.labelPattern.Size = new System.Drawing.Size(84, 13);
-            this.labelPattern.TabIndex = 9;
-            this.labelPattern.Text = "Задать шаблон";
-            // 
-            // textBoxPattern
-            // 
-            this.textBoxPattern.Location = new System.Drawing.Point(12, 70);
-            this.textBoxPattern.Name = "textBoxPattern";
-            this.textBoxPattern.Size = new System.Drawing.Size(200, 20);
-            this.textBoxPattern.TabIndex = 8;
-            // 
             // labelPrompt
             // 
             this.labelPrompt.AutoSize = true;
-            this.labelPrompt.Location = new System.Drawing.Point(9, 98);
+            this.labelPrompt.Location = new System.Drawing.Point(12, 121);
+            this.labelPrompt.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.labelPrompt.Name = "labelPrompt";
-            this.labelPrompt.Size = new System.Drawing.Size(94, 13);
+            this.labelPrompt.Size = new System.Drawing.Size(122, 17);
             this.labelPrompt.TabIndex = 12;
             this.labelPrompt.Text = "Задать описание";
             // 
             // buttonCreatePrompt
             // 
-            this.buttonCreatePrompt.Location = new System.Drawing.Point(222, 116);
+            this.buttonCreatePrompt.Location = new System.Drawing.Point(296, 140);
+            this.buttonCreatePrompt.Margin = new System.Windows.Forms.Padding(4);
             this.buttonCreatePrompt.Name = "buttonCreatePrompt";
-            this.buttonCreatePrompt.Size = new System.Drawing.Size(75, 23);
+            this.buttonCreatePrompt.Size = new System.Drawing.Size(100, 28);
             this.buttonCreatePrompt.TabIndex = 10;
             this.buttonCreatePrompt.Text = "Применить";
             this.buttonCreatePrompt.UseVisualStyleBackColor = true;
@@ -221,18 +191,70 @@ namespace COPTestView
             // 
             // textBoxPrompt
             // 
-            this.textBoxPrompt.Location = new System.Drawing.Point(12, 116);
+            this.textBoxPrompt.Location = new System.Drawing.Point(16, 143);
+            this.textBoxPrompt.Margin = new System.Windows.Forms.Padding(4);
             this.textBoxPrompt.Name = "textBoxPrompt";
-            this.textBoxPrompt.Size = new System.Drawing.Size(200, 20);
+            this.textBoxPrompt.Size = new System.Drawing.Size(265, 22);
             this.textBoxPrompt.TabIndex = 11;
+            // 
+            // labelPattern
+            // 
+            this.labelPattern.AutoSize = true;
+            this.labelPattern.Location = new System.Drawing.Point(12, 64);
+            this.labelPattern.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.labelPattern.Name = "labelPattern";
+            this.labelPattern.Size = new System.Drawing.Size(110, 17);
+            this.labelPattern.TabIndex = 9;
+            this.labelPattern.Text = "Задать шаблон";
+            // 
+            // buttonCreatePattern
+            // 
+            this.buttonCreatePattern.Location = new System.Drawing.Point(296, 84);
+            this.buttonCreatePattern.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonCreatePattern.Name = "buttonCreatePattern";
+            this.buttonCreatePattern.Size = new System.Drawing.Size(100, 28);
+            this.buttonCreatePattern.TabIndex = 2;
+            this.buttonCreatePattern.Text = "Применить";
+            this.buttonCreatePattern.UseVisualStyleBackColor = true;
+            this.buttonCreatePattern.Click += new System.EventHandler(this.buttonCreatePattern_Click);
+            // 
+            // textBoxPattern
+            // 
+            this.textBoxPattern.Location = new System.Drawing.Point(16, 86);
+            this.textBoxPattern.Margin = new System.Windows.Forms.Padding(4);
+            this.textBoxPattern.Name = "textBoxPattern";
+            this.textBoxPattern.Size = new System.Drawing.Size(265, 22);
+            this.textBoxPattern.TabIndex = 8;
+            // 
+            // buttonEnter
+            // 
+            this.buttonEnter.Location = new System.Drawing.Point(296, 28);
+            this.buttonEnter.Margin = new System.Windows.Forms.Padding(4);
+            this.buttonEnter.Name = "buttonEnter";
+            this.buttonEnter.Size = new System.Drawing.Size(100, 28);
+            this.buttonEnter.TabIndex = 1;
+            this.buttonEnter.Text = "Ввод";
+            this.buttonEnter.UseVisualStyleBackColor = true;
+            this.buttonEnter.Click += new System.EventHandler(this.buttonEnter_Click);
+            // 
+            // controlInputRegexPhoneNumberTest
+            // 
+            this.controlInputRegexPhoneNumberTest.Location = new System.Drawing.Point(15, 30);
+            this.controlInputRegexPhoneNumberTest.Margin = new System.Windows.Forms.Padding(5);
+            this.controlInputRegexPhoneNumberTest.Name = "controlInputRegexPhoneNumberTest";
+            this.controlInputRegexPhoneNumberTest.Pattern = "";
+            this.controlInputRegexPhoneNumberTest.Size = new System.Drawing.Size(266, 28);
+            this.controlInputRegexPhoneNumberTest.TabIndex = 0;
+            this.controlInputRegexPhoneNumberTest.Value = "";
             // 
             // FormMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1067, 554);
             this.Controls.Add(this.groupBoxInputTest);
             this.Controls.Add(this.groupBoxControlComboBox);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "FormMain";
             this.Text = "Главное окно";
             this.groupBoxControlComboBox.ResumeLayout(false);

@@ -34,19 +34,21 @@ namespace ClassLibraryControlsFilippov
             // 
             // comboBox
             // 
+            this.comboBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.comboBox.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.comboBox.FormattingEnabled = true;
-            this.comboBox.Location = new System.Drawing.Point(3, 4);
+            this.comboBox.Location = new System.Drawing.Point(0, 0);
             this.comboBox.Name = "comboBox";
-            this.comboBox.Size = new System.Drawing.Size(294, 21);
+            this.comboBox.Size = new System.Drawing.Size(250, 28);
             this.comboBox.TabIndex = 0;
             // 
             // ControlSelectedComboBox
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.comboBox);
             this.Name = "ControlSelectedComboBox";
-            this.Size = new System.Drawing.Size(300, 30);
+            this.Size = new System.Drawing.Size(250, 28);
             this.ResumeLayout(false);
 
         }
