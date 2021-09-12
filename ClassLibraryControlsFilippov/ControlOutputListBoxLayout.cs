@@ -4,7 +4,19 @@
     {
         public char StartSign { get; set; }
         public char EndSign { get; set; }
-        public string LayoutString { get; set; }
-        public string Layout { get => string.Format("{}") }
+
+        public string PatternProperty
+        {
+            get => StartSign + "[\\w\\d]+" + EndSign;
+        }
+
+        public string GetPropertyName(string propertyWithSigns) =>
+            propertyWithSigns.Substring(1, propertyWithSigns.Length - 2);
+
+        public string Layout
+        {
+            get;
+            set;
+        }
     }
 }

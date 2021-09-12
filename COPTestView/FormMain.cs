@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ClassLibraryControlsFilippov;
+using System;
 using System.Windows.Forms;
 
 namespace COPTestView
@@ -7,6 +8,27 @@ namespace COPTestView
     {
         private const string patern = @"^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$";
         private const string toolTip = "+79999999999";
+        private ControlOutputListBoxLayout layout = new ControlOutputListBoxLayout()
+        {
+            EndSign = '}',
+            StartSign = '{',
+            Layout = "Улица - {Street}, Дом - {NumberHouse}"
+        };
+
+        private Address[] addresses = {
+            new Address() {
+                Street = "Полбина",
+                NumberHouse = 28
+            },
+            new Address() {
+                Street = "Терешковой",
+                NumberHouse = 23
+            },
+            new Address() {
+                Street = "Магаданская",
+                NumberHouse = 17
+            }
+        };
 
         public FormMain()
         {
@@ -14,6 +36,12 @@ namespace COPTestView
             controlSelectedComboBoxTest.Items.AddRange(new string[] { "Первый", "Второй", "Третий", "Четвертый" });
             controlInputRegexPhoneNumberTest.Pattern = patern;
             controlInputRegexPhoneNumberTest.SetToolTip(toolTip);
+            controlOutputlListBox.SetLayout(layout);
+            for (int i = 0; i < addresses.Length; i++)
+            {
+                controlOutputlListBox.Add(addresses[i], i, "Street");
+                controlOutputlListBox.Add(addresses[i], i, "NumberHouse");
+            }
         }
 
         private void controlComboBoxSelected_ComboBoxSelectedElementChange(object sender, System.EventArgs e)
@@ -92,6 +120,19 @@ namespace COPTestView
             }
             controlInputRegexPhoneNumberTest.SetToolTip(prompt);
             textBoxPrompt.Text = string.Empty;
+        }
+
+        private void buttonListAdd_Click(object sender, EventArgs e)
+        {
+                int.TryParse(textBoxRowIndex.Text,out int rowIndex);
+                string propertyValue = textBoxPropertyValue.Text;
+                
+        }
+
+        private void buttonGet_Click(object sender, EventArgs e)
+        {
+            Address item = controlOutputlListBox.GetSelectedItem<Address>();
+            int x = 5;
         }
     }
 }

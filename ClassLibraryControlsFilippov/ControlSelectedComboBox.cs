@@ -23,16 +23,10 @@ namespace ClassLibraryControlsFilippov
         [Category("Свойства comboBox"), Description("Выбранный элемент")]
         public string SelectedItem
         {
-            get => comboBox.SelectedItem == null ? string.Empty : comboBox.Text;
+            get => comboBox.SelectedItem == null ? string.Empty : comboBox.SelectedItem.ToString();
             set
             {
-                int index = comboBox.Items.IndexOf(value);
-                if (index != -1)
-                {
-                    comboBox.SelectedIndex = index;
-                    return;
-                }
-                comboBox.SelectedItem = null;
+                comboBox.SelectedItem = value;
             }
         }
 
