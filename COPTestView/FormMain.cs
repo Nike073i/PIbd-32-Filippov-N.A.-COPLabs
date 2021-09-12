@@ -1,5 +1,6 @@
 ﻿using ClassLibraryControlsFilippov;
 using System;
+using System.Reflection;
 using System.Windows.Forms;
 
 namespace COPTestView
@@ -12,7 +13,7 @@ namespace COPTestView
         {
             EndSign = '}',
             StartSign = '{',
-            Layout = "Улица - {Street}, Дом - {NumberHouse}"
+            Layout = "Улица - {Street}, Дом - {NumberHouse}."
         };
 
         private Address[] addresses = {
@@ -39,8 +40,8 @@ namespace COPTestView
             controlOutputlListBox.SetLayout(layout);
             for (int i = 0; i < addresses.Length; i++)
             {
-                controlOutputlListBox.Add(addresses[i], i, "Street");
-                controlOutputlListBox.Add(addresses[i], i, "NumberHouse");
+                controlOutputlListBox.Insert(addresses[i], i, "Street");
+                controlOutputlListBox.Insert(addresses[i], i, "NumberHouse");
             }
         }
 
@@ -88,11 +89,11 @@ namespace COPTestView
                 string value = controlInputRegexPhoneNumberTest.Value;
                 MessageBox.Show("Введеный номер корректен", "Успешно", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-            catch (ArgumentException aEx)
+            catch (ArgumentException)
             {
                 MessageBox.Show("Введеный номер некорректен", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 MessageBox.Show("Неизвестная ошибка", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
@@ -122,17 +123,19 @@ namespace COPTestView
             textBoxPrompt.Text = string.Empty;
         }
 
-        private void buttonListAdd_Click(object sender, EventArgs e)
+        private void buttonListInsert_Click(object sender, EventArgs e)
         {
-                int.TryParse(textBoxRowIndex.Text,out int rowIndex);
-                string propertyValue = textBoxPropertyValue.Text;
-                
-        }
-
-        private void buttonGet_Click(object sender, EventArgs e)
-        {
-            Address item = controlOutputlListBox.GetSelectedItem<Address>();
-            int x = 5;
+            int.TryParse(textBoxRowIndex.Text, out int rowIndex);
+            string propertyValue = textBoxPropertyValue.Text;
+            string propertyName = textBoxPropertyName.Text;
+            Address newAddress = new Address();
+            PropertyInfo property = newAddress.GetType().GetProperty(propertyName);
+            if (property != null)
+            {
+                Type propertyType = property.PropertyType;
+                property.SetValue(newAddress, Convert.ChangeType(propertyValue, propertyType));
+            }
+            controlOutputlListBox.Insert(newAddress, rowIndex, propertyName);
         }
     }
 }

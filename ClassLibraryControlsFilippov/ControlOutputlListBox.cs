@@ -1,6 +1,6 @@
 ﻿using System;
+using System.ComponentModel;
 using System.Linq;
-using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 
@@ -14,6 +14,7 @@ namespace ClassLibraryControlsFilippov
             InitializeComponent();
         }
 
+        [Category("Свойства listBox"), Description("Индекс выбранной строки")]
         public int SelectedIndex
         {
             get => listBox.SelectedIndex;
@@ -45,14 +46,22 @@ namespace ClassLibraryControlsFilippov
                     int lengthBefore = simpleText[i].Length;
                     string propertyName = layout.GetPropertyName(propertiesWithSigns[i].Value);
                     int indexAfter = selectedItemString.IndexOf(simpleText[i + 1]);
-                    string propertyValue = selectedItemString.Substring(lengthBefore, indexAfter);
-                    selectedItemString = selectedItemString.Substring(0, indexAfter);
+                    string propertyValue;
+                    if (indexAfter == 0)
+                    {
+                        propertyValue = selectedItemString.Substring(lengthBefore);
+                    }
+                    else
+                    {
+                        propertyValue = selectedItemString.Substring(lengthBefore, indexAfter - lengthBefore);
+                        selectedItemString = selectedItemString.Substring(indexAfter);
+                    }
 
-                    PropertyInfo property = itemT.GetType().GetProperty(propertyName);
+                    var property = itemT.GetType().GetProperty(propertyName);
                     if (property != null)
                     {
-                        PropertyInfo propertyInfo = property;
-                        Type propertyType = property != null ? property.PropertyType : null;
+                        var propertyInfo = property;
+                        var propertyType = property?.PropertyType;
                         propertyInfo.SetValue(itemT, Convert.ChangeType(propertyValue, propertyType));
                     }
                 }
@@ -65,13 +74,15 @@ namespace ClassLibraryControlsFilippov
             return restoreItem;
         }
 
-        public void Add<T>(T itemObject, int rowIndex, string propertyName)
+        public void Insert<T>(T itemObject, int rowIndex, string propertyName)
         {
             if (!string.IsNullOrEmpty(propertyName) && itemObject != null && layout != null)
             {
                 var properties = Regex.Matches(layout.Layout, layout.PatternProperty);
                 string propertyWithSigns = layout.StartSign + propertyName + layout.EndSign;
-                var findedPropertyWithSigns = properties.Cast<Match>().FirstOrDefault(prop => prop.Value.Equals(propertyWithSigns));
+                var findedPropertyWithSigns = properties
+                    .Cast<Match>()
+                    .FirstOrDefault(prop => prop.Value.Equals(propertyWithSigns));
                 if (findedPropertyWithSigns != null)
                 {
                     string valueString;
@@ -81,11 +92,11 @@ namespace ClassLibraryControlsFilippov
                     }
                     var items = listBox.Items;
                     string ItemString = listBox.Items[rowIndex].ToString();
-                    PropertyInfo property = itemObject.GetType().GetProperty(propertyName);
+                    var property = itemObject.GetType().GetProperty(propertyName);
                     if (property != null)
                     {
-                        object propertyValue = property.GetValue(itemObject, null);
-                        valueString = propertyValue != null ? propertyValue.ToString() : null;
+                        var propertyValue = property.GetValue(itemObject, null);
+                        valueString = propertyValue?.ToString();
                     }
                     else
                     {

@@ -37,6 +37,7 @@ namespace COPTestView
             this.textBoxAdd = new System.Windows.Forms.TextBox();
             this.buttonClear = new System.Windows.Forms.Button();
             this.labelEnter = new System.Windows.Forms.Label();
+            this.controlSelectedComboBoxTest = new ClassLibraryControlsFilippov.ControlSelectedComboBox();
             this.groupBoxInputTest = new System.Windows.Forms.GroupBox();
             this.labelPrompt = new System.Windows.Forms.Label();
             this.buttonCreatePrompt = new System.Windows.Forms.Button();
@@ -45,18 +46,16 @@ namespace COPTestView
             this.buttonCreatePattern = new System.Windows.Forms.Button();
             this.textBoxPattern = new System.Windows.Forms.TextBox();
             this.buttonEnter = new System.Windows.Forms.Button();
+            this.controlInputRegexPhoneNumberTest = new ClassLibraryControlsFilippov.ControlInputRegexPhoneNumber();
             this.groupBoxControlOutputTest = new System.Windows.Forms.GroupBox();
+            this.buttonListAdd = new System.Windows.Forms.Button();
+            this.labelPropertyValue = new System.Windows.Forms.Label();
+            this.textBoxPropertyValue = new System.Windows.Forms.TextBox();
+            this.labelPropertyName = new System.Windows.Forms.Label();
+            this.textBoxPropertyName = new System.Windows.Forms.TextBox();
             this.labelRowIndex = new System.Windows.Forms.Label();
             this.textBoxRowIndex = new System.Windows.Forms.TextBox();
             this.controlOutputlListBox = new ClassLibraryControlsFilippov.ControlOutputlListBox();
-            this.controlInputRegexPhoneNumberTest = new ClassLibraryControlsFilippov.ControlInputRegexPhoneNumber();
-            this.controlSelectedComboBoxTest = new ClassLibraryControlsFilippov.ControlSelectedComboBox();
-            this.labelPropertyName = new System.Windows.Forms.Label();
-            this.textBoxPropertyName = new System.Windows.Forms.TextBox();
-            this.labelPropertyValue = new System.Windows.Forms.Label();
-            this.textBoxPropertyValue = new System.Windows.Forms.TextBox();
-            this.buttonListAdd = new System.Windows.Forms.Button();
-            this.buttonGet = new System.Windows.Forms.Button();
             this.groupBoxControlComboBox.SuspendLayout();
             this.groupBoxInputTest.SuspendLayout();
             this.groupBoxControlOutputTest.SuspendLayout();
@@ -141,6 +140,16 @@ namespace COPTestView
             this.labelEnter.TabIndex = 3;
             this.labelEnter.Text = "Выбрать элемент";
             // 
+            // controlSelectedComboBoxTest
+            // 
+            this.controlSelectedComboBoxTest.Location = new System.Drawing.Point(14, 20);
+            this.controlSelectedComboBoxTest.Margin = new System.Windows.Forms.Padding(4);
+            this.controlSelectedComboBoxTest.Name = "controlSelectedComboBoxTest";
+            this.controlSelectedComboBoxTest.SelectedItem = "";
+            this.controlSelectedComboBoxTest.Size = new System.Drawing.Size(295, 28);
+            this.controlSelectedComboBoxTest.TabIndex = 0;
+            this.controlSelectedComboBoxTest.ComboBoxSelectedElementChange += new System.EventHandler(this.controlComboBoxSelected_ComboBoxSelectedElementChange);
+            // 
             // groupBoxInputTest
             // 
             this.groupBoxInputTest.Controls.Add(this.labelPrompt);
@@ -220,49 +229,6 @@ namespace COPTestView
             this.buttonEnter.UseVisualStyleBackColor = true;
             this.buttonEnter.Click += new System.EventHandler(this.buttonEnter_Click);
             // 
-            // groupBoxControlOutputTest
-            // 
-            this.groupBoxControlOutputTest.Controls.Add(this.buttonGet);
-            this.groupBoxControlOutputTest.Controls.Add(this.buttonListAdd);
-            this.groupBoxControlOutputTest.Controls.Add(this.labelPropertyValue);
-            this.groupBoxControlOutputTest.Controls.Add(this.textBoxPropertyValue);
-            this.groupBoxControlOutputTest.Controls.Add(this.labelPropertyName);
-            this.groupBoxControlOutputTest.Controls.Add(this.textBoxPropertyName);
-            this.groupBoxControlOutputTest.Controls.Add(this.labelRowIndex);
-            this.groupBoxControlOutputTest.Controls.Add(this.textBoxRowIndex);
-            this.groupBoxControlOutputTest.Controls.Add(this.controlOutputlListBox);
-            this.groupBoxControlOutputTest.Location = new System.Drawing.Point(123, 186);
-            this.groupBoxControlOutputTest.Name = "groupBoxControlOutputTest";
-            this.groupBoxControlOutputTest.Size = new System.Drawing.Size(439, 332);
-            this.groupBoxControlOutputTest.TabIndex = 5;
-            this.groupBoxControlOutputTest.TabStop = false;
-            this.groupBoxControlOutputTest.Text = "Тест компонента вывода списка";
-            // 
-            // labelRowIndex
-            // 
-            this.labelRowIndex.AutoSize = true;
-            this.labelRowIndex.Location = new System.Drawing.Point(218, 28);
-            this.labelRowIndex.Name = "labelRowIndex";
-            this.labelRowIndex.Size = new System.Drawing.Size(83, 13);
-            this.labelRowIndex.TabIndex = 2;
-            this.labelRowIndex.Text = "Индекс строки";
-            // 
-            // textBoxRowIndex
-            // 
-            this.textBoxRowIndex.Location = new System.Drawing.Point(221, 49);
-            this.textBoxRowIndex.Name = "textBoxRowIndex";
-            this.textBoxRowIndex.Size = new System.Drawing.Size(200, 20);
-            this.textBoxRowIndex.TabIndex = 1;
-            // 
-            // controlOutputlListBox
-            // 
-            this.controlOutputlListBox.Location = new System.Drawing.Point(17, 28);
-            this.controlOutputlListBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.controlOutputlListBox.Name = "controlOutputlListBox";
-            this.controlOutputlListBox.SelectedIndex = -1;
-            this.controlOutputlListBox.Size = new System.Drawing.Size(188, 288);
-            this.controlOutputlListBox.TabIndex = 0;
-            // 
             // controlInputRegexPhoneNumberTest
             // 
             this.controlInputRegexPhoneNumberTest.Location = new System.Drawing.Point(11, 24);
@@ -273,36 +239,37 @@ namespace COPTestView
             this.controlInputRegexPhoneNumberTest.TabIndex = 0;
             this.controlInputRegexPhoneNumberTest.Value = "";
             // 
-            // controlSelectedComboBoxTest
+            // groupBoxControlOutputTest
             // 
-            this.controlSelectedComboBoxTest.Location = new System.Drawing.Point(14, 20);
-            this.controlSelectedComboBoxTest.Margin = new System.Windows.Forms.Padding(4);
-            this.controlSelectedComboBoxTest.Name = "controlSelectedComboBoxTest";
-            this.controlSelectedComboBoxTest.SelectedItem = "";
-            this.controlSelectedComboBoxTest.Size = new System.Drawing.Size(295, 28);
-            this.controlSelectedComboBoxTest.TabIndex = 0;
-            this.controlSelectedComboBoxTest.ComboBoxSelectedElementChange += new System.EventHandler(this.controlComboBoxSelected_ComboBoxSelectedElementChange);
+            this.groupBoxControlOutputTest.Controls.Add(this.buttonListAdd);
+            this.groupBoxControlOutputTest.Controls.Add(this.labelPropertyValue);
+            this.groupBoxControlOutputTest.Controls.Add(this.textBoxPropertyValue);
+            this.groupBoxControlOutputTest.Controls.Add(this.labelPropertyName);
+            this.groupBoxControlOutputTest.Controls.Add(this.textBoxPropertyName);
+            this.groupBoxControlOutputTest.Controls.Add(this.labelRowIndex);
+            this.groupBoxControlOutputTest.Controls.Add(this.textBoxRowIndex);
+            this.groupBoxControlOutputTest.Controls.Add(this.controlOutputlListBox);
+            this.groupBoxControlOutputTest.Location = new System.Drawing.Point(84, 186);
+            this.groupBoxControlOutputTest.Name = "groupBoxControlOutputTest";
+            this.groupBoxControlOutputTest.Size = new System.Drawing.Size(515, 332);
+            this.groupBoxControlOutputTest.TabIndex = 5;
+            this.groupBoxControlOutputTest.TabStop = false;
+            this.groupBoxControlOutputTest.Text = "Тест компонента вывода списка";
             // 
-            // labelPropertyName
+            // buttonListAdd
             // 
-            this.labelPropertyName.AutoSize = true;
-            this.labelPropertyName.Location = new System.Drawing.Point(218, 77);
-            this.labelPropertyName.Name = "labelPropertyName";
-            this.labelPropertyName.Size = new System.Drawing.Size(107, 13);
-            this.labelPropertyName.TabIndex = 4;
-            this.labelPropertyName.Text = "Название свойства";
-            // 
-            // textBoxPropertyName
-            // 
-            this.textBoxPropertyName.Location = new System.Drawing.Point(221, 98);
-            this.textBoxPropertyName.Name = "textBoxPropertyName";
-            this.textBoxPropertyName.Size = new System.Drawing.Size(200, 20);
-            this.textBoxPropertyName.TabIndex = 3;
+            this.buttonListAdd.Location = new System.Drawing.Point(299, 177);
+            this.buttonListAdd.Name = "buttonListAdd";
+            this.buttonListAdd.Size = new System.Drawing.Size(200, 23);
+            this.buttonListAdd.TabIndex = 7;
+            this.buttonListAdd.Text = "Вставить";
+            this.buttonListAdd.UseVisualStyleBackColor = true;
+            this.buttonListAdd.Click += new System.EventHandler(this.buttonListInsert_Click);
             // 
             // labelPropertyValue
             // 
             this.labelPropertyValue.AutoSize = true;
-            this.labelPropertyValue.Location = new System.Drawing.Point(218, 127);
+            this.labelPropertyValue.Location = new System.Drawing.Point(296, 128);
             this.labelPropertyValue.Name = "labelPropertyValue";
             this.labelPropertyValue.Size = new System.Drawing.Size(105, 13);
             this.labelPropertyValue.TabIndex = 6;
@@ -310,30 +277,51 @@ namespace COPTestView
             // 
             // textBoxPropertyValue
             // 
-            this.textBoxPropertyValue.Location = new System.Drawing.Point(221, 148);
+            this.textBoxPropertyValue.Location = new System.Drawing.Point(299, 149);
             this.textBoxPropertyValue.Name = "textBoxPropertyValue";
             this.textBoxPropertyValue.Size = new System.Drawing.Size(200, 20);
             this.textBoxPropertyValue.TabIndex = 5;
             // 
-            // buttonListAdd
+            // labelPropertyName
             // 
-            this.buttonListAdd.Location = new System.Drawing.Point(221, 176);
-            this.buttonListAdd.Name = "buttonListAdd";
-            this.buttonListAdd.Size = new System.Drawing.Size(200, 23);
-            this.buttonListAdd.TabIndex = 7;
-            this.buttonListAdd.Text = "Добавить/Изменить";
-            this.buttonListAdd.UseVisualStyleBackColor = true;
-            this.buttonListAdd.Click += new System.EventHandler(this.buttonListAdd_Click);
+            this.labelPropertyName.AutoSize = true;
+            this.labelPropertyName.Location = new System.Drawing.Point(296, 78);
+            this.labelPropertyName.Name = "labelPropertyName";
+            this.labelPropertyName.Size = new System.Drawing.Size(107, 13);
+            this.labelPropertyName.TabIndex = 4;
+            this.labelPropertyName.Text = "Название свойства";
             // 
-            // buttonGet
+            // textBoxPropertyName
             // 
-            this.buttonGet.Location = new System.Drawing.Point(221, 205);
-            this.buttonGet.Name = "buttonGet";
-            this.buttonGet.Size = new System.Drawing.Size(197, 19);
-            this.buttonGet.TabIndex = 8;
-            this.buttonGet.Text = "Получить выбранныйы  элемент";
-            this.buttonGet.UseVisualStyleBackColor = true;
-            this.buttonGet.Click += new System.EventHandler(this.buttonGet_Click);
+            this.textBoxPropertyName.Location = new System.Drawing.Point(299, 99);
+            this.textBoxPropertyName.Name = "textBoxPropertyName";
+            this.textBoxPropertyName.Size = new System.Drawing.Size(200, 20);
+            this.textBoxPropertyName.TabIndex = 3;
+            // 
+            // labelRowIndex
+            // 
+            this.labelRowIndex.AutoSize = true;
+            this.labelRowIndex.Location = new System.Drawing.Point(296, 29);
+            this.labelRowIndex.Name = "labelRowIndex";
+            this.labelRowIndex.Size = new System.Drawing.Size(83, 13);
+            this.labelRowIndex.TabIndex = 2;
+            this.labelRowIndex.Text = "Индекс строки";
+            // 
+            // textBoxRowIndex
+            // 
+            this.textBoxRowIndex.Location = new System.Drawing.Point(299, 50);
+            this.textBoxRowIndex.Name = "textBoxRowIndex";
+            this.textBoxRowIndex.Size = new System.Drawing.Size(200, 20);
+            this.textBoxRowIndex.TabIndex = 1;
+            // 
+            // controlOutputlListBox
+            // 
+            this.controlOutputlListBox.Location = new System.Drawing.Point(17, 28);
+            this.controlOutputlListBox.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.controlOutputlListBox.Name = "controlOutputlListBox";
+            this.controlOutputlListBox.SelectedIndex = -1;
+            this.controlOutputlListBox.Size = new System.Drawing.Size(263, 288);
+            this.controlOutputlListBox.TabIndex = 0;
             // 
             // FormMain
             // 
@@ -384,6 +372,5 @@ namespace COPTestView
         private System.Windows.Forms.TextBox textBoxPropertyValue;
         private System.Windows.Forms.Label labelPropertyName;
         private System.Windows.Forms.TextBox textBoxPropertyName;
-        private System.Windows.Forms.Button buttonGet;
     }
 }

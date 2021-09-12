@@ -24,10 +24,8 @@ namespace ClassLibraryControlsFilippov
         public string SelectedItem
         {
             get => comboBox.SelectedItem == null ? string.Empty : comboBox.SelectedItem.ToString();
-            set
-            {
-                comboBox.SelectedItem = value;
-            }
+            set => comboBox.SelectedItem = value;
+
         }
 
         [Category("События comboBox"), Description("Событие выбора элемента из списка")]
