@@ -7,7 +7,7 @@ namespace COPTestView
 {
     public partial class FormMain : Form
     {
-        private const string patern = @"^((8|\+7)[\- ]?)?(\(?\d{3}\)?[\- ]?)?[\d\- ]{7,10}$";
+        private const string patern = @"^(\+7|8)+\d{10}$";
         private const string toolTip = "+79999999999";
         private ControlOutputListBoxLayout layout = new ControlOutputListBoxLayout()
         {
@@ -132,8 +132,23 @@ namespace COPTestView
             PropertyInfo property = newAddress.GetType().GetProperty(propertyName);
             if (property != null)
             {
-                Type propertyType = property.PropertyType;
-                property.SetValue(newAddress, Convert.ChangeType(propertyValue, propertyType));
+                try
+                {
+                    Type propertyType = property.PropertyType;
+                    property.SetValue(newAddress, Convert.ChangeType(propertyValue, propertyType));
+                }
+                catch (FormatException)
+                {
+                    MessageBox.Show("Неверное значение свойства", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                catch (Exception)
+                {
+
+                    MessageBox.Show("Неизвестная ошибка", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+
             }
             controlOutputlListBox.Insert(newAddress, rowIndex, propertyName);
         }
