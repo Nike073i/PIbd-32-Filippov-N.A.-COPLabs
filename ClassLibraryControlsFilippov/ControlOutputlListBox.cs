@@ -58,7 +58,7 @@ namespace ClassLibraryControlsFilippov
                     }
 
                     var property = itemT.GetType().GetProperty(propertyName);
-                    if (property != null)
+                    if (property != null && propertyValue != layout.StartSign+propertyName+layout.EndSign)
                     {
                         var propertyInfo = property;
                         var propertyType = property?.PropertyType;
