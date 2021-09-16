@@ -7,13 +7,19 @@ namespace ClassLibraryControlsFilippov
     public partial class ControlSelectedComboBox : UserControl
     {
         private event EventHandler _comboBoxSelectedElementChange;
+
+        [Category("Свойства comboBox"), Description("Ссылка на свойство Items comboBox")]
         public ComboBox.ObjectCollection Items { get { return this.comboBox.Items; } }
+
         public ControlSelectedComboBox()
         {
             InitializeComponent();
             comboBox.SelectedIndexChanged += (sender, e) => _comboBoxSelectedElementChange?.Invoke(sender, e);
         }
 
+        /// <summary>
+        /// Метод очищения списка comboBox
+        /// </summary>
         public void ClearItems()
         {
             comboBox.Items.Clear();

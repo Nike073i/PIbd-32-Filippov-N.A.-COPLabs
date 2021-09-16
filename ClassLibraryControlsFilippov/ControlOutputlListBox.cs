@@ -25,11 +25,20 @@ namespace ClassLibraryControlsFilippov
             }
         }
 
+        /// <summary>
+        /// Установка макета
+        /// </summary>
+        /// <param name="layout"></param>
         public void SetLayout(ControlOutputListBoxLayout layout)
         {
             if (layout != null) this.layout = layout;
         }
 
+        /// <summary>
+        /// Получение элемента T из выбранной в listBox строки
+        /// </summary>
+        /// <typeparam name="T">Тип элемента, значения которого написанны в выбранной строке</typeparam>
+        /// <returns>Элемент типа Т со значениями из выбранной строки</returns>
         public T GetSelectedItem<T>() where T : class, new()
         {
             T restoreItem;
@@ -58,7 +67,7 @@ namespace ClassLibraryControlsFilippov
                     }
 
                     var property = itemT.GetType().GetProperty(propertyName);
-                    if (property != null && propertyValue != layout.StartSign+propertyName+layout.EndSign)
+                    if (property != null && propertyValue != layout.StartSign + propertyName + layout.EndSign)
                     {
                         var propertyInfo = property;
                         var propertyType = property?.PropertyType;
@@ -74,6 +83,13 @@ namespace ClassLibraryControlsFilippov
             return restoreItem;
         }
 
+        /// <summary>
+        /// Метод заполнения значений строк в listBox
+        /// </summary>
+        /// <typeparam name="T">Тип элемента</typeparam>
+        /// <param name="itemObject">Элемент, из которого необходимо получить значение свойства</param>
+        /// <param name="rowIndex">Индекс строки</param>
+        /// <param name="propertyName">Название свойства, значение которого необходимо записать</param>
         public void Insert<T>(T itemObject, int rowIndex, string propertyName)
         {
             if (!string.IsNullOrEmpty(propertyName) && itemObject != null && layout != null)
