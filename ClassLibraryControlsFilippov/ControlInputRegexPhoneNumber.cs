@@ -7,8 +7,6 @@ namespace ClassLibraryControlsFilippov
 {
     public partial class ControlInputRegexPhoneNumber : UserControl
     {
-        private string value = string.Empty;
-
         [Category("Свойства textBox"), Description("Шаблон вводимого значения")]
         public string Pattern { get; set; } = string.Empty;
 
@@ -17,14 +15,15 @@ namespace ClassLibraryControlsFilippov
         {
             get
             {
+                string inputText = textBoxPhoneNumber.Text;
                 string outputText;
-                if (!string.IsNullOrEmpty(value))
+                if (!string.IsNullOrEmpty(inputText))
                 {
-                    if (!Regex.IsMatch(value, Pattern))
+                    if (!Regex.IsMatch(inputText, Pattern))
                     {
                         throw new ArgumentException();
                     }
-                    outputText = value;
+                    outputText = inputText;
                 }
                 else
                 {
@@ -34,7 +33,7 @@ namespace ClassLibraryControlsFilippov
             }
             set
             {
-                this.value = value;
+                textBoxPhoneNumber.Text = value;
             }
         }
         public ControlInputRegexPhoneNumber()
@@ -49,14 +48,6 @@ namespace ClassLibraryControlsFilippov
         public void SetToolTip(string prompt)
         {
             toolTipInput.SetToolTip(textBoxPhoneNumber, prompt);
-        }
-
-        /// <summary>
-        /// Метод, который вызывается событием "TextChanged". Устанавливает введенное в TextBox значение
-        /// </summary>
-        private void TextBoxInput_TextChanged(object sender, EventArgs e)
-        {
-            Value = ((TextBox)sender).Text;
         }
     }
 }
