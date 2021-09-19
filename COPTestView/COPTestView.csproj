@@ -53,10 +53,19 @@
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormWorkWithComponents.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormWorkWithComponents.Designer.cs">
+      <DependentUpon>FormWorkWithComponents.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormWorkWithComponents.resx">
+      <DependentUpon>FormWorkWithComponents.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -84,6 +93,10 @@
     <ProjectReference Include="..\ClassLibraryControlsFilippov\ClassLibraryControlsFilippov.csproj">
       <Project>{822E1AE8-95BC-4EF0-AB55-2B39C7B50B4D}</Project>
       <Name>ClassLibraryControlsFilippov</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\ClasslLibraryComponentsFilippov\ClasslLibraryComponentsFilippov.csproj">
+      <Project>{bef19dcc-244f-46e4-ae76-1cf3e54ad010}</Project>
+      <Name>ClasslLibraryComponentsFilippov</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
