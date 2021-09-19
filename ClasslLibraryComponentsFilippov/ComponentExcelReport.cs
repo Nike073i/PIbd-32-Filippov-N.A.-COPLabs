@@ -9,6 +9,8 @@ namespace ClasslLibraryComponentsFilippov
 {
     public partial class ComponentExcelReport : Component
     {
+        private ErrorExcelReportMessage errorMessage = ErrorExcelReportMessage.Ошибок_нет;
+        public string ErrorMessageString { get => errorMessage.ToString(); }
         public ComponentExcelReport()
         {
             InitializeComponent();
@@ -22,8 +24,23 @@ namespace ClasslLibraryComponentsFilippov
 
         public HeaderOrientation HeaderOrientation { get; set; } = HeaderOrientation.Horizontal;
 
-        public void CreateReport<T>(ReportParameters<T> reportParameters)
+        public bool CreateReport<T>(ReportParameters<T> reportParameters)
         {
+            if (reportParameters == null)
+            {
+                errorMessage = ErrorExcelReportMessage.Не_указаны_параметры_отчета;
+                return false;
+            }
+            if (reportParameters.Data == null)
+            {
+                errorMessage = ErrorExcelReportMessage.Данные_не_указаны;
+                return false;
+            }
+            if (string.IsNullOrEmpty(reportParameters.Path))
+            {
+                errorMessage = ErrorExcelReportMessage.Не_указан_путь;
+                return false;
+            }
             Application excel = new Application { SheetsInNewWorkbook = 1, Visible = false, DisplayAlerts = false };
             Workbook workBook = excel.Workbooks.Add(Type.Missing);
             Worksheet sheet = (Worksheet)excel.Worksheets.get_Item(1);
@@ -94,6 +111,7 @@ namespace ClasslLibraryComponentsFilippov
             sheet.Columns.EntireColumn.AutoFit();
             excel.Application.ActiveWorkbook.SaveAs(reportParameters.Path, XlSaveAsAccessMode.xlNoChange);
             excel.Quit();
+            return true;
         }
     }
 }

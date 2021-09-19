@@ -60,7 +60,8 @@
     <Compile Include="ComponentSaveDataXml.Designer.cs">
       <DependentUpon>ComponentSaveDataXml.cs</DependentUpon>
     </Compile>
-    <Compile Include="Enums\ErrorMessage.cs" />
+    <Compile Include="Enums\ErrorExcelReportMessage.cs" />
+    <Compile Include="Enums\ErrorSaveXMLMessage.cs" />
     <Compile Include="Enums\HeaderOrientation.cs" />
     <Compile Include="HelperModels\ReportParameters.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
