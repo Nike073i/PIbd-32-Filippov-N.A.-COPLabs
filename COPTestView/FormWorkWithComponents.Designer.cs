@@ -32,6 +32,7 @@ namespace COPTestView
             this.components = new System.ComponentModel.Container();
             this.componentSaveDataXmlTest = new ClasslLibraryComponentsFilippov.ComponentSaveDataXml(this.components);
             this.componentExcelReport = new ClasslLibraryComponentsFilippov.ComponentExcelReport(this.components);
+            this.componentPdfDiagram = new ClasslLibraryComponentsFilippov.ComponentPdfDiagram(this.components);
             this.SuspendLayout();
             // 
             // componentExcelReport
@@ -53,5 +54,6 @@ namespace COPTestView
 
         private ClasslLibraryComponentsFilippov.ComponentSaveDataXml componentSaveDataXmlTest;
         private ClasslLibraryComponentsFilippov.ComponentExcelReport componentExcelReport;
+        private ClasslLibraryComponentsFilippov.ComponentPdfDiagram componentPdfDiagram;
     }
 }

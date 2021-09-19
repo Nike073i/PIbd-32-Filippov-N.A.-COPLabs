@@ -34,6 +34,21 @@
       <HintPath>..\packages\Microsoft.Office.Interop.Excel.15.0.4795.1000\lib\net20\Microsoft.Office.Interop.Excel.dll</HintPath>
       <EmbedInteropTypes>True</EmbedInteropTypes>
     </Reference>
+    <Reference Include="MigraDoc.DocumentObjectModel, Version=1.50.5147.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\PDFsharp-MigraDoc.1.50.5147\lib\net20\MigraDoc.DocumentObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="MigraDoc.Rendering, Version=1.50.5147.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\PDFsharp-MigraDoc.1.50.5147\lib\net20\MigraDoc.Rendering.dll</HintPath>
+    </Reference>
+    <Reference Include="MigraDoc.RtfRendering, Version=1.50.5147.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\PDFsharp-MigraDoc.1.50.5147\lib\net20\MigraDoc.RtfRendering.dll</HintPath>
+    </Reference>
+    <Reference Include="PdfSharp, Version=1.50.5147.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\PDFsharp-MigraDoc.1.50.5147\lib\net20\PdfSharp.dll</HintPath>
+    </Reference>
+    <Reference Include="PdfSharp.Charting, Version=1.50.5147.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
+      <HintPath>..\packages\PDFsharp-MigraDoc.1.50.5147\lib\net20\PdfSharp.Charting.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.IO.Compression.FileSystem" />
@@ -54,15 +69,24 @@
     <Compile Include="ComponentExcelReport.Designer.cs">
       <DependentUpon>ComponentExcelReport.cs</DependentUpon>
     </Compile>
+    <Compile Include="ComponentPdfDiagram.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ComponentPdfDiagram.Designer.cs">
+      <DependentUpon>ComponentPdfDiagram.cs</DependentUpon>
+    </Compile>
     <Compile Include="ComponentSaveDataXml.cs">
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="ComponentSaveDataXml.Designer.cs">
       <DependentUpon>ComponentSaveDataXml.cs</DependentUpon>
     </Compile>
+    <Compile Include="Enums\PdfDataLabelType.cs" />
     <Compile Include="Enums\ErrorExcelReportMessage.cs" />
+    <Compile Include="Enums\ErrorPdfDiagramMessage.cs" />
     <Compile Include="Enums\ErrorSaveXMLMessage.cs" />
     <Compile Include="Enums\HeaderOrientation.cs" />
+    <Compile Include="HelperModels\DiagramParameters.cs" />
     <Compile Include="HelperModels\ReportParameters.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />

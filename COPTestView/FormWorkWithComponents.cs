@@ -19,6 +19,22 @@ namespace COPTestView
             new Address() {
                 Street = "Магаданская",
                 NumberHouse = 17
+            },
+            new Address() {
+                Street = "Магаданская",
+                NumberHouse = 17
+            },
+            new Address() {
+                Street = "Магаданская",
+                NumberHouse = 17
+            },
+            new Address() {
+                Street = "Магаданская",
+                NumberHouse = 17
+            },
+            new Address() {
+                Street = "Магаданская",
+                NumberHouse = 17
             }
         };
         public FormWorkWithComponents()
@@ -29,11 +45,17 @@ namespace COPTestView
         private void TestMethod()
         {
             //componentSaveDataXmlTest.SaveData(@"C:\Users\Xou\Desktop\test", addresses.ToList());
-            componentExcelReport.CreateReport(new ReportParameters<Address>()
+            /*componentExcelReport.CreateReport(new ReportParameters<Address>()
             {
                 Data = addresses.ToList(),
-                HeaderOriantation = HeaderOrientation.Horizontal,
                 Path = @"C:\Users\Xou\Desktop\test\exp.xls"
+            });*/
+            componentPdfDiagram.dataLabelType = PdfDataLabelType.Value;
+            componentPdfDiagram.CreatePfdDiagramm(new DiagramParameters<Address>
+            {
+                Data = addresses.ToList(),
+                Path = @"C:\Users\Xou\Desktop\test\exps.pdf",
+                PropertyName = "Street"
             });
         }
     }

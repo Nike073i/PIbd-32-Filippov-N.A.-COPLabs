@@ -55,7 +55,7 @@ namespace ClasslLibraryComponentsFilippov
                 for (int i = 0; i < propsCount; i++)
                 {
                     PropertyInfo prop = props[i];
-                    if (reportParameters.HeaderOriantation == HeaderOrientation.Horizontal)
+                    if (HeaderOrientation == HeaderOrientation.Horizontal)
                     {
                         if (dataValueIndex == 2)
                         {
@@ -63,7 +63,7 @@ namespace ClasslLibraryComponentsFilippov
                         }
                         sheet.Cells[dataValueIndex, i + 1] = prop.GetValue(elem).ToString();
                     }
-                    if (reportParameters.HeaderOriantation == HeaderOrientation.Vertical)
+                    if (HeaderOrientation == HeaderOrientation.Vertical)
                     {
                         if (dataValueIndex == 2)
                             sheet.Cells[i + 1, 1] = prop.Name;
@@ -74,7 +74,7 @@ namespace ClasslLibraryComponentsFilippov
             }
             int infoRowStartIndex, infoRowEndIndex, headRowStartIndex, headRowEndIndex;
             int infoColumnStartIndex, infoColumnEndIndex, headColumnStartIndex, headColumnEndIndex;
-            if (reportParameters.HeaderOriantation == HeaderOrientation.Horizontal)
+            if (HeaderOrientation == HeaderOrientation.Horizontal)
             {
                 headRowStartIndex = 1;
                 headRowEndIndex = 1;
