@@ -1,11 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
+﻿using ClasslLibraryComponentsFilippov.Enums;
+using ClasslLibraryComponentsFilippov.HelperModels;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace COPTestView
@@ -33,7 +28,13 @@ namespace COPTestView
         }
         private void TestMethod()
         {
-            componentSaveDataXmlTest.SaveData<Address>(@"C:\Users\Xou\Desktop\test", addresses.ToList());
+            //componentSaveDataXmlTest.SaveData(@"C:\Users\Xou\Desktop\test", addresses.ToList());
+            componentExcelReport.CreateReport(new ReportParameters<Address>()
+            {
+                Data = addresses.ToList(),
+                HeaderOriantation = HeaderOrientation.Vertical,
+                Path = @"C:\Users\Xou\Desktop\test\exp.xls"
+            });
         }
     }
 }

@@ -31,7 +31,12 @@ namespace COPTestView
         {
             this.components = new System.ComponentModel.Container();
             this.componentSaveDataXmlTest = new ClasslLibraryComponentsFilippov.ComponentSaveDataXml(this.components);
+            this.componentExcelReport = new ClasslLibraryComponentsFilippov.ComponentExcelReport(this.components);
             this.SuspendLayout();
+            // 
+            // componentExcelReport
+            // 
+            this.componentExcelReport.HeaderOrientation = ClasslLibraryComponentsFilippov.Enums.HeaderOrientation.Horizontal;
             // 
             // FormWorkWithComponents
             // 
@@ -47,5 +52,6 @@ namespace COPTestView
         #endregion
 
         private ClasslLibraryComponentsFilippov.ComponentSaveDataXml componentSaveDataXmlTest;
+        private ClasslLibraryComponentsFilippov.ComponentExcelReport componentExcelReport;
     }
 }
