@@ -1,5 +1,8 @@
-﻿namespace COPTestView
+﻿using System;
+
+namespace COPTestView
 {
+    [Serializable]
     public class Address
     {
         private int numberHouse;

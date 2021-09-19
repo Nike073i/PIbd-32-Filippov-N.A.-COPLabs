@@ -30,21 +30,21 @@ namespace ClasslLibraryComponentsFilippov
             bool result;
             if (!string.IsNullOrEmpty(path))
             {
-                T objectT = Activator.CreateInstance<T>();
+                T objectT = new T();
                 if (objectT.GetType().GetCustomAttribute(typeof(SerializableAttribute)) != null)
                 {
-                    Directory.CreateDirectory(string.Concat(path, "/", objectT.GetType().Name));
+                    string objectTShortName = objectT.GetType().Name;
+                    string dirPath = string.Concat(path, "/", objectTShortName);
+                    Directory.CreateDirectory(dirPath);
                     XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<T>));
-                    using (FileStream fileStream = new FileStream(string.Concat(new string[] { path, "/", objectT.GetType().Name, "/", objectT.GetType().Name, ".xml" }), FileMode.OpenOrCreate))
+                    string fileStreamPath = string.Concat(dirPath, "/", objectTShortName, ".xml");
+                    using (FileStream fileStream = new FileStream(fileStreamPath, FileMode.OpenOrCreate))
                     {
                         xmlSerializer.Serialize(fileStream, dataList);
                     }
-                    string str = string.Concat(path, "/", objectT.GetType().Name, "/");
-                    string[] shortDateString = new string[] { path, "/", objectT.GetType().Name, ".", null, null };
-                    shortDateString[4] = DateTime.Now.ToShortDateString();
-                    shortDateString[5] = ".zip";
-                    ZipFile.CreateFromDirectory(str, string.Concat(shortDateString));
-                    Directory.Delete(string.Concat(path, "/", objectT.GetType().Name), true);
+                    string[] shortDateString = new string[] { dirPath, ".", DateTime.Now.ToShortDateString(), ".zip" };
+                    ZipFile.CreateFromDirectory(string.Concat(dirPath, "/"), string.Concat(shortDateString));
+                    Directory.Delete(dirPath, true);
                     result = true;
                 }
                 else
