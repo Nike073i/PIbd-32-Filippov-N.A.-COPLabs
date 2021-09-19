@@ -32,7 +32,7 @@ namespace COPTestView
             componentExcelReport.CreateReport(new ReportParameters<Address>()
             {
                 Data = addresses.ToList(),
-                HeaderOriantation = HeaderOrientation.Vertical,
+                HeaderOriantation = HeaderOrientation.Horizontal,
                 Path = @"C:\Users\Xou\Desktop\test\exp.xls"
             });
         }

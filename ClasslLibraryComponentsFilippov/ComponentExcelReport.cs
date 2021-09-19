@@ -30,18 +30,20 @@ namespace ClasslLibraryComponentsFilippov
             sheet.Name = $"Отчет за {DateTime.Now:dd.MM.yyyy}";
 
             int dataValueIndex = 2;
-
+            int propsCount = 0;
             foreach (var elem in reportParameters.Data)
             {
                 var props = elem.GetType().GetProperties();
-
-                for (int i = 0; i < props.Length; i++)
+                propsCount = props.Length;
+                for (int i = 0; i < propsCount; i++)
                 {
                     PropertyInfo prop = props[i];
                     if (reportParameters.HeaderOriantation == HeaderOrientation.Horizontal)
                     {
                         if (dataValueIndex == 2)
+                        {
                             sheet.Cells[1, i + 1] = prop.Name;
+                        }
                         sheet.Cells[dataValueIndex, i + 1] = prop.GetValue(elem).ToString();
                     }
                     if (reportParameters.HeaderOriantation == HeaderOrientation.Vertical)
@@ -53,6 +55,43 @@ namespace ClasslLibraryComponentsFilippov
                 }
                 dataValueIndex++;
             }
+            int infoRowStartIndex, infoRowEndIndex, headRowStartIndex, headRowEndIndex;
+            int infoColumnStartIndex, infoColumnEndIndex, headColumnStartIndex, headColumnEndIndex;
+            if (reportParameters.HeaderOriantation == HeaderOrientation.Horizontal)
+            {
+                headRowStartIndex = 1;
+                headRowEndIndex = 1;
+                infoRowStartIndex = 2;
+                infoRowEndIndex = reportParameters.Data.Count + 1;
+                headColumnStartIndex = 1;
+                headColumnEndIndex = propsCount;
+                infoColumnStartIndex = 1;
+                infoColumnEndIndex = headColumnEndIndex;
+            }
+            else
+            {
+                headRowStartIndex = 1;
+                headRowEndIndex = propsCount;
+                infoRowStartIndex = 1;
+                infoRowEndIndex = headRowEndIndex;
+                headColumnStartIndex = 1;
+                headColumnEndIndex = 1;
+                infoColumnStartIndex = 2;
+                infoColumnEndIndex = reportParameters.Data.Count + 1;
+            }
+            var rangeHead = sheet.Range[sheet.Cells[headRowStartIndex, headColumnStartIndex], sheet.Cells[headRowEndIndex, headColumnEndIndex]];
+            var rangeInfo = sheet.Range[sheet.Cells[infoRowStartIndex, infoColumnStartIndex], sheet.Cells[infoRowEndIndex, infoColumnEndIndex]];
+            sheet.UsedRange.Borders.Item[XlBordersIndex.xlEdgeBottom].LineStyle = XlLineStyle.xlContinuous;
+            sheet.UsedRange.Borders.Item[XlBordersIndex.xlEdgeRight].LineStyle = XlLineStyle.xlContinuous;
+            sheet.UsedRange.Borders.Item[XlBordersIndex.xlEdgeLeft].LineStyle = XlLineStyle.xlContinuous;
+            sheet.UsedRange.Borders.Item[XlBordersIndex.xlInsideHorizontal].LineStyle = XlLineStyle.xlContinuous;
+            sheet.UsedRange.Borders.Item[XlBordersIndex.xlInsideVertical].LineStyle = XlLineStyle.xlContinuous;
+            sheet.UsedRange.Borders.Item[XlBordersIndex.xlEdgeTop].LineStyle = XlLineStyle.xlContinuous;
+            sheet.UsedRange.Cells.Font.Name = "Tahoma";
+            rangeHead.Cells.Font.Size = 11;
+            rangeHead.Cells.Font.Bold = true;
+            rangeInfo.Cells.Font.Size = 10;
+            sheet.Columns.EntireColumn.AutoFit();
             excel.Application.ActiveWorkbook.SaveAs(reportParameters.Path, XlSaveAsAccessMode.xlNoChange);
             excel.Quit();
         }
