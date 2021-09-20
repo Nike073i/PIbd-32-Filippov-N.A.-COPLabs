@@ -6,7 +6,7 @@ namespace COPTestView
     public class Address
     {
         private int numberHouse;
-        public string Street { get; set; }
+        public string Street { get; set; } = string.Empty;
         public int NumberHouse
         {
             get { return numberHouse; }

@@ -10,7 +10,10 @@ namespace ClasslLibraryComponentsFilippov
     public partial class ComponentExcelReport : Component
     {
         private ErrorExcelReportMessage errorMessage = ErrorExcelReportMessage.Ошибок_нет;
+
+        [Category("ComponentExcelReport"), Description("Содержание ошибки")]
         public string ErrorMessageString { get => errorMessage.ToString(); }
+
         public ComponentExcelReport()
         {
             InitializeComponent();
@@ -22,8 +25,15 @@ namespace ClasslLibraryComponentsFilippov
             InitializeComponent();
         }
 
+        [Category("ComponentExcelReport"), Description("Ориентация шапки отчета")]
         public HeaderOrientation HeaderOrientation { get; set; } = HeaderOrientation.Horizontal;
 
+        /// <summary>
+        /// Метод создания отчета в Excel
+        /// </summary>
+        /// <typeparam name="T">Тип элемента, данные которого будут выводиться в отчет</typeparam>
+        /// <param name="reportParameters">Вспомогательный класс конфигурации отчета</param>
+        /// <returns>Результат создания отчета</returns>
         public bool CreateReport<T>(ReportParameters<T> reportParameters)
         {
             if (reportParameters == null)

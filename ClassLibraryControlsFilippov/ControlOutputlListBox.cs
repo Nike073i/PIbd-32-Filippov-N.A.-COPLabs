@@ -34,6 +34,9 @@ namespace ClassLibraryControlsFilippov
             if (layout != null) this.layout = layout;
         }
 
+        [Category("Свойства listBox"), Description("Количество строк в listBox")]
+        public int Count { get { return listBox.Items.Count; } }
+
         /// <summary>
         /// Получение элемента T из выбранной в listBox строки
         /// </summary>

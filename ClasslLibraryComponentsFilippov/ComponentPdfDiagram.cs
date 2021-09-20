@@ -3,6 +3,7 @@ using ClasslLibraryComponentsFilippov.HelperModels;
 using MigraDoc.DocumentObjectModel;
 using MigraDoc.DocumentObjectModel.Shapes.Charts;
 using MigraDoc.Rendering;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 
@@ -10,10 +11,14 @@ namespace ClasslLibraryComponentsFilippov
 {
     public partial class ComponentPdfDiagram : Component
     {
-        public PdfDataLabelType dataLabelType { get; set; } = PdfDataLabelType.None;
-
         private ErrorPdfDiagramMessage errorMessage = ErrorPdfDiagramMessage.Ошибок_нет;
+
+        [Category("ComponentPdfDiagram"), Description("Тип подписей значений диаграммы")]
+        public PdfDataLabelType DataLabelType { get; set; } = PdfDataLabelType.None;
+
+        [Category("ComponentPdfDiagram"), Description("Содержание ошибки")]
         public string ErrorMessageString { get => errorMessage.ToString(); }
+
         public ComponentPdfDiagram()
         {
             InitializeComponent();
@@ -25,6 +30,13 @@ namespace ClasslLibraryComponentsFilippov
 
             InitializeComponent();
         }
+
+        /// <summary>
+        /// Метод создания Pdf-диаграммы
+        /// </summary>
+        /// <typeparam name="T">Тип элемента, данные которого будут учитываться в диаграмме</typeparam>
+        /// <param name="diagramParameters">Вспомогательный класс конфигурации диаграммы</param>
+        /// <returns>Результат создания диаграммы</returns>
         public bool CreatePfdDiagramm<T>(DiagramParameters<T> diagramParameters)
         {
             if (diagramParameters == null)
@@ -47,30 +59,37 @@ namespace ClasslLibraryComponentsFilippov
                 errorMessage = ErrorPdfDiagramMessage.Не_указано_свойство_группировки;
                 return false;
             }
-            var dict = CreateDataSet(diagramParameters.Data,diagramParameters.PropertyName);
-
+            if (typeof(T).GetProperty(diagramParameters.PropertyName) == null)
+            {
+                errorMessage = ErrorPdfDiagramMessage.Указанное_свойство_отсутствует;
+                return false;
+            }
+            var dict = CreateDataSet(diagramParameters.Data, diagramParameters.PropertyName);
+            if (dict == null)
+            {
+                errorMessage = ErrorPdfDiagramMessage.Пустая_выборка;
+                return false;
+            }
             Document document = new Document();
 
             Style style = document.Styles["Normal"];
             style.Font.Name = "Times New Roman";
             style.Font.Size = 14;
-            style = document.Styles.AddStyle("NormalTitle", "Normal");
+            style.Font.Color = Colors.Black;
             style.Font.Bold = true;
+            document.Styles.AddStyle("NormalTitle", "Normal");
 
             Section section = document.AddSection();
-            Paragraph paragraph = section.AddParagraph("");
+            Paragraph paragraph = section.AddParagraph($"Отчет за {DateTime.Now:dd.MM.yyyy} по {diagramParameters.PropertyName}");
             paragraph.Format.SpaceAfter = "1cm";
             paragraph.Format.Alignment = ParagraphAlignment.Center;
-            paragraph.Style = "NormalText";
+            paragraph.Style = "NormalTitle";
 
-            var chart = document.LastSection.AddChart(ChartType.Pie2D);
+            var chart = section.AddChart(ChartType.Pie2D);
             chart.Left = 0;
-
             chart.Width = Unit.FromCentimeter(12);
             chart.Height = Unit.FromCentimeter(12);
-
-            chart.DataLabel.Type = (DataLabelType)dataLabelType;
-
+            chart.DataLabel.Type = (DataLabelType)DataLabelType;
             chart.RightArea.AddLegend();
             Series series = chart.SeriesCollection.AddSeries();
             XSeries xseries = chart.XValues.AddXSeries();
@@ -87,28 +106,26 @@ namespace ClasslLibraryComponentsFilippov
             return true;
         }
 
-        private Dictionary<string, int> CreateDataSet<T>(List<T> list, string propertyName)
+        private Dictionary<string, int> CreateDataSet<T>(List<T> dataList, string propertyName)
         {
             var property = typeof(T).GetProperty(propertyName);
             Dictionary<string, int> dict = new Dictionary<string, int>();
-            if (property == null)
+            if (property != null)
             {
-                dict = null;
-            }
-            else
-            {
-                foreach (var elem in list)
+                dict = new Dictionary<string, int>();
+                foreach (var elem in dataList)
                 {
                     var propertyValue = property.GetValue(elem);
-                    if (propertyValue.ToString() != null)
+                    string propertyValueString = propertyValue.ToString();
+                    if (!string.IsNullOrEmpty(propertyValueString))
                     {
-                        if (dict.ContainsKey(propertyValue.ToString()))
+                        if (dict.ContainsKey(propertyValueString))
                         {
-                            dict[propertyValue?.ToString()]++;
+                            dict[propertyValueString]++;
                         }
                         else
                         {
-                            dict.Add(propertyValue.ToString(), 1);
+                            dict.Add(propertyValueString, 1);
                         }
                     }
                 }

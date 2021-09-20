@@ -12,6 +12,8 @@ namespace ClasslLibraryComponentsFilippov
     public partial class ComponentSaveDataXml : Component
     {
         private ErrorSaveXMLMessage errorMessage = ErrorSaveXMLMessage.Ошибок_нет;
+
+        [Category("ComponentSaveDataXml"), Description("Содержание ошибки")]
         public string ErrorMessageString { get => errorMessage.ToString(); }
         public ComponentSaveDataXml()
         {
@@ -24,6 +26,14 @@ namespace ClasslLibraryComponentsFilippov
 
             InitializeComponent();
         }
+
+        /// <summary>
+        /// Метод сохранения данных в XML
+        /// </summary>
+        /// <typeparam name="T">Тип элемента, данные которого будут сохраняться</typeparam>
+        /// <param name="path">Абсолютный путь, по которому будет создан zip архив данных</param>
+        /// <param name="dataList">Список данных, значения которых будут сохраняться в xml формате</param>
+        /// <returns></returns>
         public bool SaveData<T>(string path, List<T> dataList)
         where T : class, new()
         {
@@ -45,16 +55,37 @@ namespace ClasslLibraryComponentsFilippov
             }
             string objectTShortName = objectT.GetType().Name;
             string dirPath = string.Concat(path, "/", objectTShortName);
-            Directory.CreateDirectory(dirPath);
-            XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<T>));
-            string fileStreamPath = string.Concat(dirPath, "/", objectTShortName, ".xml");
-            using (FileStream fileStream = new FileStream(fileStreamPath, FileMode.OpenOrCreate))
+            try
             {
-                xmlSerializer.Serialize(fileStream, dataList);
+                DirectoryInfo dirInfo = new DirectoryInfo(dirPath);
+                if (dirInfo.Exists)
+                {
+                    foreach (FileInfo file in dirInfo.GetFiles())
+                    {
+                        file.Delete();
+                    }
+                }
+                string fileName = $"{dirPath}.zip";
+                if (File.Exists(fileName))
+                {
+                    File.Delete(fileName);
+                }
+
+                Directory.CreateDirectory(dirPath);
+                XmlSerializer xmlSerializer = new XmlSerializer(typeof(List<T>));
+                string fileStreamPath = string.Concat(dirPath, "/", objectTShortName, ".xml");
+                using (FileStream fileStream = new FileStream(fileStreamPath, FileMode.OpenOrCreate))
+                {
+                    xmlSerializer.Serialize(fileStream, dataList);
+                }
+                string[] shortDateString = new string[] { dirPath, ".zip" };
+                ZipFile.CreateFromDirectory(string.Concat(dirPath, "/"), string.Concat(shortDateString));
+                Directory.Delete(dirPath, true);
             }
-            string[] shortDateString = new string[] { dirPath, ".", DateTime.Now.ToShortDateString(), ".zip" };
-            ZipFile.CreateFromDirectory(string.Concat(dirPath, "/"), string.Concat(shortDateString));
-            Directory.Delete(dirPath, true);
+            catch (Exception)
+            {
+                throw;
+            }
             return true;
         }
     }
