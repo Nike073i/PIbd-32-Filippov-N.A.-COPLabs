@@ -33,6 +33,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="MigraDoc.DocumentObjectModel">
+      <HintPath>..\packages\PDFsharp-MigraDoc.1.50.5147\lib\net20\MigraDoc.DocumentObjectModel.dll</HintPath>
+    </Reference>
+    <Reference Include="MigraDoc.Rendering">
+      <HintPath>..\packages\PDFsharp-MigraDoc.1.50.5147\lib\net20\MigraDoc.Rendering.dll</HintPath>
+    </Reference>
+    <Reference Include="PdfSharp">
+      <HintPath>..\packages\PDFsharp-MigraDoc.1.50.5147\lib\net20\PdfSharp.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -53,10 +62,19 @@
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormWorkWithComponents.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormWorkWithComponents.Designer.cs">
+      <DependentUpon>FormWorkWithComponents.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormWorkWithComponents.resx">
+      <DependentUpon>FormWorkWithComponents.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
@@ -81,6 +99,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\ClassLibraryComponentsFilippov\ClassLibraryComponentsFilippov.csproj">
+      <Project>{2EBB7D11-F4AA-45AB-AC40-292F34CC5513}</Project>
+      <Name>ClassLibraryComponentsFilippov</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ClassLibraryControlsFilippov\ClassLibraryControlsFilippov.csproj">
       <Project>{822E1AE8-95BC-4EF0-AB55-2B39C7B50B4D}</Project>
       <Name>ClassLibraryControlsFilippov</Name>
