@@ -20,6 +20,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>8</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <DebugType>pdbonly</DebugType>
@@ -28,6 +29,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>8</LangVersion>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="MigraDoc.DocumentObjectModel, Version=1.50.5147.0, Culture=neutral, PublicKeyToken=f94615aa0424f9eb, processorArchitecture=MSIL">
@@ -63,8 +65,18 @@
     <Compile Include="ComponentContextBigText.Designer.cs">
       <DependentUpon>ComponentContextBigText.cs</DependentUpon>
     </Compile>
+    <Compile Include="ComponentTablePdf.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ComponentTablePdf.Designer.cs">
+      <DependentUpon>ComponentTablePdf.cs</DependentUpon>
+    </Compile>
     <Compile Include="Enums\ErrorContentBigTextMessage.cs" />
+    <Compile Include="Enums\ErrorTablePdfMessage.cs" />
+    <Compile Include="HelperModels\CellPdfTable.cs" />
     <Compile Include="HelperModels\ContentParameters.cs" />
+    <Compile Include="HelperModels\RowTablePdf.cs" />
+    <Compile Include="HelperModels\TablePdfParameters.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />
   </ItemGroup>
