@@ -1,10 +1,8 @@
 ﻿using ClassLibraryComponentsFilippov.Enums;
 using ClassLibraryComponentsFilippov.HelperModels;
 using MigraDoc.DocumentObjectModel;
-using MigraDoc.DocumentObjectModel.Tables;
 using MigraDoc.Rendering;
 using System.ComponentModel;
-using System.Windows.Forms;
 
 namespace ClassLibraryComponentsFilippov
 {
@@ -80,68 +78,107 @@ namespace ClassLibraryComponentsFilippov
             paragraph.Style = "NormalTitle";
 
             var table = document.LastSection.AddTable();
+
             var rows = tablePdfParameters.RowInfosList;
 
-            var row = rows[0];
-
-            for (int i = 0; i < row.Cells.Count; i++)
+            foreach (var cell in rows[0].Cells)
             {
-                table.AddColumn(row.Cells[i].ColumnWidth);
-            }
-
-            int columnIndex = 0;
-            int lastMergedColumnIndex = -1;
-
-            table.AddRow();
-            foreach (var cell in row.Cells)
-            {
-
-                var currentColumn = table.Rows[0].Cells[columnIndex];
-                currentColumn.AddParagraph(cell.Name ?? "" );
-                if (cell.CountCells == 1)
+                for (int i = 0; i < cell.CountCells; i++)
                 {
-                    currentColumn.Comment = cell.PropertyName;
-                    currentColumn.MergeDown = 1;
+                    table.AddColumn(cell.ColumnWidth);
                 }
-
-                else
-                {
-                    if (cell.CountCells > 1 && columnIndex > lastMergedColumnIndex)
-                    {
-                        currentColumn.MergeRight = cell.CountCells - 1;
-                        lastMergedColumnIndex = columnIndex + cell.CountCells - 1;
-                    }
-                    else
-                    {
-                        errorMessage = ErrorTablePdfMessage.Неправильное_объединение_ячеек;
-                        return false;
-                    }
-                }
-
-                columnIndex++;
             }
 
             table.AddRow();
 
-            row = rows[1];
-            int lengthBeforeIndex = 0;
-            for (int i = 0; i < row.Cells.Count;i++)
+            int currentIndex = 0;
+            foreach (var cell in rows[0].Cells)
             {
-                var upColumn = table.Rows[0].Cells[i];
-                if (upColumn.MergeRight > 1)
+                var currentCell = table.Rows[0].Cells[currentIndex];
+                if (cell.CountCells > 1)
                 {
-                    lengthBeforeIndex = upColumn.MergeRight+1;
+                    currentCell.MergeRight = cell.CountCells - 1;
+                    currentCell.AddParagraph(cell.Name);
+                    currentIndex += cell.CountCells;
                 }
                 else
                 {
-                    if (lengthBeforeIndex != 0)
-                    {
-                        table.Rows[0].Cells[i].AddParagraph(row.Cells[i].Name);
-                        table.Rows[0].Cells[i].Comment = row.Cells[i].PropertyName;
-                        lengthBeforeIndex--;
-                    }
+                    currentCell.AddParagraph(cell.Name);
+                    currentCell.Comment = cell.PropertyName;
+                    currentIndex++;
                 }
             }
+
+            table.AddRow();
+
+            int countMerged = 0;
+            foreach (var cell in rows[1].Cells)
+            {
+                //Реализовать
+            }
+
+            //var rows = tablePdfParameters.RowInfosList;
+
+            //var row = rows[0];
+
+            //for (int i = 0; i < row.Cells.Count; i++)
+            //{
+            //    table.AddColumn(row.Cells[i].ColumnWidth);
+            //}
+
+            //int columnIndex = 0;
+            //int lastMergedColumnIndex = -1;
+
+            //table.AddRow();
+            //foreach (var cell in row.Cells)
+            //{
+
+            //    var currentColumn = table.Rows[0].Cells[columnIndex];
+            //    currentColumn.AddParagraph(cell.Name ?? "" );
+            //    if (cell.CountCells == 1)
+            //    {
+            //        currentColumn.Comment = cell.PropertyName;
+            //        currentColumn.MergeDown = 1;
+            //    }
+
+            //    else
+            //    {
+            //        if (cell.CountCells > 1 && columnIndex > lastMergedColumnIndex)
+            //        {
+            //            currentColumn.MergeRight = cell.CountCells - 1;
+            //            lastMergedColumnIndex = columnIndex + cell.CountCells - 1;
+            //        }
+            //        else
+            //        {
+            //            errorMessage = ErrorTablePdfMessage.Неправильное_объединение_ячеек;
+            //            return false;
+            //        }
+            //    }
+
+            //    columnIndex++;
+            //}
+
+            //table.AddRow();
+
+            //row = rows[1];
+            //int lengthBeforeIndex = 0;
+            //for (int i = 0; i < row.Cells.Count;i++)
+            //{
+            //    var upColumn = table.Rows[0].Cells[i];
+            //    if (upColumn.MergeRight > 1)
+            //    {
+            //        lengthBeforeIndex = upColumn.MergeRight+1;
+            //    }
+            //    else
+            //    {
+            //        if (lengthBeforeIndex != 0)
+            //        {
+            //            table.Rows[0].Cells[i].AddParagraph(row.Cells[i].Name);
+            //            table.Rows[0].Cells[i].Comment = row.Cells[i].PropertyName;
+            //            lengthBeforeIndex--;
+            //        }
+            //    }
+            //}
 
 
             PdfDocumentRenderer renderer = new PdfDocumentRenderer(true, PdfSharp.Pdf.PdfFontEmbedding.Always) { Document = document };

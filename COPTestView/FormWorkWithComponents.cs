@@ -77,16 +77,6 @@ namespace COPTestView
                 },
                 new CellPdfTable()
                 {
-                    ColumnWidth = "2cm",
-                    CountCells = 1,
-                },
-                new CellPdfTable()
-                {
-                    ColumnWidth = "2cm",
-                    CountCells = 1,
-                },
-                new CellPdfTable()
-                {
                     Name = "Child",
                     ColumnWidth = "2cm",
                     CountCells = 1,
@@ -108,11 +98,6 @@ namespace COPTestView
                 },
                 new CellPdfTable()
                 {
-                    ColumnWidth = "2cm",
-                    CountCells = 1,
-                },
-                new CellPdfTable()
-                {
                     Name = "Prem",
                     ColumnWidth = "2cm",
                     CountCells = 1,
@@ -122,16 +107,6 @@ namespace COPTestView
 
             rowTablePdfTwo.Cells = new List<CellPdfTable>()
             {
-                new CellPdfTable()
-                {
-                    ColumnWidth = "2cm",
-                    CountCells = 1,
-                },
-                new CellPdfTable()
-                {
-                    ColumnWidth = "2cm",
-                    CountCells = 1,
-                },
                 new CellPdfTable()
                 {
                     Name = "Name",
@@ -149,16 +124,6 @@ namespace COPTestView
                 },
                 new CellPdfTable()
                 {
-                    ColumnWidth = "2cm",
-                    CountCells = 1,
-                },
-                new CellPdfTable()
-                {
-                    ColumnWidth = "2cm",
-                    CountCells = 1,
-                },
-                new CellPdfTable()
-                {
                     Name = "Podrazd",
                     PropertyName = "PropPodrazd"
                 },
@@ -166,11 +131,6 @@ namespace COPTestView
                 {
                     Name = "Dolz",
                     PropertyName = "PropDolz"
-                },
-                new CellPdfTable()
-                {
-                    ColumnWidth = "2cm",
-                    CountCells = 1,
                 }
             };
 
