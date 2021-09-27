@@ -110,11 +110,28 @@ namespace ClassLibraryComponentsFilippov
             }
 
             table.AddRow();
+            table.Rows[0].Borders.Width = 1;
+            table.Rows[1].Borders.Width = 1;
 
             int countMerged = 0;
-            foreach (var cell in rows[1].Cells)
+            currentIndex = 0;
+            for (int i = 0;i<table.Rows[0].Cells.Count;i++)
             {
-                //Реализовать
+                var highCurrentCell = table.Rows[0].Cells[i];
+                var currentCell = table.Rows[1].Cells[i];
+
+                    countMerged = highCurrentCell.MergeRight > 0 ? highCurrentCell.MergeRight + 1 : countMerged;
+                if (countMerged!=0)
+                {
+                    currentCell.AddParagraph(rows[1].Cells[currentIndex].Name);
+                    currentCell.Comment = rows[1].Cells[currentIndex].PropertyName;
+                    currentIndex++;
+                    countMerged--;
+                }
+                else
+                {
+                    highCurrentCell.MergeDown = 1;
+                }
             }
 
             //var rows = tablePdfParameters.RowInfosList;

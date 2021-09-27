@@ -57,49 +57,49 @@ namespace COPTestView
                 new CellPdfTable()
                 {
                     Name = "Id",
-                    ColumnWidth = "2cm",
+                    ColumnWidth = "1cm",
                     CountCells = 1,
                     PropertyName = "PropId"
                 },
                 new CellPdfTable()
                 {
                     Name = "Status",
-                    ColumnWidth = "2cm",
+                    ColumnWidth = "1cm",
                     CountCells = 1,
                     PropertyName = "PropStatus"
                 },
                 new CellPdfTable()
                 {
                     Name = "PrivateData",
-                    ColumnWidth = "2cm",
+                    ColumnWidth = "1cm",
                     CountCells = 3,
                     PropertyName = "PropPD"
                 },
                 new CellPdfTable()
                 {
                     Name = "Child",
-                    ColumnWidth = "2cm",
+                    ColumnWidth = "1cm",
                     CountCells = 1,
                     PropertyName = "PropChild"
                 },
                 new CellPdfTable()
                 {
                     Name = "Car",
-                    ColumnWidth = "2cm",
+                    ColumnWidth = "1cm",
                     CountCells = 1,
                     PropertyName = "PropCar"
                 },
                 new CellPdfTable()
                 {
                     Name = "Work",
-                    ColumnWidth = "2cm",
+                    ColumnWidth = "1cm",
                     CountCells = 2,
                     PropertyName = "PropWork"
                 },
                 new CellPdfTable()
                 {
                     Name = "Prem",
-                    ColumnWidth = "2cm",
+                    ColumnWidth = "1cm",
                     CountCells = 1,
                     PropertyName = "PropPrem"
                 }
