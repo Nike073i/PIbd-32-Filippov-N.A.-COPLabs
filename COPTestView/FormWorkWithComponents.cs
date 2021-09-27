@@ -164,6 +164,9 @@ namespace COPTestView
                     Title = "Прорубь",
                     RowInfosList = rowsList,
                     DataList = new List<Employee>()
+                    {
+                        mainEmployee
+                    }
                 }))
                 {
                     MessageBox.Show("Файл был создан успешно", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);

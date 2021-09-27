@@ -1,15 +1,18 @@
 ﻿using ClassLibraryComponentsFilippov.Enums;
 using ClassLibraryComponentsFilippov.HelperModels;
 using MigraDoc.DocumentObjectModel;
-using MigraDoc.Rendering;
-using System.ComponentModel;
-using MigraDoc.DocumentObjectModel.Shapes;
 using MigraDoc.DocumentObjectModel.Tables;
+using MigraDoc.Rendering;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Reflection;
 
 namespace ClassLibraryComponentsFilippov
 {
     public partial class ComponentTablePdf : Component
     {
+
+        private Dictionary<string, int> propertyInfos;
         public string ErrorMessageString => errorMessage.ToString();
 
         private ErrorTablePdfMessage errorMessage = ErrorTablePdfMessage.Ошибок_нет;
@@ -25,7 +28,7 @@ namespace ClassLibraryComponentsFilippov
             InitializeComponent();
         }
 
-        public bool CreateDocument<T>(TablePdfParameters<T> tablePdfParameters)
+        public bool CreateDocument<T>(TablePdfParameters<T> tablePdfParameters) where T : class, new()
         {
             if (tablePdfParameters == null)
             {
@@ -79,7 +82,10 @@ namespace ClassLibraryComponentsFilippov
             paragraph.Format.Alignment = ParagraphAlignment.Center;
             paragraph.Style = "NormalTitle";
 
+            var borders = new Borders { Width = 1 };
+
             var table = document.LastSection.AddTable();
+            table.Borders = borders;
 
             var rows = tablePdfParameters.RowInfosList;
 
@@ -105,6 +111,7 @@ namespace ClassLibraryComponentsFilippov
                 }
             }
 
+            propertyInfos = new Dictionary<string, int>();
             table.AddRow();
 
             int currentIndex = 0;
@@ -121,6 +128,7 @@ namespace ClassLibraryComponentsFilippov
                 }
                 else
                 {
+                    propertyInfos.Add(cell.PropertyName, currentIndex);
                     currentCell.Comment = cell.PropertyName;
                     currentIndex++;
                 }
@@ -128,20 +136,19 @@ namespace ClassLibraryComponentsFilippov
 
 
             table.AddRow();
-            table.Rows[0].Borders.Width = 1;
-            table.Rows[1].Borders.Width = 1;
 
             int countMerged = 0;
             currentIndex = 0;
-            for (int i = 0;i<countColumnsTop;i++)
+            for (int i = 0; i < countColumnsTop; i++)
             {
                 var highCurrentCell = table.Rows[0].Cells[i];
                 var currentCell = table.Rows[1].Cells[i];
 
-                    countMerged = highCurrentCell.MergeRight > 0 ? highCurrentCell.MergeRight + 1 : countMerged;
-                if (countMerged!=0)
+                countMerged = highCurrentCell.MergeRight > 0 ? highCurrentCell.MergeRight + 1 : countMerged;
+                if (countMerged != 0)
                 {
                     currentCell.AddParagraph(rows[1].Cells[currentIndex].Name);
+                    propertyInfos.Add(rows[1].Cells[currentIndex].PropertyName, i);
                     currentCell.Comment = rows[1].Cells[currentIndex].PropertyName;
                     currentCell.Format.Alignment = ParagraphAlignment.Center;
                     currentCell.VerticalAlignment = VerticalAlignment.Center;
@@ -151,6 +158,18 @@ namespace ClassLibraryComponentsFilippov
                 else
                 {
                     highCurrentCell.MergeDown = 1;
+                }
+            }
+
+            var Props = typeof(T).GetProperties(BindingFlags.Public | BindingFlags.Instance);
+            foreach (var data in tablePdfParameters.DataList)
+            {
+                Row newRow = table.AddRow();
+                foreach (var property in Props)
+                {
+                    var prop = data.GetType().GetProperty(property.Name);
+                    int columnIndex = propertyInfos[prop.Name];
+                    newRow.Cells[columnIndex].AddParagraph(prop.GetValue(data, null)?.ToString());
                 }
             }
 
