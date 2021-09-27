@@ -50,6 +50,20 @@ namespace COPTestView
         private RowTablePdf rowTablePdfOne = new RowTablePdf();
         private RowTablePdf rowTablePdfTwo = new RowTablePdf();
 
+        private Employee mainEmployee = new Employee()
+        {
+            Id = 1,
+            Status = true,
+            FirstName = "Иван",
+            SecondName = "Иванов",
+            Age = 34,
+            Children = false,
+            Car = true,
+            Subdivision = "Департамент",
+            Position = "Инженер",
+            Prize = 2000.1
+        };
+
         private void methodRone()
         {
             rowTablePdfOne.Cells = new List<CellPdfTable>()
@@ -59,49 +73,47 @@ namespace COPTestView
                     Name = "Id",
                     ColumnWidth = "1cm",
                     CountCells = 1,
-                    PropertyName = "PropId"
+                    PropertyName = "Id"
                 },
                 new CellPdfTable()
                 {
-                    Name = "Status",
-                    ColumnWidth = "1cm",
+                    Name = "Статус",
+                    ColumnWidth = "1,5cm",
                     CountCells = 1,
-                    PropertyName = "PropStatus"
+                    PropertyName = "Status"
                 },
                 new CellPdfTable()
                 {
-                    Name = "PrivateData",
-                    ColumnWidth = "1cm",
+                    Name = "Личные данные",
+                    ColumnWidth = "2cm",
                     CountCells = 3,
-                    PropertyName = "PropPD"
                 },
                 new CellPdfTable()
                 {
-                    Name = "Child",
+                    Name = "Дети",
+                    ColumnWidth = "1,5cm",
+                    CountCells = 1,
+                    PropertyName = "Children"
+                },
+                new CellPdfTable()
+                {
+                    Name = "Машина",
                     ColumnWidth = "1cm",
                     CountCells = 1,
-                    PropertyName = "PropChild"
+                    PropertyName = "Car"
                 },
                 new CellPdfTable()
                 {
-                    Name = "Car",
-                    ColumnWidth = "1cm",
+                    Name = "Работа",
+                    ColumnWidth = "2cm",
+                    CountCells = 2
+                },
+                new CellPdfTable()
+                {
+                    Name = "Премия",
+                    ColumnWidth = "1,5cm",
                     CountCells = 1,
-                    PropertyName = "PropCar"
-                },
-                new CellPdfTable()
-                {
-                    Name = "Work",
-                    ColumnWidth = "1cm",
-                    CountCells = 2,
-                    PropertyName = "PropWork"
-                },
-                new CellPdfTable()
-                {
-                    Name = "Prem",
-                    ColumnWidth = "1cm",
-                    CountCells = 1,
-                    PropertyName = "PropPrem"
+                    PropertyName = "Prize"
                 }
             };
 
@@ -109,28 +121,28 @@ namespace COPTestView
             {
                 new CellPdfTable()
                 {
-                    Name = "Name",
-                    PropertyName = "PropName"
+                    Name = "Имя",
+                    PropertyName = "FirstName"
                 },
                 new CellPdfTable()
                 {
-                    Name = "Familiya",
-                    PropertyName = "PropFamiliya"
+                    Name = "Фамилия",
+                    PropertyName = "SecondName"
                 },
                 new CellPdfTable()
                 {
-                    Name = "Age",
-                    PropertyName = "PropAge"
+                    Name = "Возраст",
+                    PropertyName = "Age"
                 },
                 new CellPdfTable()
                 {
-                    Name = "Podrazd",
-                    PropertyName = "PropPodrazd"
+                    Name = "Подразделение",
+                    PropertyName = "Subdivision"
                 },
                 new CellPdfTable()
                 {
-                    Name = "Dolz",
-                    PropertyName = "PropDolz"
+                    Name = "Должность",
+                    PropertyName = "Position"
                 }
             };
 
@@ -146,11 +158,12 @@ namespace COPTestView
             fbd.Filter = "pdf file | *.pdf";
             if (fbd.ShowDialog() == DialogResult.OK)
             {
-                if (componentTablePdf1.CreateDocument(new TablePdfParameters()
+                if (componentTablePdf1.CreateDocument(new TablePdfParameters<Employee>()
                 {
                     Path = fbd.FileName,
                     Title = "Прорубь",
-                    RowInfosList = rowsList
+                    RowInfosList = rowsList,
+                    DataList = new List<Employee>()
                 }))
                 {
                     MessageBox.Show("Файл был создан успешно", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
