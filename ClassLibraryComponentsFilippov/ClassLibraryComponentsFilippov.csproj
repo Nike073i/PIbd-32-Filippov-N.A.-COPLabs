@@ -77,13 +77,13 @@
     <Compile Include="ComponentTablePdf.Designer.cs">
       <DependentUpon>ComponentTablePdf.cs</DependentUpon>
     </Compile>
+    <Compile Include="Enums\ChartAreaLegend.cs" />
     <Compile Include="Enums\ErrorContentBigTextMessage.cs" />
     <Compile Include="Enums\ErrorDiagramPdfMessage.cs" />
     <Compile Include="Enums\ErrorTablePdfMessage.cs" />
     <Compile Include="HelperModels\CellPdfTable.cs" />
     <Compile Include="HelperModels\ContentParameters.cs" />
     <Compile Include="HelperModels\DiagramPdfParameters.cs" />
-    <Compile Include="HelperModels\RowTablePdf.cs" />
     <Compile Include="HelperModels\TablePdfParameters.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Service Include="{94E38DFF-614B-4cbd-B67C-F211BB35CE8B}" />

@@ -1,14 +1,10 @@
-﻿using System.ComponentModel;
-using ClassLibraryComponentsFilippov.Enums;
+﻿using ClassLibraryComponentsFilippov.Enums;
 using ClassLibraryComponentsFilippov.HelperModels;
 using MigraDoc.DocumentObjectModel;
+using MigraDoc.DocumentObjectModel.Shapes.Charts;
 using MigraDoc.Rendering;
-using PdfSharp.Charting;
-using PdfSharp.Drawing;
-using ChartType = MigraDoc.DocumentObjectModel.Shapes.Charts.ChartType;
-using Series = MigraDoc.DocumentObjectModel.Shapes.Charts.Series;
-using TickMarkType = MigraDoc.DocumentObjectModel.Shapes.Charts.TickMarkType;
-using XSeries = MigraDoc.DocumentObjectModel.Shapes.Charts.XSeries;
+using System;
+using System.ComponentModel;
 
 namespace ClassLibraryComponentsFilippov
 {
@@ -28,8 +24,59 @@ namespace ClassLibraryComponentsFilippov
             InitializeComponent();
         }
 
+        private bool InputValidation(DiagramPdfParameters parameters)
+        {
+            if (parameters == null)
+            {
+                _errorMessage = ErrorDiagramPdfMessage.Не_указаны_параметры_диаграммы;
+                return false;
+            }
+
+            if (string.IsNullOrEmpty(parameters.Path))
+            {
+                _errorMessage = ErrorDiagramPdfMessage.Не_указан_путь;
+                return false;
+            }
+
+            if (string.IsNullOrEmpty(parameters.Title))
+            {
+                _errorMessage = ErrorDiagramPdfMessage.Не_указан_заголовок;
+                return false;
+            }
+
+            if (string.IsNullOrEmpty(parameters.DiagramName))
+            {
+                _errorMessage = ErrorDiagramPdfMessage.Не_указано_название_диаграммы;
+                return false;
+            }
+
+            if (!Enum.IsDefined(typeof(ChartAreaLegend), parameters.ChartAreaLegend))
+            {
+                _errorMessage = ErrorDiagramPdfMessage.Не_указано_местоположение_легенды;
+                return false;
+            }
+
+            if (parameters.Series == null)
+            {
+                _errorMessage = ErrorDiagramPdfMessage.Не_указаны_данные;
+                return false;
+            }
+
+            if (parameters.XAxisValues == null)
+            {
+                _errorMessage = ErrorDiagramPdfMessage.Не_указаны_подписи_оси_абсцисс;
+                return false;
+            }
+            return true;
+        }
+
         public bool CreateDocument(DiagramPdfParameters parameters)
         {
+            if (!InputValidation(parameters))
+            {
+                return false;
+            }
+
             var document = new Document();
 
             var styleTitle = document.Styles["Normal"];
@@ -41,39 +88,66 @@ namespace ClassLibraryComponentsFilippov
 
             var section = document.AddSection();
             var paragraph = section.AddParagraph(parameters.Title);
-            paragraph.Format.SpaceAfter = "1cm";
-            paragraph.Format.Alignment = ParagraphAlignment.Center;
+            paragraph.Format.Alignment = ParagraphAlignment.Left;
             paragraph.Style = "NormalTitle";
 
             var chart = section.AddChart(ChartType.Line);
-            Series series = chart.SeriesCollection.AddSeries();
-            series.Name = "Series 1";
-            series.Add(new double[] { 1, 5, -3, 20, 11 });
+            chart.Left = 0;
+            chart.Width = Unit.FromCentimeter(16);
+            chart.Height = Unit.FromCentimeter(10);
+            chart.HeaderArea.AddParagraph(parameters.DiagramName);
+            chart.HeaderArea.Format.Font.Bold = false;
 
-            series = chart.SeriesCollection.AddSeries();
-            series.Name = "Series 2";
-            series.Add(new double[] { 22, 4, 12, 8, 12 });
+            switch (parameters.ChartAreaLegend)
+            {
+                case ChartAreaLegend.Top:
+                    {
+                        chart.TopArea.AddLegend();
+                        break;
+                    }
+                case ChartAreaLegend.Right:
+                    {
+                        chart.RightArea.AddLegend();
+                        break;
+                    }
+                case ChartAreaLegend.Bottom:
+                    {
+                        chart.BottomArea.AddLegend();
+                        break;
+                    }
+                case ChartAreaLegend.Left:
+                    {
+                        chart.LeftArea.AddLegend();
+                        break;
+                    }
+                default:
+                    {
+                        chart.BottomArea.AddLegend();
+                        break;
+                    }
+            }
 
-            series = chart.SeriesCollection.AddSeries();
-            series.Name = "Series 3";
-            series.Add(new double[] { 12, 14, -3, 18, 1 });
+            foreach (var data in parameters.Series)
+            {
+                if (string.IsNullOrEmpty(data.Name) || data.YAxisValues.Length < 2)
+                {
+                    _errorMessage = ErrorDiagramPdfMessage.Неверно_указаны_данные_серии;
+                    return false;
+                }
+                var series = chart.SeriesCollection.AddSeries();
+                series.Name = data.Name;
+                series.Add(data.YAxisValues);
+            }
 
             chart.XAxis.MajorTickMark = TickMarkType.Outside;
-            chart.XAxis.Title.Caption = "X-Axis";
-
             chart.YAxis.MajorTickMark = TickMarkType.Outside;
-            chart.YAxis.Title.Caption = "Y-Axis";
             chart.YAxis.HasMajorGridlines = true;
 
-            //chart.PlotArea.LineFormat.Color = XColors.DarkGray;
-            //chart.PlotArea.LineFormat.Width = 1;
-            //chart.PlotArea.LineFormat.Visible = true;
+            chart.PlotArea.LineFormat.Width = 1;
+            chart.PlotArea.LineFormat.Visible = true;
 
-            //chart.Legend.Docking = DockingType.Bottom;
-            //chart.Legend.LineFormat.Visible = true;
-
-            XSeries xseries = chart.XValues.AddXSeries();
-            xseries.Add("A", "B", "C", "D", "E", "F");
+            var xseries = chart.XValues.AddXSeries();
+            xseries.Add(parameters.XAxisValues);
 
             var renderer = new PdfDocumentRenderer(true, PdfSharp.Pdf.PdfFontEmbedding.Always) { Document = document };
             renderer.RenderDocument();

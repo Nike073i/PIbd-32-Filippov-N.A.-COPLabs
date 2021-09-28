@@ -1,4 +1,5 @@
-﻿using ClassLibraryComponentsFilippov.HelperModels;
+﻿using ClassLibraryComponentsFilippov.Enums;
+using ClassLibraryComponentsFilippov.HelperModels;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
@@ -238,8 +239,28 @@ namespace COPTestView
                 if (componentDiagramPdf.CreateDocument(new DiagramPdfParameters
                 {
                     Path = fbd.FileName,
-                    Title = textBoxTableTitle.Text,
-                    DiagramName = textBoxDiagramPdfDiagramName.Text
+                    Title = textBoxDiagramPdfDocTitle.Text,
+                    DiagramName = textBoxDiagramPdfDiagramName.Text,
+                    ChartAreaLegend = ChartAreaLegend.Bottom,
+                    XAxisValues = new[] { "1", "2", "3", "4", "5" },
+                    Series = new List<Series>
+                    {
+                        new Series()
+                        {
+                            Name = "Серия 1",
+                            YAxisValues = new double []{45,34,19,21,10}
+                        },
+                        new Series()
+                        {
+                            Name = "Серия 2",
+                            YAxisValues = new double[] { 10, 15, 17, 25, 30 }
+                        },
+                        new Series()
+                        {
+                            Name = "Серия 3",
+                            YAxisValues = new double[] { 25, 2, 7, 15, 23 }
+                        }
+                    }
                 }))
                 {
                     MessageBox.Show("Файл был создан успешно", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
