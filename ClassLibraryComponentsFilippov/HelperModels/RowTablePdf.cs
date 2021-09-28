@@ -8,6 +8,6 @@ namespace ClassLibraryComponentsFilippov.HelperModels
 {
     public class RowTablePdf
     {
-        public List<CellPdfTable> Cells { get; set; }
+       
     }
 }

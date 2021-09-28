@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Collections.Generic;
 
 namespace ClassLibraryComponentsFilippov.HelperModels
 {
@@ -11,6 +7,7 @@ namespace ClassLibraryComponentsFilippov.HelperModels
         public string Path { get; set; }
         public string Title { get; set; }
         public List<T> DataList { get; set; }
-        public List<RowTablePdf> RowInfosList { get; set; }
+        public List<CellPdfTable> CellsFirstRow { get; set; }
+        public List<CellPdfTable> CellsSecondRow { get; set; }
     }
 }
