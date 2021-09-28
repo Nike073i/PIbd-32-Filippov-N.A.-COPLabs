@@ -1,5 +1,8 @@
 ﻿namespace ClassLibraryComponentsFilippov.Enums
 {
+    /// <summary>
+    /// Перечисление ошибок компонента с диаграммой
+    /// </summary>
     public enum ErrorDiagramPdfMessage
     {
         Ошибок_нет = 1,

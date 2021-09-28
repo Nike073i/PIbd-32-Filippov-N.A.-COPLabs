@@ -11,11 +11,12 @@ namespace ClassLibraryComponentsFilippov
 {
     public partial class ComponentTablePdf : Component
     {
-
+        private ErrorTablePdfMessage _errorMessage = ErrorTablePdfMessage.Ошибок_нет;
         private Dictionary<string, int> _propertyInfos;
+
+        [Category("ComponentPdfDiagram"), Description("Содержание ошибки")]
         public string ErrorMessageString => _errorMessage.ToString();
 
-        private ErrorTablePdfMessage _errorMessage = ErrorTablePdfMessage.Ошибок_нет;
         public ComponentTablePdf()
         {
             InitializeComponent();
@@ -168,6 +169,12 @@ namespace ClassLibraryComponentsFilippov
             return true;
         }
 
+        /// <summary>
+        /// Метод создания pdf документа стаблицей
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="tablePdfParameters">Параметры таблицы</param>
+        /// <returns>Результат создания документа</returns>
         public bool CreateDocument<T>(TablePdfParameters<T> tablePdfParameters) where T : class
         {
 

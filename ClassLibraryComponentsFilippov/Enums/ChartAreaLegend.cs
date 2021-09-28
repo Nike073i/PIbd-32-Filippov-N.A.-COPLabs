@@ -1,5 +1,8 @@
 ﻿namespace ClassLibraryComponentsFilippov.Enums
 {
+    /// <summary>
+    /// Перечисление расположений легенды диаграммы
+    /// </summary>
     public enum ChartAreaLegend
     {
         Top = 1,

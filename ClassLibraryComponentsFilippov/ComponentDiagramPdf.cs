@@ -10,9 +10,11 @@ namespace ClassLibraryComponentsFilippov
 {
     public partial class ComponentDiagramPdf : Component
     {
+        private ErrorDiagramPdfMessage _errorMessage = ErrorDiagramPdfMessage.Ошибок_нет;
+
+        [Category("ComponentPdfDiagram"), Description("Содержание ошибки")]
         public string ErrorMessageString => _errorMessage.ToString();
 
-        private ErrorDiagramPdfMessage _errorMessage = ErrorDiagramPdfMessage.Ошибок_нет;
         public ComponentDiagramPdf()
         {
             InitializeComponent();
@@ -70,6 +72,11 @@ namespace ClassLibraryComponentsFilippov
             return true;
         }
 
+        /// <summary>
+        /// Метод создания pdf документа с диаграммой
+        /// </summary>
+        /// <param name="parameters">Параметры диаграммы</param>
+        /// <returns>Результат создания документа</returns>
         public bool CreateDocument(DiagramPdfParameters parameters)
         {
             if (!InputValidation(parameters))
@@ -78,7 +85,6 @@ namespace ClassLibraryComponentsFilippov
             }
 
             var document = new Document();
-
             var styleTitle = document.Styles["Normal"];
             styleTitle.Font.Name = "Times New Roman";
             styleTitle.Font.Size = 14;

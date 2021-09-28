@@ -9,11 +9,11 @@ namespace ClassLibraryComponentsFilippov
 {
     public partial class ComponentContextBigText : Component
     {
-        [Category("ComponentPdfDiagram"), Description("Содержание ошибки")]
-        public string ErrorMessageString { get => errorMessage.ToString(); }
-
         private const int WidthTextLimit = 50;
-        private ErrorContentBigTextMessage errorMessage = ErrorContentBigTextMessage.Ошибок_нет;
+        private ErrorContentBigTextMessage _errorMessage = ErrorContentBigTextMessage.Ошибок_нет;
+
+        [Category("ComponentPdfDiagram"), Description("Содержание ошибки")]
+        public string ErrorMessageString { get => _errorMessage.ToString(); }
 
         public ComponentContextBigText()
         {
@@ -23,33 +23,46 @@ namespace ClassLibraryComponentsFilippov
         public ComponentContextBigText(IContainer container)
         {
             container.Add(this);
-
             InitializeComponent();
         }
 
-        public bool CreateDocument(ContentParameters content)
+        private bool InputValidation(ContentParameters parameters)
         {
-            if (content == null)
+            if (parameters == null)
             {
-                errorMessage = ErrorContentBigTextMessage.Не_указаны_параметры_контента;
+                _errorMessage = ErrorContentBigTextMessage.Не_указаны_параметры_контента;
                 return false;
             }
 
-            if (string.IsNullOrEmpty(content.Path))
+            if (string.IsNullOrEmpty(parameters.Path))
             {
-                errorMessage = ErrorContentBigTextMessage.Не_указан_путь;
+                _errorMessage = ErrorContentBigTextMessage.Не_указан_путь;
                 return false;
             }
 
-            if (string.IsNullOrEmpty(content.Title))
+            if (string.IsNullOrEmpty(parameters.Title))
             {
-                errorMessage = ErrorContentBigTextMessage.Не_указан_заголовок;
+                _errorMessage = ErrorContentBigTextMessage.Не_указан_заголовок;
                 return false;
             }
 
-            if (content.ArrayText == null)
+            if (parameters.ArrayText == null)
             {
-                errorMessage = ErrorContentBigTextMessage.Не_указан_массив_строк;
+                _errorMessage = ErrorContentBigTextMessage.Не_указан_массив_строк;
+                return false;
+            }
+            return true;
+        }
+
+        /// <summary>
+        /// Метод создания pdf документа с контентом
+        /// </summary>
+        /// <param name="parameters">Параметры контента</param>
+        /// <returns>Результат создания документа</returns>
+        public bool CreateDocument(ContentParameters parameters)
+        {
+            if (!InputValidation(parameters))
+            {
                 return false;
             }
 
@@ -70,12 +83,12 @@ namespace ClassLibraryComponentsFilippov
 
             var section = document.AddSection();
 
-            var paragraphTitle = section.AddParagraph(content.Title);
+            var paragraphTitle = section.AddParagraph(parameters.Title);
             paragraphTitle.Format.SpaceAfter = "1cm";
             paragraphTitle.Format.Alignment = ParagraphAlignment.Left;
             paragraphTitle.Style = "NormalTitle";
 
-            foreach (var text in content.ArrayText)
+            foreach (var text in parameters.ArrayText)
             {
                 var paragraphContent = section.AddParagraph();
                 if (text.Length > WidthTextLimit)
@@ -98,7 +111,7 @@ namespace ClassLibraryComponentsFilippov
 
             PdfDocumentRenderer renderer = new PdfDocumentRenderer(true, PdfSharp.Pdf.PdfFontEmbedding.Always) { Document = document };
             renderer.RenderDocument();
-            renderer.PdfDocument.Save(content.Path);
+            renderer.PdfDocument.Save(parameters.Path);
             return true;
         }
     }
