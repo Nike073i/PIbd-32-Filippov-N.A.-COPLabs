@@ -65,6 +65,12 @@
     <Compile Include="ComponentContextBigText.Designer.cs">
       <DependentUpon>ComponentContextBigText.cs</DependentUpon>
     </Compile>
+    <Compile Include="ComponentDiagramPdf.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="ComponentDiagramPdf.Designer.cs">
+      <DependentUpon>ComponentDiagramPdf.cs</DependentUpon>
+    </Compile>
     <Compile Include="ComponentTablePdf.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -72,9 +78,11 @@
       <DependentUpon>ComponentTablePdf.cs</DependentUpon>
     </Compile>
     <Compile Include="Enums\ErrorContentBigTextMessage.cs" />
+    <Compile Include="Enums\ErrorDiagramPdfMessage.cs" />
     <Compile Include="Enums\ErrorTablePdfMessage.cs" />
     <Compile Include="HelperModels\CellPdfTable.cs" />
     <Compile Include="HelperModels\ContentParameters.cs" />
+    <Compile Include="HelperModels\DiagramPdfParameters.cs" />
     <Compile Include="HelperModels\RowTablePdf.cs" />
     <Compile Include="HelperModels\TablePdfParameters.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

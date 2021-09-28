@@ -172,6 +172,7 @@ namespace COPTestView
             }
 
             var fbd = new SaveFileDialog();
+            fbd.FileName = "pdfContent.pdf";
             fbd.Filter = "pdf file | *.pdf";
             if (fbd.ShowDialog() == DialogResult.OK)
             {
@@ -192,17 +193,22 @@ namespace COPTestView
         }
 
 
-        private void button1_Click(object sender, EventArgs e)
+        private void buttonCreateTablePdf_Click(object sender, EventArgs e)
         {
+            if (string.IsNullOrEmpty(textBoxTableTitle.Text))
+            {
+                MessageBox.Show("Введите заголовок", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             var fbd = new SaveFileDialog();
             fbd.FileName = "pdfTable.pdf";
             fbd.Filter = "pdf file | *.pdf";
             if (fbd.ShowDialog() == DialogResult.OK)
             {
-                if (componentTablePdf1.CreateDocument(new TablePdfParameters<Employee>()
+                if (componentTablePdf.CreateDocument(new TablePdfParameters<Employee>()
                 {
                     Path = fbd.FileName,
-                    Title = "Сотрудники",
+                    Title = textBoxTableTitle.Text,
                     CellsFirstRow = rowTablePdfOne,
                     CellsSecondRow = rowTablePdfTwo,
                     DataList = employees
@@ -212,7 +218,35 @@ namespace COPTestView
                 }
                 else
                 {
-                    MessageBox.Show(componentTablePdf1.ErrorMessageString, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show(componentTablePdf.ErrorMessageString, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void buttonCreateDiagramPdf_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(textBoxDiagramPdfDocTitle.Text) || string.IsNullOrEmpty(textBoxDiagramPdfDiagramName.Text))
+            {
+                MessageBox.Show("Введите заголовоки документа и диаграммы", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            var fbd = new SaveFileDialog();
+            fbd.FileName = "pdfDiagram.pdf";
+            fbd.Filter = "pdf file | *.pdf";
+            if (fbd.ShowDialog() == DialogResult.OK)
+            {
+                if (componentDiagramPdf.CreateDocument(new DiagramPdfParameters
+                {
+                    Path = fbd.FileName,
+                    Title = textBoxTableTitle.Text,
+                    DiagramName = textBoxDiagramPdfDiagramName.Text
+                }))
+                {
+                    MessageBox.Show("Файл был создан успешно", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show(componentDiagramPdf.ErrorMessageString, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }
