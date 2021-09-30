@@ -90,26 +90,30 @@ namespace ClassLibraryComponentsFilippov
 
             foreach (var text in parameters.ArrayText)
             {
-                var paragraphContent = section.AddParagraph();
-                if (text.Length > WidthTextLimit)
+                if (!string.IsNullOrEmpty(text))
                 {
-                    var normalTexts = Regex.Matches(text, @".{1," + WidthTextLimit + "}");
-                    foreach (var normalText in normalTexts)
+                    var paragraphContent = section.AddParagraph();
+                    if (text.Length > WidthTextLimit)
                     {
-                        paragraphContent.AddText(normalText.ToString());
+                        var normalTexts = Regex.Matches(text, @".{1," + WidthTextLimit + "}");
+                        foreach (var normalText in normalTexts)
+                        {
+                            paragraphContent.AddText(normalText.ToString());
+                        }
+
+                        paragraphContent.AddText(".");
+                    }
+                    else
+                    {
+                        paragraphContent.AddText(text + '.');
                     }
 
-                    paragraphContent.AddText(".");
+                    paragraphContent.Format.Alignment = ParagraphAlignment.Left;
+                    paragraphContent.Style = "NormalContent";
                 }
-                else
-                {
-                    paragraphContent.AddText(text + '.');
-                }
-                paragraphContent.Format.Alignment = ParagraphAlignment.Left;
-                paragraphContent.Style = "NormalContent";
             }
 
-            PdfDocumentRenderer renderer = new PdfDocumentRenderer(true, PdfSharp.Pdf.PdfFontEmbedding.Always) { Document = document };
+            var renderer = new PdfDocumentRenderer(true, PdfSharp.Pdf.PdfFontEmbedding.Always) { Document = document };
             renderer.RenderDocument();
             renderer.PdfDocument.Save(parameters.Path);
             return true;
