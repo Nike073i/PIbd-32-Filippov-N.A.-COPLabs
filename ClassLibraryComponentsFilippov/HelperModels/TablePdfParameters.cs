@@ -27,5 +27,13 @@ namespace ClassLibraryComponentsFilippov.HelperModels
         /// Список ячеек второй строки шапки
         /// </summary>
         public List<CellPdfTable> CellsSecondRow { get; set; }
+        /// <summary>
+        /// Размер текста заголовка
+        /// </summary>
+        public int TitleTextSize { get; set; } = 14;
+        /// <summary>
+        /// Размер текста содержания
+        /// </summary>
+        public int ContentTextSize { get; set; } = 12;
     }
 }

@@ -212,7 +212,9 @@ namespace COPTestView
                     Title = textBoxTableTitle.Text,
                     CellsFirstRow = rowTablePdfOne,
                     CellsSecondRow = rowTablePdfTwo,
-                    DataList = employees
+                    DataList = employees,
+                    TitleTextSize = 10,
+                    ContentTextSize = 8
                 }))
                 {
                     MessageBox.Show("Файл был создан успешно", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);

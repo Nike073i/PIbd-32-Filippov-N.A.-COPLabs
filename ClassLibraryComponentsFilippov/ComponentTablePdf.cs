@@ -62,18 +62,18 @@ namespace ClassLibraryComponentsFilippov
             return true;
         }
 
-        private void CreateTextStyle(Document document)
+        private void CreateTextStyle(Document document, int titleTextSize, int contentTextSize)
         {
             var styleTitle = document.Styles["Normal"];
             styleTitle.Font.Name = "Times New Roman";
-            styleTitle.Font.Size = 14;
+            styleTitle.Font.Size = titleTextSize;
             styleTitle.Font.Color = Colors.Black;
             styleTitle.Font.Bold = true;
             document.Styles.AddStyle("NormalTitle", "Normal");
 
             var styleContent = document.Styles["Normal"];
             styleContent.Font.Name = "Times New Roman";
-            styleContent.Font.Size = 12;
+            styleContent.Font.Size = contentTextSize;
             styleContent.Font.Color = Colors.Black;
             document.Styles.AddStyle("NormalContent", "Normal");
         }
@@ -177,14 +177,13 @@ namespace ClassLibraryComponentsFilippov
         /// <returns>Результат создания документа</returns>
         public bool CreateDocument<T>(TablePdfParameters<T> tablePdfParameters) where T : class
         {
-
             if (!InputValidation(tablePdfParameters))
             {
                 return false;
             }
 
             var document = new Document();
-            CreateTextStyle(document);
+            CreateTextStyle(document, tablePdfParameters.TitleTextSize, tablePdfParameters.ContentTextSize);
             var section = document.AddSection();
 
             var paragraph = section.AddParagraph(tablePdfParameters.Title);
