@@ -97,7 +97,6 @@ namespace FurnitureFactoryView
 
         private void CreateDocumentChart(object sender, EventArgs e)
         {
-            ;
         }
     }
 }
