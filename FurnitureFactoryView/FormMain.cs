@@ -91,9 +91,14 @@ namespace FurnitureFactoryView
 
         private void AddSupplier(object sender, EventArgs e)
         {
+            var form = Container.Resolve<FormSupplier>();
+            form.ShowDialog();
         }
         private void UpdateSupplier(object sender, EventArgs e)
         {
+            var form = Container.Resolve<FormSupplier>();
+            form.Id = treeUserControl1.SelectedBranch;
+            form.ShowDialog();
         }
         private void DeleteSupplier(object sender, EventArgs e)
         {
