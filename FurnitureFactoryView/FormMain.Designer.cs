@@ -33,11 +33,13 @@
             this.addToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.updateToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.deleteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparatorSupplier = new System.Windows.Forms.ToolStripSeparator();
             this.createSimpleDocumentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.createDocumentTableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.createDocumentChartToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.treeUserControl1 = new WindowsFormsControlLibraryKalachikov.TreeUserControl();
+            this.toolStripSeparatorOrganizationTypes = new System.Windows.Forms.ToolStripSeparator();
+            this.callOgranizationTypesFormToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -48,12 +50,14 @@
             this.addToolStripMenuItem,
             this.updateToolStripMenuItem,
             this.deleteToolStripMenuItem,
-            this.toolStripSeparator,
+            this.toolStripSeparatorSupplier,
+            this.callOgranizationTypesFormToolStripMenuItem,
+            this.toolStripSeparatorOrganizationTypes,
             this.createSimpleDocumentToolStripMenuItem,
             this.createDocumentTableToolStripMenuItem,
             this.createDocumentChartToolStripMenuItem});
             this.contextMenuStrip.Name = "contextMenuStrip";
-            this.contextMenuStrip.Size = new System.Drawing.Size(254, 142);
+            this.contextMenuStrip.Size = new System.Drawing.Size(254, 170);
             // 
             // addToolStripMenuItem
             // 
@@ -76,10 +80,10 @@
             this.deleteToolStripMenuItem.Text = "Удалить";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.DeleteSupplier);
             // 
-            // toolStripSeparator
+            // toolStripSeparatorSupplier
             // 
-            this.toolStripSeparator.Name = "toolStripSeparator";
-            this.toolStripSeparator.Size = new System.Drawing.Size(250, 6);
+            this.toolStripSeparatorSupplier.Name = "toolStripSeparatorSupplier";
+            this.toolStripSeparatorSupplier.Size = new System.Drawing.Size(250, 6);
             // 
             // createSimpleDocumentToolStripMenuItem
             // 
@@ -111,6 +115,18 @@
             this.treeUserControl1.Size = new System.Drawing.Size(600, 293);
             this.treeUserControl1.TabIndex = 1;
             // 
+            // toolStripSeparatorOrganizationTypes
+            // 
+            this.toolStripSeparatorOrganizationTypes.Name = "toolStripSeparatorOrganizationTypes";
+            this.toolStripSeparatorOrganizationTypes.Size = new System.Drawing.Size(250, 6);
+            // 
+            // callOgranizationTypesFormToolStripMenuItem
+            // 
+            this.callOgranizationTypesFormToolStripMenuItem.Name = "callOgranizationTypesFormToolStripMenuItem";
+            this.callOgranizationTypesFormToolStripMenuItem.Size = new System.Drawing.Size(253, 22);
+            this.callOgranizationTypesFormToolStripMenuItem.Text = "Типы организаций";
+            this.callOgranizationTypesFormToolStripMenuItem.Click += new System.EventHandler(this.CallOrganizationTypesForm);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -122,6 +138,7 @@
             this.Name = "FormMain";
             this.Text = "Поставщики";
             this.Load += new System.EventHandler(this.FormMain_Load);
+            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.OnKeyDown);
             this.contextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
 
@@ -137,8 +154,10 @@
         private System.Windows.Forms.ToolStripMenuItem createDocumentTableToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem createDocumentChartToolStripMenuItem;
 
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparatorSupplier;
         private WindowsFormsControlLibraryKalachikov.TreeUserControl treeUserControl1;
+        private System.Windows.Forms.ToolStripMenuItem callOgranizationTypesFormToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparatorOrganizationTypes;
     }
 }
 

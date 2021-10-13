@@ -35,10 +35,13 @@ namespace FurnitureFactoryView
             this.textBoxManufacturedFurniture = new System.Windows.Forms.TextBox();
             this.controlSelectedComboBoxOrganizationType = new ClassLibraryControlsFilippov.ControlSelectedComboBox();
             this.labelOrganizationType = new System.Windows.Forms.Label();
+            this.userControlDateLastDelivery = new WindowsFormsControlLibrary.UserControlDate();
+            this.labelLastDelivery = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // textBoxName
             // 
+            this.textBoxName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxName.Location = new System.Drawing.Point(12, 29);
             this.textBoxName.Name = "textBoxName";
             this.textBoxName.Size = new System.Drawing.Size(193, 20);
@@ -46,6 +49,7 @@ namespace FurnitureFactoryView
             // 
             // labelName
             // 
+            this.labelName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.labelName.AutoSize = true;
             this.labelName.Location = new System.Drawing.Point(12, 9);
             this.labelName.Name = "labelName";
@@ -55,6 +59,7 @@ namespace FurnitureFactoryView
             // 
             // labelManufacturedFurniture
             // 
+            this.labelManufacturedFurniture.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.labelManufacturedFurniture.AutoSize = true;
             this.labelManufacturedFurniture.Location = new System.Drawing.Point(12, 52);
             this.labelManufacturedFurniture.Name = "labelManufacturedFurniture";
@@ -64,6 +69,7 @@ namespace FurnitureFactoryView
             // 
             // textBoxManufacturedFurniture
             // 
+            this.textBoxManufacturedFurniture.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.textBoxManufacturedFurniture.Location = new System.Drawing.Point(12, 68);
             this.textBoxManufacturedFurniture.Name = "textBoxManufacturedFurniture";
             this.textBoxManufacturedFurniture.Size = new System.Drawing.Size(193, 20);
@@ -71,15 +77,17 @@ namespace FurnitureFactoryView
             // 
             // controlSelectedComboBoxOrganizationType
             // 
+            this.controlSelectedComboBoxOrganizationType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.controlSelectedComboBoxOrganizationType.Location = new System.Drawing.Point(11, 111);
             this.controlSelectedComboBoxOrganizationType.Margin = new System.Windows.Forms.Padding(2);
             this.controlSelectedComboBoxOrganizationType.Name = "controlSelectedComboBoxOrganizationType";
             this.controlSelectedComboBoxOrganizationType.SelectedItem = "";
-            this.controlSelectedComboBoxOrganizationType.Size = new System.Drawing.Size(196, 24);
+            this.controlSelectedComboBoxOrganizationType.Size = new System.Drawing.Size(194, 24);
             this.controlSelectedComboBoxOrganizationType.TabIndex = 4;
             // 
             // labelOrganizationType
             // 
+            this.labelOrganizationType.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.labelOrganizationType.AutoSize = true;
             this.labelOrganizationType.Location = new System.Drawing.Point(12, 91);
             this.labelOrganizationType.Name = "labelOrganizationType";
@@ -87,11 +95,31 @@ namespace FurnitureFactoryView
             this.labelOrganizationType.TabIndex = 5;
             this.labelOrganizationType.Text = "Тип организации";
             // 
+            // userControlDateLastDelivery
+            // 
+            this.userControlDateLastDelivery.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.userControlDateLastDelivery.Location = new System.Drawing.Point(11, 153);
+            this.userControlDateLastDelivery.Name = "userControlDateLastDelivery";
+            this.userControlDateLastDelivery.Size = new System.Drawing.Size(194, 50);
+            this.userControlDateLastDelivery.TabIndex = 6;
+            // 
+            // labelLastDelivery
+            // 
+            this.labelLastDelivery.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.labelLastDelivery.AutoSize = true;
+            this.labelLastDelivery.Location = new System.Drawing.Point(12, 137);
+            this.labelLastDelivery.Name = "labelLastDelivery";
+            this.labelLastDelivery.Size = new System.Drawing.Size(140, 13);
+            this.labelLastDelivery.TabIndex = 7;
+            this.labelLastDelivery.Text = "Дата последней поставки";
+            // 
             // FormSupplier
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(219, 198);
+            this.ClientSize = new System.Drawing.Size(218, 216);
+            this.Controls.Add(this.labelLastDelivery);
+            this.Controls.Add(this.userControlDateLastDelivery);
             this.Controls.Add(this.labelOrganizationType);
             this.Controls.Add(this.controlSelectedComboBoxOrganizationType);
             this.Controls.Add(this.textBoxManufacturedFurniture);
@@ -100,6 +128,7 @@ namespace FurnitureFactoryView
             this.Controls.Add(this.textBoxName);
             this.Name = "FormSupplier";
             this.Text = "Поставщик";
+            this.Load += new System.EventHandler(this.FormSupplier_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -113,5 +142,7 @@ namespace FurnitureFactoryView
         private System.Windows.Forms.TextBox textBoxManufacturedFurniture;
         private ClassLibraryControlsFilippov.ControlSelectedComboBox controlSelectedComboBoxOrganizationType;
         private System.Windows.Forms.Label labelOrganizationType;
+        private WindowsFormsControlLibrary.UserControlDate userControlDateLastDelivery;
+        private System.Windows.Forms.Label labelLastDelivery;
     }
 }

@@ -20,20 +20,19 @@ namespace FurnitureFactoryView
 
         private void FormMain_Load(object sender, EventArgs e)
         {
-
             LoadData();
         }
 
         private void LoadData()
         {
-            treeUserControl1.SetHierarchy(new List<string>{"OrganizationType","LastDelivery","Id","Name"});
+            treeUserControl1.SetHierarchy(new List<string> { "OrganizationType", "LastDelivery", "Id", "Name" });
 
             try
             {
                 var list = _supplierLogic.Read(null);
                 foreach (var supplier in list)
                 {
-                    treeUserControl1.AddItem(supplier,"Name");
+                    treeUserControl1.AddItem(supplier, "Name");
                 }
             }
             catch (Exception ex)
@@ -43,7 +42,7 @@ namespace FurnitureFactoryView
             }
         }
 
-        protected override void OnKeyDown(KeyEventArgs e)
+        protected void OnKeyDown(object sender, KeyEventArgs e)
         {
             base.OnKeyDown(e);
             if (e.Control)
@@ -81,6 +80,11 @@ namespace FurnitureFactoryView
                             CreateDocumentChart(null, null);
                             break;
                         }
+                    case Keys.O:
+                        {
+                            CallOrganizationTypesForm(null, null);
+                            break;
+                        }
                 }
             }
         }
@@ -105,6 +109,12 @@ namespace FurnitureFactoryView
 
         private void CreateDocumentChart(object sender, EventArgs e)
         {
+        }
+
+        private void CallOrganizationTypesForm(object sender, EventArgs e)
+        {
+            var form = Container.Resolve<FormOrganizationTypes>();
+            form.ShowDialog();
         }
     }
 }

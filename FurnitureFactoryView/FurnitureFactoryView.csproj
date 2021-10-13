@@ -170,6 +170,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\TeamWorkComponents\WindowsFormsControlLibraryKalachikov.dll</HintPath>
     </Reference>
+    <Reference Include="WindowsFormsControlLibraryKamyshov">
+      <HintPath>..\TeamWorkComponents\WindowsFormsControlLibraryKamyshov.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="FormMain.cs">
@@ -177,6 +180,12 @@
     </Compile>
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormOrganizationTypes.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormOrganizationTypes.Designer.cs">
+      <DependentUpon>FormOrganizationTypes.cs</DependentUpon>
     </Compile>
     <Compile Include="FormSupplier.cs">
       <SubType>Form</SubType>
@@ -188,6 +197,9 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormOrganizationTypes.resx">
+      <DependentUpon>FormOrganizationTypes.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormSupplier.resx">
       <DependentUpon>FormSupplier.cs</DependentUpon>
