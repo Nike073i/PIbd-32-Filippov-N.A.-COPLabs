@@ -8,6 +8,6 @@ namespace FurnitureFactoryBusinessLogic.ViewModels
         public string Name { get; set; }
         public string ManufacturedFurniture { get; set; }
         public string OrganizationType { get; set; }
-        public DateTime? LastDelivery { get; set; }
+        public string LastDelivery { get; set; }
     }
 }

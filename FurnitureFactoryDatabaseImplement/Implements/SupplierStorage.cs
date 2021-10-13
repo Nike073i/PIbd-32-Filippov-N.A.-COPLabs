@@ -20,7 +20,7 @@ namespace FurnitureFactoryDatabaseImplement.Implements
                     Name = rec.Name,
                     ManufacturedFurniture = rec.ManufacturedFurniture,
                     OrganizationType = rec.OrganizationType,
-                    LastDelivery = rec.LastDelivery
+                    LastDelivery = (rec.LastDelivery.HasValue)? rec.LastDelivery.ToString() : "Поставок не было"
                 })
                 .ToList();
             }
@@ -43,7 +43,7 @@ namespace FurnitureFactoryDatabaseImplement.Implements
                     Name = rec.Name,
                     ManufacturedFurniture = rec.ManufacturedFurniture,
                     OrganizationType = rec.OrganizationType,
-                    LastDelivery = rec.LastDelivery
+                    LastDelivery = (rec.LastDelivery.HasValue) ? rec.LastDelivery.ToString() : "Поставок не было"
                 })
                 .ToList();
             }
@@ -66,7 +66,7 @@ namespace FurnitureFactoryDatabaseImplement.Implements
                     Name = supplier.Name,
                     ManufacturedFurniture = supplier.ManufacturedFurniture,
                     OrganizationType = supplier.OrganizationType,
-                    LastDelivery = supplier.LastDelivery
+                    LastDelivery = (supplier.LastDelivery.HasValue) ? supplier.LastDelivery.ToString() : "Поставок не было"
                 };
             }
         }

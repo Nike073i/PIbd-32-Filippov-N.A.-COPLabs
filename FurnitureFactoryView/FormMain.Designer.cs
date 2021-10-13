@@ -1,5 +1,4 @@
-﻿
-namespace FurnitureFactoryView
+﻿namespace FurnitureFactoryView
 {
     partial class FormMain
     {
@@ -38,6 +37,7 @@ namespace FurnitureFactoryView
             this.createSimpleDocumentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.createDocumentTableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.createDocumentChartToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.treeUserControl1 = new WindowsFormsControlLibraryKalachikov.TreeUserControl();
             this.contextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -102,18 +102,29 @@ namespace FurnitureFactoryView
             this.createDocumentChartToolStripMenuItem.Text = "Создать документ с диаграммой";
             this.createDocumentChartToolStripMenuItem.Click += new System.EventHandler(this.CreateDocumentChart);
             // 
+            // treeUserControl1
+            // 
+            this.treeUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeUserControl1.Location = new System.Drawing.Point(0, 0);
+            this.treeUserControl1.Name = "treeUserControl1";
+            this.treeUserControl1.SelectedBranch = -1;
+            this.treeUserControl1.Size = new System.Drawing.Size(600, 293);
+            this.treeUserControl1.TabIndex = 1;
+            // 
             // FormMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(700, 338);
+            this.ClientSize = new System.Drawing.Size(600, 293);
             this.ContextMenuStrip = this.contextMenuStrip;
+            this.Controls.Add(this.treeUserControl1);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "FormMain";
             this.Text = "Поставщики";
             this.Load += new System.EventHandler(this.FormMain_Load);
             this.contextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
+
         }
 
         #endregion
@@ -125,7 +136,9 @@ namespace FurnitureFactoryView
         private System.Windows.Forms.ToolStripMenuItem createSimpleDocumentToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem createDocumentTableToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem createDocumentChartToolStripMenuItem;
+
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator;
+        private WindowsFormsControlLibraryKalachikov.TreeUserControl treeUserControl1;
     }
 }
 

@@ -1,5 +1,6 @@
 ﻿using FurnitureFactoryBusinessLogic.BusinessLogics;
 using System;
+using System.Collections.Generic;
 using System.Windows.Forms;
 using Unity;
 
@@ -19,20 +20,27 @@ namespace FurnitureFactoryView
 
         private void FormMain_Load(object sender, EventArgs e)
         {
+
             LoadData();
         }
 
         private void LoadData()
         {
-            //try
-            //{
-            //    Program.ConfigGrid(_orderLogic.Read(null), dataGridViewOrders);
-            //}
-            //catch (Exception ex)
-            //{
-            //    MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK,
-            //   MessageBoxIcon.Error);
-            //}
+            treeUserControl1.SetHierarchy(new List<string>{"OrganizationType","LastDelivery","Id","Name"});
+
+            try
+            {
+                var list = _supplierLogic.Read(null);
+                foreach (var supplier in list)
+                {
+                    treeUserControl1.AddItem(supplier,"Name");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK,
+               MessageBoxIcon.Error);
+            }
         }
 
         protected override void OnKeyDown(KeyEventArgs e)
