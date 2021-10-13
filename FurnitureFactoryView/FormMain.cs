@@ -42,7 +42,7 @@ namespace FurnitureFactoryView
             }
         }
 
-        protected void OnKeyDown(object sender, KeyEventArgs e)
+        protected override void OnKeyDown(KeyEventArgs e)
         {
             base.OnKeyDown(e);
             if (e.Control)
