@@ -1,4 +1,4 @@
-using FurnitureFactoryBusinessLogic.BusinessLogics;
+﻿using FurnitureFactoryBusinessLogic.BusinessLogics;
 using FurnitureFactoryBusinessLogic.Interfaces;
 using FurnitureFactoryDatabaseImplement.Implements;
 using System;
@@ -11,13 +11,12 @@ namespace FurnitureFactoryView
     static class Program
     {
         /// <summary>
-        ///  The main entry point for the application.
+        /// Главная точка входа для приложения.
         /// </summary>
         [STAThread]
         static void Main()
         {
             var container = BuildUnityContainer();
-            Application.SetHighDpiMode(HighDpiMode.SystemAware);
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             Application.Run(container.Resolve<FormMain>());

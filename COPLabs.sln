@@ -16,7 +16,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FurnitureFactoryBusinessLog
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FurnitureFactoryDatabaseImplement", "FurnitureFactoryDatabaseImplement\FurnitureFactoryDatabaseImplement.csproj", "{A88A7F0D-4B0C-4AC5-A339-1AF1D57EC7D1}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FurnitureFactoryView", "FurnitureFactoryView\FurnitureFactoryView.csproj", "{D28CD60C-B478-4D38-B3D9-1197EB64DE58}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FurnitureFactoryView", "FurnitureFactoryView\FurnitureFactoryView.csproj", "{5B47BB6C-380B-4862-80D7-1329DFE68F37}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -44,10 +44,10 @@ Global
 		{A88A7F0D-4B0C-4AC5-A339-1AF1D57EC7D1}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A88A7F0D-4B0C-4AC5-A339-1AF1D57EC7D1}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A88A7F0D-4B0C-4AC5-A339-1AF1D57EC7D1}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D28CD60C-B478-4D38-B3D9-1197EB64DE58}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D28CD60C-B478-4D38-B3D9-1197EB64DE58}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D28CD60C-B478-4D38-B3D9-1197EB64DE58}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D28CD60C-B478-4D38-B3D9-1197EB64DE58}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5B47BB6C-380B-4862-80D7-1329DFE68F37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5B47BB6C-380B-4862-80D7-1329DFE68F37}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5B47BB6C-380B-4862-80D7-1329DFE68F37}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5B47BB6C-380B-4862-80D7-1329DFE68F37}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
