@@ -55,6 +55,7 @@ namespace FurnitureFactoryView
             this.ClientSize = new System.Drawing.Size(437, 254);
             this.Controls.Add(this.dataGridViewOrganizationTypes);
             this.KeyPreview = true;
+            this.MinimumSize = new System.Drawing.Size(450, 290);
             this.Name = "FormOrganizationTypes";
             this.Text = "Типы организаций";
             this.Load += new System.EventHandler(this.FormOrganizationTypes_Load);

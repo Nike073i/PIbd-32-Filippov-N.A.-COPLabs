@@ -1,8 +1,8 @@
 ﻿using FurnitureFactoryBusinessLogic.BusinessLogics;
+using FurnitureFactoryBusinessLogic.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
-using FurnitureFactoryBusinessLogic.ViewModels;
 using Unity;
 
 namespace FurnitureFactoryView
@@ -93,24 +93,23 @@ namespace FurnitureFactoryView
         private void AddSupplier(object sender, EventArgs e)
         {
             var form = Container.Resolve<FormSupplier>();
-            form.ShowDialog();
+            if (form.ShowDialog() == DialogResult.OK)
+            {
+                LoadData();
+            }
         }
         private void UpdateSupplier(object sender, EventArgs e)
         {
             var form = Container.Resolve<FormSupplier>();
-            form.SupplierViewModel = new SupplierViewModel
+            form.SupplierViewModel = treeUserControl1.GetSelectedItem<SupplierViewModel>();
+            if (form.ShowDialog() == DialogResult.OK)
             {
-                Name = "Test", 
-                OrganizationType = "Автограф",
-                Id = 5, 
-                ManufacturedFurniture = "ХЫ",
-                LastDelivery = "15.09.2021"
-            };
-            //form.SupplierViewModel = treeUserControl1.GetSelectedItem<SupplierViewModel>();
-            form.ShowDialog();
+                LoadData();
+            }
         }
         private void DeleteSupplier(object sender, EventArgs e)
         {
+            /// обработка дерева, ВАНЯ!
         }
 
         private void CreateSimpleDocument(object sender, EventArgs e)
