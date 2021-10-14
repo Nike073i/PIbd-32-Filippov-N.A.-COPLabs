@@ -103,11 +103,9 @@ namespace FurnitureFactoryDatabaseImplement.Implements
                 {
                     throw new Exception("Поставщик не найден");
                 }
-                else
-                {
-                    context.Suppliers.Remove(supplier);
-                    context.SaveChanges();
-                }
+
+                context.Suppliers.Remove(supplier);
+                context.SaveChanges();
             }
         }
 
