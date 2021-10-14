@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Windows.Forms;
+using FurnitureFactoryBusinessLogic.ViewModels;
 using Unity;
 
 namespace FurnitureFactoryView
@@ -97,7 +98,7 @@ namespace FurnitureFactoryView
         private void UpdateSupplier(object sender, EventArgs e)
         {
             var form = Container.Resolve<FormSupplier>();
-            form.Id = treeUserControl1.SelectedBranch;
+            form.SupplierViewModel = treeUserControl1.GetSelectedItem<SupplierViewModel>();
             form.ShowDialog();
         }
         private void DeleteSupplier(object sender, EventArgs e)

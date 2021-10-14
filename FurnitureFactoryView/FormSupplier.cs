@@ -1,7 +1,7 @@
-﻿using System;
+﻿using FurnitureFactoryBusinessLogic.BusinessLogics;
+using FurnitureFactoryBusinessLogic.ViewModels;
+using System;
 using System.Windows.Forms;
-using FurnitureFactoryBusinessLogic.BindingModels;
-using FurnitureFactoryBusinessLogic.BusinessLogics;
 using Unity;
 
 namespace FurnitureFactoryView
@@ -10,9 +10,9 @@ namespace FurnitureFactoryView
     {
         [Dependency]
         public new IUnityContainer Container { get; set; }
-        public int Id { set { id = value; } }
+        public SupplierViewModel SupplierViewModel { set => _view = value; }
         private readonly SupplierLogic _logic;
-        private int? id;
+        private SupplierViewModel _view;
 
         public FormSupplier(SupplierLogic supplierLogic, SupplierLogic logic)
         {
@@ -21,22 +21,10 @@ namespace FurnitureFactoryView
         }
         private void FormSupplier_Load(object sender, EventArgs e)
         {
-            if (id.HasValue)
+            if (!(_view is null))
             {
-                try
-                {
-                    var view = _logic.Read(new SupplierBindingModel() { Id = id })?[0];
-                    if (!(view is null))
-                    {
-                        textBoxName.Text = view.Name;
-                        textBoxManufacturedFurniture.Text = view.ManufacturedFurniture;
-                        //controlSelectedComboBoxOrganizationType = 
-                    }
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                }
+                textBoxName.Text = _view.Name;
+                textBoxManufacturedFurniture.Text = _view.ManufacturedFurniture;
             }
         }
     }

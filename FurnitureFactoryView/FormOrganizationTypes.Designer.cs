@@ -35,12 +35,15 @@ namespace FurnitureFactoryView
             // 
             // dataGridViewOrganizationTypes
             // 
+            this.dataGridViewOrganizationTypes.AllowUserToAddRows = false;
+            this.dataGridViewOrganizationTypes.AllowUserToDeleteRows = false;
             this.dataGridViewOrganizationTypes.BackgroundColor = System.Drawing.SystemColors.Control;
             this.dataGridViewOrganizationTypes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridViewOrganizationTypes.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridViewOrganizationTypes.GridColor = System.Drawing.SystemColors.Control;
             this.dataGridViewOrganizationTypes.Location = new System.Drawing.Point(0, 0);
             this.dataGridViewOrganizationTypes.Name = "dataGridViewOrganizationTypes";
+            this.dataGridViewOrganizationTypes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewOrganizationTypes.Size = new System.Drawing.Size(437, 254);
             this.dataGridViewOrganizationTypes.TabIndex = 0;
             // 
@@ -50,6 +53,7 @@ namespace FurnitureFactoryView
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(437, 254);
             this.Controls.Add(this.dataGridViewOrganizationTypes);
+            this.KeyPreview = true;
             this.Name = "FormOrganizationTypes";
             this.Text = "Типы организаций";
             this.Load += new System.EventHandler(this.FormOrganizationTypes_Load);
