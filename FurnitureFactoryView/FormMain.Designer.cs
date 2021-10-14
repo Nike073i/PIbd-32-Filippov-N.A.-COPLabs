@@ -40,6 +40,7 @@
             this.createDocumentTableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.createDocumentChartToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.treeUserControl1 = new WindowsFormsControlLibraryKalachikov.TreeUserControl();
+            this.componentContextBigText = new ClassLibraryComponentsFilippov.ComponentContextBigText(this.components);
             this.contextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -160,6 +161,7 @@
         private WindowsFormsControlLibraryKalachikov.TreeUserControl treeUserControl1;
         private System.Windows.Forms.ToolStripMenuItem callOgranizationTypesFormToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparatorOrganizationTypes;
+        private ClassLibraryComponentsFilippov.ComponentContextBigText componentContextBigText;
     }
 }
 

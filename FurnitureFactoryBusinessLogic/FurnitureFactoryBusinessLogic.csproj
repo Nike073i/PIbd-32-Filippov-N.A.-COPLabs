@@ -44,6 +44,7 @@
     <Compile Include="BindingModels\OrganizationTypeBindingModel.cs" />
     <Compile Include="BindingModels\SupplierBindingModel.cs" />
     <Compile Include="BusinessLogics\OrganizationTypeLogic.cs" />
+    <Compile Include="BusinessLogics\ReportLogic.cs" />
     <Compile Include="BusinessLogics\SupplierLogic.cs" />
     <Compile Include="Interfaces\IOrganizationTypeStorage.cs" />
     <Compile Include="Interfaces\ISupplierStorage.cs" />
@@ -51,6 +52,11 @@
     <Compile Include="ViewModels\OrganizationTypeViewModel.cs" />
     <Compile Include="ViewModels\SupplierViewModel.cs" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\ClassLibraryComponentsFilippov\ClassLibraryComponentsFilippov.csproj">
+      <Project>{2ebb7d11-f4aa-45ab-ac40-292f34cc5513}</Project>
+      <Name>ClassLibraryComponentsFilippov</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

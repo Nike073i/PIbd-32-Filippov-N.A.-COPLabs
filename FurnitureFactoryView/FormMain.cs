@@ -1,4 +1,5 @@
-﻿using FurnitureFactoryBusinessLogic.BusinessLogics;
+﻿using ClassLibraryComponentsFilippov.HelperModels;
+using FurnitureFactoryBusinessLogic.BusinessLogics;
 using FurnitureFactoryBusinessLogic.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -12,11 +13,13 @@ namespace FurnitureFactoryView
         [Dependency]
         public new IUnityContainer Container { get; set; }
         private readonly SupplierLogic _supplierLogic;
+        private readonly ReportLogic _reportLogic;
 
-        public FormMain(SupplierLogic supplierLogic)
+        public FormMain(SupplierLogic supplierLogic, ReportLogic reportLogic)
         {
             InitializeComponent();
             _supplierLogic = supplierLogic;
+            _reportLogic = reportLogic;
         }
 
         private void FormMain_Load(object sender, EventArgs e)
@@ -114,6 +117,27 @@ namespace FurnitureFactoryView
 
         private void CreateSimpleDocument(object sender, EventArgs e)
         {
+            var fbd = new SaveFileDialog();
+            fbd.FileName = "pdfContent.pdf";
+            fbd.Filter = "pdf file | *.pdf";
+            if (fbd.ShowDialog() == DialogResult.OK)
+            {
+                if (string.IsNullOrEmpty(fbd.FileName))
+                    MessageBox.Show("Путь не указан", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                if (componentContextBigText.CreateDocument(new ContentParameters()
+                {
+                    Path = fbd.FileName,
+                    Title = "Отчет по поставщикам в этом году",
+                    ArrayText = _reportLogic.GetArraySupplierWithManufacturedFurnitureForYear()
+                }))
+                {
+                    MessageBox.Show("Файл был создан успешно", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show(componentContextBigText.ErrorMessageString, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
         }
 
         private void CreateDocumentTable(object sender, EventArgs e)

@@ -26,6 +26,7 @@ namespace FurnitureFactoryView
             var currentContainer = new UnityContainer();
             currentContainer.RegisterType<ISupplierStorage, SupplierStorage>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<IOrganizationTypeStorage, OrganizationTypeStorage>(new HierarchicalLifetimeManager());
+            currentContainer.RegisterType<ReportLogic>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<SupplierLogic>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<OrganizationTypeLogic>(new HierarchicalLifetimeManager());
             return currentContainer;

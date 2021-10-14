@@ -1,4 +1,7 @@
-﻿namespace ClassLibraryComponentsFilippov.HelperModels
+﻿using System;
+using System.Collections.Generic;
+
+namespace ClassLibraryComponentsFilippov.HelperModels
 {
     /// <summary>
     /// Класс-модель параметров компонента с контентом
@@ -16,6 +19,6 @@
         /// <summary>
         /// Массив строк
         /// </summary>
-        public string[] ArrayText { get; set; }
+        public List<string> ArrayText { get; set; }
     }
 }

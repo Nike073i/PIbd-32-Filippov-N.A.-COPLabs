@@ -20,7 +20,7 @@ namespace FurnitureFactoryDatabaseImplement.Implements
                     Name = rec.Name,
                     ManufacturedFurniture = rec.ManufacturedFurniture,
                     OrganizationType = rec.OrganizationType,
-                    LastDelivery = (rec.LastDelivery.HasValue)? rec.LastDelivery.ToString() : "Поставок не было"
+                    LastDelivery = (rec.LastDelivery.HasValue) ? rec.LastDelivery.Value.ToString("dd.MM.yyyy") : "Поставок не было"
                 })
                 .ToList();
             }
@@ -36,14 +36,14 @@ namespace FurnitureFactoryDatabaseImplement.Implements
             {
                 return context.Suppliers
                 .Where(rec => rec.Name.Equals(model.Name)
-                    || (model.DateFrom.HasValue && model.DateTo.HasValue && model.LastDelivery.HasValue && rec.LastDelivery.Value.Date >= model.DateFrom.Value.Date && rec.LastDelivery.Value.Date <= model.DateTo.Value.Date))
+                    || model.DateFrom.HasValue && model.DateTo.HasValue && rec.LastDelivery.Value.Date >= model.DateFrom.Value.Date && rec.LastDelivery.Value.Date <= model.DateTo.Value.Date)
                 .Select(rec => new SupplierViewModel
                 {
                     Id = rec.Id,
                     Name = rec.Name,
                     ManufacturedFurniture = rec.ManufacturedFurniture,
                     OrganizationType = rec.OrganizationType,
-                    LastDelivery = (rec.LastDelivery.HasValue) ? rec.LastDelivery.ToString() : "Поставок не было"
+                    LastDelivery = (rec.LastDelivery.HasValue) ? rec.LastDelivery.Value.ToString("dd.MM.yyyy") : "Поставок не было"
                 })
                 .ToList();
             }
@@ -66,7 +66,7 @@ namespace FurnitureFactoryDatabaseImplement.Implements
                     Name = supplier.Name,
                     ManufacturedFurniture = supplier.ManufacturedFurniture,
                     OrganizationType = supplier.OrganizationType,
-                    LastDelivery = (supplier.LastDelivery.HasValue) ? supplier.LastDelivery.ToString() : "Поставок не было"
+                    LastDelivery = (supplier.LastDelivery.HasValue) ? supplier.LastDelivery.Value.ToString("dd.MM.yyyy") : "Поставок не было"
                 };
             }
         }

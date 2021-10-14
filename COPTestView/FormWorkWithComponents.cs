@@ -2,6 +2,7 @@
 using ClassLibraryComponentsFilippov.HelperModels;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Windows.Forms;
 
 namespace COPTestView
@@ -181,7 +182,7 @@ namespace COPTestView
                 {
                     Path = fbd.FileName,
                     Title = textBoxContextTitle.Text,
-                    ArrayText = textBoxContextText.Text.Split('.')
+                    ArrayText = textBoxContextText.Text.Split('.').ToList()
                 }))
                 {
                     MessageBox.Show("Файл был создан успешно", "Успех", MessageBoxButtons.OK, MessageBoxIcon.Information);
