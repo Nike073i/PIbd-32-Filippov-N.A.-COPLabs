@@ -98,7 +98,15 @@ namespace FurnitureFactoryView
         private void UpdateSupplier(object sender, EventArgs e)
         {
             var form = Container.Resolve<FormSupplier>();
-            form.SupplierViewModel = treeUserControl1.GetSelectedItem<SupplierViewModel>();
+            form.SupplierViewModel = new SupplierViewModel
+            {
+                Name = "Test", 
+                OrganizationType = "Автограф",
+                Id = 5, 
+                ManufacturedFurniture = "ХЫ",
+                LastDelivery = "15.09.2021"
+            };
+            //form.SupplierViewModel = treeUserControl1.GetSelectedItem<SupplierViewModel>();
             form.ShowDialog();
         }
         private void DeleteSupplier(object sender, EventArgs e)

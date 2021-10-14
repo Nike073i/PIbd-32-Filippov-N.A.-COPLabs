@@ -8,8 +8,7 @@ namespace FurnitureFactoryView
 {
     public partial class FormOrganizationTypes : Form
     {
-        [Dependency]
-        public new IUnityContainer Container { get; set; }
+        [Dependency] public new IUnityContainer Container { get; set; }
         private readonly OrganizationTypeLogic _logic;
 
         public FormOrganizationTypes(OrganizationTypeLogic logic)
@@ -50,13 +49,13 @@ namespace FurnitureFactoryView
                         string name = "Новый тип";
                         try
                         {
-                            while (!(_logic.Read(new OrganizationTypeBindingModel{Name = name})[0] is null))
+                            while (!(_logic.Read(new OrganizationTypeBindingModel { Name = name })[0] is null))
                             {
                                 i++;
                                 name = "Новый тип " + i;
                             }
 
-                            _logic.CreateOrUpdate(new OrganizationTypeBindingModel {Name = name});
+                            _logic.CreateOrUpdate(new OrganizationTypeBindingModel { Name = name });
                         }
                         catch (Exception ex)
                         {
@@ -70,7 +69,8 @@ namespace FurnitureFactoryView
                     {
                         if (dataGridViewOrganizationTypes.SelectedRows.Count == 1)
                         {
-                            if (MessageBox.Show("Удалить запись", "Вопрос", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                            if (MessageBox.Show("Удалить запись", "Вопрос", MessageBoxButtons.YesNo,
+                                MessageBoxIcon.Question) == DialogResult.Yes)
                             {
                                 int id = Convert.ToInt32(dataGridViewOrganizationTypes.SelectedRows[0].Cells[0].Value);
                                 try
@@ -81,12 +81,41 @@ namespace FurnitureFactoryView
                                 {
                                     MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                                 }
+
                                 LoadData();
                             }
                         }
+
                         break;
                     }
             }
+        }
+
+        private void CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            var typeName = dataGridViewOrganizationTypes[e.ColumnIndex, e.RowIndex].Value as string;
+            if (!string.IsNullOrEmpty(typeName))
+            {
+                BeginInvoke(new MethodInvoker(() =>
+                {
+                    try
+                    {
+                        var id = (int)dataGridViewOrganizationTypes[0, e.RowIndex].Value;
+                        _logic.CreateOrUpdate(new OrganizationTypeBindingModel { Id = id, Name = typeName });
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+
+                    LoadData();
+                }));
+            }
+            else
+            {
+                MessageBox.Show("Введена пустая строка", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            LoadData();
         }
     }
 }

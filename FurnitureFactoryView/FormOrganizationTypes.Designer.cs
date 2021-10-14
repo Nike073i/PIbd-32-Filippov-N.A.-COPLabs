@@ -46,6 +46,7 @@ namespace FurnitureFactoryView
             this.dataGridViewOrganizationTypes.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridViewOrganizationTypes.Size = new System.Drawing.Size(437, 254);
             this.dataGridViewOrganizationTypes.TabIndex = 0;
+            this.dataGridViewOrganizationTypes.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.CellEndEdit);
             // 
             // FormOrganizationTypes
             // 
