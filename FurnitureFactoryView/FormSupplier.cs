@@ -1,6 +1,6 @@
 ﻿using FurnitureFactoryBusinessLogic.BindingModels;
 using FurnitureFactoryBusinessLogic.BusinessLogics;
-using FurnitureFactoryBusinessLogic.ViewModels;
+using FurnitureFactoryBusinessLogic.HelperModels;
 using System;
 using System.Linq;
 using System.Windows.Forms;
@@ -12,10 +12,10 @@ namespace FurnitureFactoryView
     {
         [Dependency]
         public new IUnityContainer Container { get; set; }
-        public SupplierViewModel SupplierViewModel { set => _view = value; }
+        public SupplierStringModel SupplierStringModel { set => _view = value; }
         private readonly SupplierLogic _logic;
         private readonly OrganizationTypeLogic _organizationTypeLogic;
-        private SupplierViewModel _view;
+        private SupplierStringModel _view;
 
         public FormSupplier(SupplierLogic supplierLogic, SupplierLogic logic, OrganizationTypeLogic organizationTypeLogic)
         {
@@ -32,14 +32,27 @@ namespace FurnitureFactoryView
             {
                 return;
             }
-            controlSelectedComboBoxOrganizationType.SelectedItem = _view.OrganizationType;
-            textBoxName.Text = _view.Name;
-            textBoxManufacturedFurniture.Text = _view.ManufacturedFurniture;
-            if (!(_view.LastDelivery is "Поставок не было"))
+
+            try
             {
-                DateTime.TryParse(_view.LastDelivery, out var result);
-                userControlDateLastDelivery.Date = result;
+                var id = Convert.ToInt32(_view.Id);
+                var item = _logic.Read(new SupplierBindingModel { Id = id })?[0];
+                if (item is null) return;
+                textBoxName.Text = item.Name;
+                textBoxManufacturedFurniture.Text = item.ManufacturedFurniture;
+                controlSelectedComboBoxOrganizationType.SelectedItem = item.OrganizationType;
+                if (!(_view.LastDelivery is "Поставок не было"))
+                {
+                    DateTime.TryParse(item.LastDelivery, out var result);
+                    userControlDateLastDelivery.Date = result;
+                }
             }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK,
+                    MessageBoxIcon.Error);
+            }
+
         }
 
         private void buttonSave_Click(object sender, EventArgs e)
@@ -67,7 +80,7 @@ namespace FurnitureFactoryView
             {
                 lastDelivery = userControlDateLastDelivery.Date;
             }
-            catch (FormatException ex)
+            catch (Exception ex)
             {
                 MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK,
                     MessageBoxIcon.Error);
@@ -76,9 +89,14 @@ namespace FurnitureFactoryView
 
             try
             {
+                int? id = null;
+                if (!(_view is null))
+                {
+                    id = Convert.ToInt32(_view.Id);
+                }
                 _logic.CreateOrUpdate(new SupplierBindingModel
                 {
-                    Id = _view?.Id,
+                    Id = id,
                     Name = name,
                     ManufacturedFurniture = manufacturedFurniture,
                     OrganizationType = organizationType,

@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="ComponentLibrary">
+      <HintPath>..\TeamWorkComponents\ComponentLibrary\ComponentLibrary.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -46,6 +49,8 @@
     <Compile Include="BusinessLogics\OrganizationTypeLogic.cs" />
     <Compile Include="BusinessLogics\ReportLogic.cs" />
     <Compile Include="BusinessLogics\SupplierLogic.cs" />
+    <Compile Include="HelperModels\SupplierStringModel.cs" />
+    <Compile Include="HelperModels\TableDataConfig.cs" />
     <Compile Include="Interfaces\IOrganizationTypeStorage.cs" />
     <Compile Include="Interfaces\ISupplierStorage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -58,5 +63,6 @@
       <Name>ClassLibraryComponentsFilippov</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -39,9 +39,10 @@
             this.createSimpleDocumentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.createDocumentTableToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.createDocumentChartToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.treeUserControl1 = new WindowsFormsControlLibraryKalachikov.TreeUserControl();
-            this.componentContextBigText = new ClassLibraryComponentsFilippov.ComponentContextBigText(this.components);
             this.docWithDiagram = new ComponentLibrary.DocWithDiagram();
+            this.componentExcelTable = new WindowsFormsComponentLibrary.ComponentExcelTable(this.components);
+            this.componentContextBigText = new ClassLibraryComponentsFilippov.ComponentContextBigText(this.components);
+            this.treeUserControl = new WindowsFormsComponentsKalachikov.TreeUserControl();
             this.contextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -120,15 +121,13 @@
             this.createDocumentChartToolStripMenuItem.Text = "Создать документ с диаграммой";
             this.createDocumentChartToolStripMenuItem.Click += new System.EventHandler(this.CreateDocumentChart);
             // 
-            // treeUserControl1
+            // treeUserControl
             // 
-            this.treeUserControl1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.treeUserControl1.Location = new System.Drawing.Point(0, 0);
-            this.treeUserControl1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.treeUserControl1.Name = "treeUserControl1";
-            this.treeUserControl1.SelectedBranch = -1;
-            this.treeUserControl1.Size = new System.Drawing.Size(600, 293);
-            this.treeUserControl1.TabIndex = 1;
+            this.treeUserControl.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.treeUserControl.Location = new System.Drawing.Point(0, 0);
+            this.treeUserControl.Name = "treeUserControl";
+            this.treeUserControl.Size = new System.Drawing.Size(600, 293);
+            this.treeUserControl.TabIndex = 1;
             // 
             // FormMain
             // 
@@ -136,7 +135,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(600, 293);
             this.ContextMenuStrip = this.contextMenuStrip;
-            this.Controls.Add(this.treeUserControl1);
+            this.Controls.Add(this.treeUserControl);
             this.KeyPreview = true;
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.MinimumSize = new System.Drawing.Size(600, 330);
@@ -159,11 +158,12 @@
         private System.Windows.Forms.ToolStripMenuItem createDocumentChartToolStripMenuItem;
 
         private System.Windows.Forms.ToolStripSeparator toolStripSeparatorSupplier;
-        private WindowsFormsControlLibraryKalachikov.TreeUserControl treeUserControl1;
         private System.Windows.Forms.ToolStripMenuItem callOgranizationTypesFormToolStripMenuItem;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparatorOrganizationTypes;
         private ClassLibraryComponentsFilippov.ComponentContextBigText componentContextBigText;
         private ComponentLibrary.DocWithDiagram docWithDiagram;
+        private WindowsFormsComponentLibrary.ComponentExcelTable componentExcelTable;
+        private WindowsFormsComponentsKalachikov.TreeUserControl treeUserControl;
     }
 }
 
