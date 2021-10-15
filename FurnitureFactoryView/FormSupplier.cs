@@ -16,11 +16,14 @@ namespace FurnitureFactoryView
         private readonly SupplierLogic _logic;
         private readonly OrganizationTypeLogic _organizationTypeLogic;
         private SupplierStringModel _view;
+        private CheckDataChange _checkDataChange;
+        private bool Save { get; set; } = false;
 
         public FormSupplier(SupplierLogic supplierLogic, SupplierLogic logic, OrganizationTypeLogic organizationTypeLogic)
         {
             this._logic = logic;
             _organizationTypeLogic = organizationTypeLogic;
+            _checkDataChange = new CheckDataChange();
             InitializeComponent();
         }
         private void FormSupplier_Load(object sender, EventArgs e)
@@ -28,31 +31,34 @@ namespace FurnitureFactoryView
             var list = _organizationTypeLogic.Read(null);
             var listString = list.Select(x => x.Name);
             controlSelectedComboBoxOrganizationType.Items.AddRange(listString.ToArray());
-            if (_view is null)
+            userControlDateLastDelivery.Date = null;
+            if (!(_view is null))
             {
-                return;
-            }
-
-            try
-            {
-                var id = Convert.ToInt32(_view.Id);
-                var item = _logic.Read(new SupplierBindingModel { Id = id })?[0];
-                if (item is null) return;
-                textBoxName.Text = item.Name;
-                textBoxManufacturedFurniture.Text = item.ManufacturedFurniture;
-                controlSelectedComboBoxOrganizationType.SelectedItem = item.OrganizationType;
-                if (!(_view.LastDelivery is "Поставок не было"))
+                try
                 {
-                    DateTime.TryParse(item.LastDelivery, out var result);
-                    userControlDateLastDelivery.Date = result;
+                    var id = Convert.ToInt32(_view.Id);
+                    var item = _logic.Read(new SupplierBindingModel { Id = id })?[0];
+                    if (item is null) return;
+                    textBoxName.Text = item.Name;
+                    textBoxManufacturedFurniture.Text = item.ManufacturedFurniture;
+                    controlSelectedComboBoxOrganizationType.SelectedItem = item.OrganizationType;
+                    if (!(_view.LastDelivery is "Поставок не было"))
+                    {
+                        DateTime.TryParse(item.LastDelivery, out var result);
+                        userControlDateLastDelivery.Date = result;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK,
+                        MessageBoxIcon.Error);
+                    return;
                 }
             }
-            catch (Exception ex)
-            {
-                MessageBox.Show(ex.Message, "Ошибка", MessageBoxButtons.OK,
-                    MessageBoxIcon.Error);
-            }
-
+            _checkDataChange.Name = textBoxName.Text;
+            _checkDataChange.ManufacturedFurniture = textBoxManufacturedFurniture.Text;
+            _checkDataChange.OrganizationType = controlSelectedComboBoxOrganizationType.SelectedItem;
+            _checkDataChange.LastDelivery = userControlDateLastDelivery.Date;
         }
 
         private void buttonSave_Click(object sender, EventArgs e)
@@ -87,6 +93,12 @@ namespace FurnitureFactoryView
                 return;
             }
 
+            if (_checkDataChange.CheckData(name, manufacturedFurniture, organizationType, lastDelivery))
+            {
+                Close();
+                return;
+            }
+
             try
             {
                 int? id = null;
@@ -110,13 +122,63 @@ namespace FurnitureFactoryView
                 return;
             }
             MessageBox.Show("Сохранение прошло успешно", "Сообщение", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            Save = true;
             DialogResult = DialogResult.OK;
             Close();
         }
-        private void ButtonCancel_Click(object sender, EventArgs e)
+        private void Exit(object sender, EventArgs e)
         {
-            DialogResult = DialogResult.Cancel;
             Close();
+        }
+
+        private bool CloseWindow()
+        {
+            bool result = true;
+            if (Save) return result;
+            var name = textBoxName.Text;
+            var manufacturedFurniture = textBoxManufacturedFurniture.Text;
+            var organizationType = controlSelectedComboBoxOrganizationType.SelectedItem;
+            DateTime? lastDelivery = null;
+            try
+            {
+                lastDelivery = userControlDateLastDelivery.Date;
+            }
+            catch(Exception)
+            {}
+            if (!_checkDataChange.CheckData(name, manufacturedFurniture, organizationType, lastDelivery))
+            {
+                if (MessageBox.Show("Данные не сохранены", "Выйти?", MessageBoxButtons.YesNo,
+                MessageBoxIcon.Question) != DialogResult.Yes)
+                {
+                    result = false;
+                }
+            }
+            return result;
+        }
+
+        private void FormSupplier_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (!CloseWindow())
+            {
+                e.Cancel = true;
+                DialogResult = DialogResult.Cancel;
+                return;
+            }
+        }
+        public class CheckDataChange
+        {
+            public string Name { get; set; }
+            public string ManufacturedFurniture { get; set; }
+            public string OrganizationType { get; set; }
+            public DateTime? LastDelivery { get; set; }
+
+            public bool CheckData(string name, string manufacturedFurniture, string organizationType, DateTime? lastDelivery)
+            {
+                return name.Equals(Name)
+                    && manufacturedFurniture.Equals(ManufacturedFurniture)
+                    && organizationType.Equals(OrganizationType)
+                    && LastDelivery.Equals(lastDelivery);
+            }
         }
     }
 }

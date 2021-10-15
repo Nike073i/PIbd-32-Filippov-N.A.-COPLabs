@@ -60,64 +60,64 @@
             this.createDocumentTableToolStripMenuItem,
             this.createDocumentChartToolStripMenuItem});
             this.contextMenuStrip.Name = "contextMenuStrip";
-            this.contextMenuStrip.Size = new System.Drawing.Size(254, 170);
+            this.contextMenuStrip.Size = new System.Drawing.Size(306, 184);
             // 
             // addToolStripMenuItem
             // 
             this.addToolStripMenuItem.Name = "addToolStripMenuItem";
-            this.addToolStripMenuItem.Size = new System.Drawing.Size(253, 22);
+            this.addToolStripMenuItem.Size = new System.Drawing.Size(305, 24);
             this.addToolStripMenuItem.Text = "Добавить";
             this.addToolStripMenuItem.Click += new System.EventHandler(this.AddSupplier);
             // 
             // updateToolStripMenuItem
             // 
             this.updateToolStripMenuItem.Name = "updateToolStripMenuItem";
-            this.updateToolStripMenuItem.Size = new System.Drawing.Size(253, 22);
+            this.updateToolStripMenuItem.Size = new System.Drawing.Size(305, 24);
             this.updateToolStripMenuItem.Text = "Редактировать";
             this.updateToolStripMenuItem.Click += new System.EventHandler(this.UpdateSupplier);
             // 
             // deleteToolStripMenuItem
             // 
             this.deleteToolStripMenuItem.Name = "deleteToolStripMenuItem";
-            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(253, 22);
+            this.deleteToolStripMenuItem.Size = new System.Drawing.Size(305, 24);
             this.deleteToolStripMenuItem.Text = "Удалить";
             this.deleteToolStripMenuItem.Click += new System.EventHandler(this.DeleteSupplier);
             // 
             // toolStripSeparatorSupplier
             // 
             this.toolStripSeparatorSupplier.Name = "toolStripSeparatorSupplier";
-            this.toolStripSeparatorSupplier.Size = new System.Drawing.Size(250, 6);
+            this.toolStripSeparatorSupplier.Size = new System.Drawing.Size(302, 6);
             // 
             // callOgranizationTypesFormToolStripMenuItem
             // 
             this.callOgranizationTypesFormToolStripMenuItem.Name = "callOgranizationTypesFormToolStripMenuItem";
-            this.callOgranizationTypesFormToolStripMenuItem.Size = new System.Drawing.Size(253, 22);
+            this.callOgranizationTypesFormToolStripMenuItem.Size = new System.Drawing.Size(305, 24);
             this.callOgranizationTypesFormToolStripMenuItem.Text = "Типы организаций";
             this.callOgranizationTypesFormToolStripMenuItem.Click += new System.EventHandler(this.CallOrganizationTypesForm);
             // 
             // toolStripSeparatorOrganizationTypes
             // 
             this.toolStripSeparatorOrganizationTypes.Name = "toolStripSeparatorOrganizationTypes";
-            this.toolStripSeparatorOrganizationTypes.Size = new System.Drawing.Size(250, 6);
+            this.toolStripSeparatorOrganizationTypes.Size = new System.Drawing.Size(302, 6);
             // 
             // createSimpleDocumentToolStripMenuItem
             // 
             this.createSimpleDocumentToolStripMenuItem.Name = "createSimpleDocumentToolStripMenuItem";
-            this.createSimpleDocumentToolStripMenuItem.Size = new System.Drawing.Size(253, 22);
+            this.createSimpleDocumentToolStripMenuItem.Size = new System.Drawing.Size(305, 24);
             this.createSimpleDocumentToolStripMenuItem.Text = "Создать простой документ";
             this.createSimpleDocumentToolStripMenuItem.Click += new System.EventHandler(this.CreateSimpleDocument);
             // 
             // createDocumentTableToolStripMenuItem
             // 
             this.createDocumentTableToolStripMenuItem.Name = "createDocumentTableToolStripMenuItem";
-            this.createDocumentTableToolStripMenuItem.Size = new System.Drawing.Size(253, 22);
+            this.createDocumentTableToolStripMenuItem.Size = new System.Drawing.Size(305, 24);
             this.createDocumentTableToolStripMenuItem.Text = "Создать документ с таблицей";
             this.createDocumentTableToolStripMenuItem.Click += new System.EventHandler(this.CreateDocumentTable);
             // 
             // createDocumentChartToolStripMenuItem
             // 
             this.createDocumentChartToolStripMenuItem.Name = "createDocumentChartToolStripMenuItem";
-            this.createDocumentChartToolStripMenuItem.Size = new System.Drawing.Size(253, 22);
+            this.createDocumentChartToolStripMenuItem.Size = new System.Drawing.Size(305, 24);
             this.createDocumentChartToolStripMenuItem.Text = "Создать документ с диаграммой";
             this.createDocumentChartToolStripMenuItem.Click += new System.EventHandler(this.CreateDocumentChart);
             // 
@@ -125,20 +125,21 @@
             // 
             this.treeUserControl.Dock = System.Windows.Forms.DockStyle.Fill;
             this.treeUserControl.Location = new System.Drawing.Point(0, 0);
+            this.treeUserControl.Margin = new System.Windows.Forms.Padding(5, 5, 5, 5);
             this.treeUserControl.Name = "treeUserControl";
-            this.treeUserControl.Size = new System.Drawing.Size(600, 293);
+            this.treeUserControl.Size = new System.Drawing.Size(800, 361);
             this.treeUserControl.TabIndex = 1;
             // 
             // FormMain
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(600, 293);
+            this.ClientSize = new System.Drawing.Size(800, 361);
             this.ContextMenuStrip = this.contextMenuStrip;
             this.Controls.Add(this.treeUserControl);
             this.KeyPreview = true;
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.MinimumSize = new System.Drawing.Size(600, 330);
+            this.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
+            this.MinimumSize = new System.Drawing.Size(794, 395);
             this.Name = "FormMain";
             this.Text = "Поставщики";
             this.Load += new System.EventHandler(this.FormMain_Load);
