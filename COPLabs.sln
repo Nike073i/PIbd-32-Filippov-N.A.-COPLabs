@@ -18,6 +18,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FurnitureFactoryDatabaseImp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FurnitureFactoryView", "FurnitureFactoryView\FurnitureFactoryView.csproj", "{5B47BB6C-380B-4862-80D7-1329DFE68F37}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UML patterns", "UML patterns", "{BDF14C55-A492-48F1-8A9A-65B4694A13EA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
