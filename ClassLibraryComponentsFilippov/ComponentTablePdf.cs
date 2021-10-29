@@ -214,8 +214,12 @@ namespace ClassLibraryComponentsFilippov
                         _errorMessage = ErrorTablePdfMessage.Неверно_указано_название_свойства_для_колонки;
                         return false;
                     }
-                    var columnIndex = _propertyInfos[prop.Name];
-                    newRow.Cells[columnIndex].AddParagraph(prop.GetValue(data, null)?.ToString());
+
+                    if (_propertyInfos.ContainsKey(prop.Name))
+                    {
+                        var columnIndex = _propertyInfos[prop.Name];
+                        newRow.Cells[columnIndex].AddParagraph(prop.GetValue(data, null)?.ToString());
+                    }
                 }
             }
 

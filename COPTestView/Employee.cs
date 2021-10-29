@@ -12,5 +12,6 @@
         public string Subdivision { get; set; }
         public string Position { get; set; }
         public double Prize { get; set; }
+        public double Test { get; set; }
     }
 }
