@@ -3,6 +3,7 @@ using FurnitureFactoryBusinessLogic.Interfaces;
 using FurnitureFactoryDatabaseImplement.Implements;
 using System;
 using System.Windows.Forms;
+using FurnitureFactoryBusinessLogic.PluginLogics.Managers;
 using Unity;
 using Unity.Lifetime;
 
@@ -29,6 +30,7 @@ namespace FurnitureFactoryView
             currentContainer.RegisterType<ReportLogic>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<SupplierLogic>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<OrganizationTypeLogic>(new HierarchicalLifetimeManager());
+            currentContainer.RegisterType<ReportPluginManager>(new HierarchicalLifetimeManager());
             return currentContainer;
         }
     }

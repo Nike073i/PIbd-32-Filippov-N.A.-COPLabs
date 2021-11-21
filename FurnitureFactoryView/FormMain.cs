@@ -242,5 +242,11 @@ namespace FurnitureFactoryView
             var form = Container.Resolve<FormOrganizationTypes>();
             form.ShowDialog();
         }
+
+        private void плагинСозданияОтчетаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var form = Container.Resolve<FormReportPlugin>();
+            form.ShowDialog();
+        }
     }
 }

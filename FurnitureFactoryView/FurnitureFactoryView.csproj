@@ -239,6 +239,12 @@
     <Compile Include="FormOrganizationTypes.Designer.cs">
       <DependentUpon>FormOrganizationTypes.cs</DependentUpon>
     </Compile>
+    <Compile Include="FormReportPlugin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormReportPlugin.Designer.cs">
+      <DependentUpon>FormReportPlugin.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormSupplier.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -252,6 +258,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="FormOrganizationTypes.resx">
       <DependentUpon>FormOrganizationTypes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormReportPlugin.resx">
+      <DependentUpon>FormReportPlugin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormSupplier.resx">
       <DependentUpon>FormSupplier.cs</DependentUpon>
