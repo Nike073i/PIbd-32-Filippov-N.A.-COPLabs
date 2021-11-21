@@ -24,7 +24,11 @@ namespace FurnitureFactoryBusinessLogic.PluginLogics.Managers
             CompositionContainer container = new CompositionContainer(catalog);
             container.ComposeParts(this);
             Headers = new List<string>();
-            Plugins.ForEach(x => plugins.Add(x.PluginType, x));
+            Plugins.ForEach(x =>
+            {
+                if (!plugins.ContainsKey(x.PluginType))
+                    plugins.Add(x.PluginType, x);
+            });
             Headers.AddRange(plugins.Keys.ToList());
         }
     }
