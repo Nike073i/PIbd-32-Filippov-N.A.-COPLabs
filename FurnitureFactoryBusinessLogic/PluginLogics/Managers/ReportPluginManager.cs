@@ -19,6 +19,7 @@ namespace FurnitureFactoryBusinessLogic.PluginLogics.Managers
         {
             AggregateCatalog catalog = new AggregateCatalog();
             var pa = Path.Combine(AppDomain.CurrentDomain.BaseDirectory, "Plugins");
+            if (!Directory.Exists(pa)) Directory.CreateDirectory(pa);
             catalog.Catalogs.Add(new DirectoryCatalog(pa));
             CompositionContainer container = new CompositionContainer(catalog);
             container.ComposeParts(this);
