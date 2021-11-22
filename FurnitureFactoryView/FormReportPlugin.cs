@@ -104,8 +104,13 @@ namespace FurnitureFactoryView
                 Width = 16,
                 Height = 10
             })) return false;
-            if (!reportPlugin.SaveDocument(filePath)) return false;
-            return true;
+            if (!reportPlugin.AddImage(new ImageConfigModel()
+            {
+                ImagePath = @"..\..\Images\Cat.jpg",
+                Width = 16,
+                Height = 12
+            })) return false;
+            return reportPlugin.SaveDocument(filePath);
         }
 
         private void FormReportPlugin_Load(object sender, EventArgs e)

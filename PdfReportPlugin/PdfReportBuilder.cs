@@ -8,6 +8,7 @@ using MigraDoc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.Composition;
+using System.IO;
 using System.Linq;
 
 namespace PdfReportPlugin
@@ -49,6 +50,13 @@ namespace PdfReportPlugin
 
         public bool AddImage(ImageConfigModel config)
         {
+            if (config is null || string.IsNullOrEmpty(config.ImagePath)) return false;
+            if (!new FileInfo(config.ImagePath).Exists) return false;
+            var section = _document.LastSection;
+            var image = section.AddImage(config.ImagePath);
+            image.Width = Unit.FromCentimeter(config.Width);
+            image.Height = Unit.FromCentimeter(config.Height);
+            section.AddParagraph().Format.SpaceAfter = Unit.FromCentimeter(config.SpaceAfterCm);
             return true;
         }
 
