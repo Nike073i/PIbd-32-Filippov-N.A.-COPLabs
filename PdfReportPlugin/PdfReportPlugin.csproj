@@ -60,6 +60,11 @@
   <ItemGroup>
     <Compile Include="PdfReportBuilder.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UseCases\ChartBuildUseCase.cs" />
+    <Compile Include="UseCases\ImageBuildUseCase.cs" />
+    <Compile Include="UseCases\ParagraphBuildUseCase.cs" />
+    <Compile Include="UseCases\TableBuildUseCase.cs" />
+    <Compile Include="UseCases\TextFormatBuildUseCase.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FurnitureFactoryBusinessLogic\FurnitureFactoryBusinessLogic.csproj">
