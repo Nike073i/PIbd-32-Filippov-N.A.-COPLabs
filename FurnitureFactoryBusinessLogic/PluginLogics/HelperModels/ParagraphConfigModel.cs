@@ -8,5 +8,6 @@ namespace FurnitureFactoryBusinessLogic.PluginLogics.HelperModels
         public bool Bold { get; set; } = false;
         public bool Italic { get; set; } = false;
         public bool Underline { get; set; } = false;
+        public double SpaceAfterCm { get; set; } = 1;
     }
 }
