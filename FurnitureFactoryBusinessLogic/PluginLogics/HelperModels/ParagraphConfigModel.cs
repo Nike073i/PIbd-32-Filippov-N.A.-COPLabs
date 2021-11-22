@@ -1,5 +1,4 @@
-﻿using FurnitureFactoryBusinessLogic.PluginLogics.Enums;
-
+﻿
 namespace FurnitureFactoryBusinessLogic.PluginLogics.HelperModels
 {
     public class ParagraphConfigModel
@@ -9,6 +8,5 @@ namespace FurnitureFactoryBusinessLogic.PluginLogics.HelperModels
         public bool Bold { get; set; } = false;
         public bool Italic { get; set; } = false;
         public bool Underline { get; set; } = false;
-        public AlignmentParagraph Alignment { get; set; } = AlignmentParagraph.Left;
     }
 }

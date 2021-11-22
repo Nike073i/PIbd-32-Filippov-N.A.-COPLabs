@@ -54,7 +54,6 @@
     <Compile Include="HelperModels\TableDataConfig.cs" />
     <Compile Include="Interfaces\IOrganizationTypeStorage.cs" />
     <Compile Include="Interfaces\ISupplierStorage.cs" />
-    <Compile Include="PluginLogics\Enums\AlignmentParagraph.cs" />
     <Compile Include="PluginLogics\HelperModels\ChartConfigModel.cs" />
     <Compile Include="PluginLogics\HelperModels\ImageConfigModel.cs" />
     <Compile Include="PluginLogics\HelperModels\MessengerConfigurationModel.cs" />

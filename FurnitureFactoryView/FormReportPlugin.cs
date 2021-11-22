@@ -1,18 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Runtime.Remoting.Messaging;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using FurnitureFactoryBusinessLogic.PluginLogics.HelperModels;
+﻿using FurnitureFactoryBusinessLogic.PluginLogics.HelperModels;
 using FurnitureFactoryBusinessLogic.PluginLogics.Managers;
-using FurnitureFactoryBusinessLogic.ViewModels;
+using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
 using Unity;
-using WindowsFormsComponentLibrary.Models;
 
 namespace FurnitureFactoryView
 {
@@ -37,13 +28,23 @@ namespace FurnitureFactoryView
                 Bold = true,
                 Italic = true,
                 TextSize = 25,
-                Underline = true
+                Underline = true,
             })) return false;
             if (!reportPlugin.AddParagraph(new ParagraphConfigModel()
             {
                 Text = "Абзац №2. Одобрение не требуется",
                 Bold = true,
-                Italic = false,
+                Italic = true
+            })) return false;
+            if (!reportPlugin.AddTable(new TableConfigModel()
+            {
+                Headers = new List<string>{"Колонка 1", "Колонка 2", "Колонка 3"},
+                Data = new List<string[]>
+                {
+                    new [] {"Ячейка 11","Ячейка 12","Ячейка 13"},
+                    new [] {"Ячейка 21","Ячейка 22"},
+                    new [] {"Ячейка 31","Ячейка 32","Ячейка 33" }
+                }
             })) return false;
             if (!reportPlugin.SaveDocument(filePath)) return false;
             return true;
