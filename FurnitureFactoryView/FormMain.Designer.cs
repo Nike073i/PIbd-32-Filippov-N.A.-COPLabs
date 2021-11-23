@@ -45,6 +45,7 @@
             this.componentExcelTable = new WindowsFormsComponentLibrary.ComponentExcelTable(this.components);
             this.componentContextBigText = new ClassLibraryComponentsFilippov.ComponentContextBigText(this.components);
             this.treeUserControl = new WindowsFormsComponentsKalachikov.TreeUserControl();
+            this.плагинМессенджераToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -62,9 +63,10 @@
             this.createDocumentTableToolStripMenuItem,
             this.createDocumentChartToolStripMenuItem,
             this.toolStripSeparatorReport,
-            this.плагинСозданияОтчетаToolStripMenuItem});
+            this.плагинСозданияОтчетаToolStripMenuItem,
+            this.плагинМессенджераToolStripMenuItem});
             this.contextMenuStrip.Name = "contextMenuStrip";
-            this.contextMenuStrip.Size = new System.Drawing.Size(254, 198);
+            this.contextMenuStrip.Size = new System.Drawing.Size(254, 242);
             // 
             // addToolStripMenuItem
             // 
@@ -146,6 +148,13 @@
             this.treeUserControl.Size = new System.Drawing.Size(600, 293);
             this.treeUserControl.TabIndex = 1;
             // 
+            // плагинМессенджераToolStripMenuItem
+            // 
+            this.плагинМессенджераToolStripMenuItem.Name = "плагинМессенджераToolStripMenuItem";
+            this.плагинМессенджераToolStripMenuItem.Size = new System.Drawing.Size(253, 22);
+            this.плагинМессенджераToolStripMenuItem.Text = "Плагин мессенджера";
+            this.плагинМессенджераToolStripMenuItem.Click += new System.EventHandler(this.плагинМессенджераToolStripMenuItem_Click);
+            // 
             // FormMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -183,6 +192,7 @@
         private WindowsFormsComponentsKalachikov.TreeUserControl treeUserControl;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparatorReport;
         private System.Windows.Forms.ToolStripMenuItem плагинСозданияОтчетаToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem плагинМессенджераToolStripMenuItem;
     }
 }
 

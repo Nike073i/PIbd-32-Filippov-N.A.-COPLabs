@@ -227,11 +227,23 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormDialogCode.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormDialogCode.Designer.cs">
+      <DependentUpon>FormDialogCode.cs</DependentUpon>
+    </Compile>
     <Compile Include="FormMain.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="FormMain.Designer.cs">
       <DependentUpon>FormMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormMessengerPlugin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormMessengerPlugin.Designer.cs">
+      <DependentUpon>FormMessengerPlugin.cs</DependentUpon>
     </Compile>
     <Compile Include="FormOrganizationTypes.cs">
       <SubType>Form</SubType>
@@ -253,8 +265,14 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormDialogCode.resx">
+      <DependentUpon>FormDialogCode.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="FormMain.resx">
       <DependentUpon>FormMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormMessengerPlugin.resx">
+      <DependentUpon>FormMessengerPlugin.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="FormOrganizationTypes.resx">
       <DependentUpon>FormOrganizationTypes.cs</DependentUpon>
@@ -304,6 +322,10 @@
     <ProjectReference Include="..\FurnitureFactoryDatabaseImplement\FurnitureFactoryDatabaseImplement.csproj">
       <Project>{a88a7f0d-4b0c-4ac5-a339-1af1d57ec7d1}</Project>
       <Name>FurnitureFactoryDatabaseImplement</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\TelegramPlugin\TelegramPlugin.csproj">
+      <Project>{85d47515-395d-4c9f-a51c-5fbf8a0b842a}</Project>
+      <Name>TelegramPlugin</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
