@@ -100,9 +100,9 @@ namespace FurnitureFactoryView
 
         private void FormMessengerPlugin_Load(object sender, EventArgs e)
         {
-            //if (_manager.Headers is null || _manager.Headers.Count.Equals(0)) return;
-            //comboBoxAvailablePlugin.Items.AddRange(_manager.Headers.ToArray());
-            //comboBoxAvailablePlugin.Text = comboBoxAvailablePlugin.Items[0].ToString();
+            if (_manager.Headers is null || _manager.Headers.Count.Equals(0)) return;
+            comboBoxAvailablePlugin.Items.AddRange(_manager.Headers.ToArray());
+            comboBoxAvailablePlugin.Text = comboBoxAvailablePlugin.Items[0].ToString();
         }
     }
 }

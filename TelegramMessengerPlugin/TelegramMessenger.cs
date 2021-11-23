@@ -1,6 +1,7 @@
 ﻿using FurnitureFactoryBusinessLogic.PluginLogics.HelperModels;
 using FurnitureFactoryBusinessLogic.PluginLogics.Interfaces;
 using System.Collections.Generic;
+using System.ComponentModel.Composition;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
@@ -9,7 +10,8 @@ using TLSharp.Core;
 
 namespace TelegramMessengerPlugin
 {
-    class TelegramMessenger : IMessengerPlugin
+    [Export(typeof(IMessengerPlugin))]
+    public class TelegramMessenger : IMessengerPlugin
     {
         private TelegramClient _client;
         private string _hashCode;
