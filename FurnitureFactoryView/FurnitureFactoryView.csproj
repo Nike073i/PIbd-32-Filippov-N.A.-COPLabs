@@ -323,10 +323,6 @@
       <Project>{a88a7f0d-4b0c-4ac5-a339-1af1d57ec7d1}</Project>
       <Name>FurnitureFactoryDatabaseImplement</Name>
     </ProjectReference>
-    <ProjectReference Include="..\TelegramPlugin\TelegramPlugin.csproj">
-      <Project>{85d47515-395d-4c9f-a51c-5fbf8a0b842a}</Project>
-      <Name>TelegramPlugin</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Images\" />

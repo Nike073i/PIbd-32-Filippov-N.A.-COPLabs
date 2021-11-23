@@ -3,7 +3,6 @@ using FurnitureFactoryBusinessLogic.PluginLogics.Interfaces;
 using FurnitureFactoryBusinessLogic.PluginLogics.Managers;
 using System;
 using System.Windows.Forms;
-using TelegramPlugin;
 using Unity;
 
 namespace FurnitureFactoryView
@@ -16,32 +15,25 @@ namespace FurnitureFactoryView
         [Dependency]
         public new IUnityContainer Container { get; set; }
 
-        //private IMessengerPlugin _messenger;
-        private TelegramMessenger _messenger;
-        private readonly MessengerPluginManager _manager;
+        private IMessengerPlugin _messenger;
+        private MessengerPluginManager _manager;
 
-        public FormMessengerPlugin(TelegramMessenger messenger)
+        public FormMessengerPlugin(MessengerPluginManager manager)
         {
-            _messenger = messenger;
+            _manager = manager;
             InitializeComponent();
         }
 
-        //public FormMessengerPlugin(MessengerPluginManager manager)
-        //{
-        //    _manager = manager;
-        //    InitializeComponent();
-        //}
-
         private async void buttonConnect_Click(object sender, EventArgs e)
         {
-            //if (comboBoxAvailablePlugin.SelectedItem == null) return;
+            if (comboBoxAvailablePlugin.SelectedItem == null) return;
             if (string.IsNullOrEmpty(textBoxPhoneNumber.Text))
             {
                 MessageBox.Show("Введите номер телефона", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            //_messenger = _manager.plugins[comboBoxAvailablePlugin.Text];
+            _messenger = _manager.plugins[comboBoxAvailablePlugin.Text];
             var number = textBoxPhoneNumber.Text;
             try
             {

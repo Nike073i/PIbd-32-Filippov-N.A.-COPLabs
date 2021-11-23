@@ -1,10 +1,9 @@
 ﻿using FurnitureFactoryBusinessLogic.BusinessLogics;
 using FurnitureFactoryBusinessLogic.Interfaces;
+using FurnitureFactoryBusinessLogic.PluginLogics.Managers;
 using FurnitureFactoryDatabaseImplement.Implements;
 using System;
 using System.Windows.Forms;
-using FurnitureFactoryBusinessLogic.PluginLogics.Managers;
-using TelegramPlugin;
 using Unity;
 using Unity.Lifetime;
 
@@ -33,7 +32,6 @@ namespace FurnitureFactoryView
             currentContainer.RegisterType<OrganizationTypeLogic>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<ReportPluginManager>(new HierarchicalLifetimeManager());
             currentContainer.RegisterType<MessengerPluginManager>(new HierarchicalLifetimeManager());
-            currentContainer.RegisterType<TelegramMessenger>(new HierarchicalLifetimeManager());
             return currentContainer;
         }
     }
