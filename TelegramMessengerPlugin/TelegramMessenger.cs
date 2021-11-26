@@ -18,7 +18,7 @@ namespace TelegramMessengerPlugin
     {
         private TelegramClient _client;
         private string _hashCode;
-        public string PluginType => "Telegram";
+        public string PluginName => "Telegram";
 
         public async Task<List<User>> GetContactsList()
         {

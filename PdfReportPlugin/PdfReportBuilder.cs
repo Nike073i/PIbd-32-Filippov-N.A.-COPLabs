@@ -12,7 +12,7 @@ namespace PdfReportPlugin
     [Export(typeof(IReportPlugin))]
     public class PdfReportBuilder : IReportPlugin
     {
-        public string PluginType => "PDF";
+        public string PluginName => "PDF";
         private readonly Document _document;
 
         public PdfReportBuilder()

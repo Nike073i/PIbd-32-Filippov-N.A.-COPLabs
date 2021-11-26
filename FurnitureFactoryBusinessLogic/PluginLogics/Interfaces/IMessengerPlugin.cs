@@ -5,9 +5,8 @@ namespace FurnitureFactoryBusinessLogic.PluginLogics.Interfaces
 {
     public interface IMessengerPlugin
     {
-        string PluginType { get; }
+        string PluginName { get; }
         Task Connect(ConnectConfigurationModel config);
         void SendMessage(MessageConfigModel configModel);
-        void Disconnect();
     }
 }

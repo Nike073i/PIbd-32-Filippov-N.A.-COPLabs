@@ -26,8 +26,8 @@ namespace FurnitureFactoryBusinessLogic.PluginLogics.Managers
             Headers = new List<string>();
             Plugins.ForEach(x =>
             {
-                if (!plugins.ContainsKey(x.PluginType))
-                    plugins.Add(x.PluginType, x);
+                if (!plugins.ContainsKey(x.PluginName))
+                    plugins.Add(x.PluginName, x);
             });
             Headers.AddRange(plugins.Keys.ToList());
         }

@@ -4,7 +4,7 @@ namespace FurnitureFactoryBusinessLogic.PluginLogics.Interfaces
 {
     public interface IReportPlugin
     {
-        string PluginType { get; }
+        string PluginName { get; }
         bool SaveDocument(string filepath);
         bool AddParagraph(ParagraphConfigModel config);
         bool AddImage(ImageConfigModel config);
