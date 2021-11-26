@@ -10,7 +10,7 @@ using System.Windows.Forms;
 using TeleSharp.TL;
 using TLSharp.Core;
 
-namespace TelegramMessengerPlugin
+namespace TelegramPluginWindowsForms
 {
     [Export(typeof(IMessengerPlugin))]
     public class TelegramMessenger : IMessengerPlugin
@@ -71,10 +71,9 @@ namespace TelegramMessengerPlugin
                         Code = form._code,
                         PhoneNumber = config.PhoneNumber
                     });
-                    var formMes = ShowForm(config.PhoneNumber);
-                    formMes.ShowDialog();
+                    ShowForm();
                 }
-                catch (Exception)
+                catch(Exception)
                 {
                     throw;
                 }
@@ -104,11 +103,9 @@ namespace TelegramMessengerPlugin
             if (File.Exists(path)) File.Delete(path);
         }
 
-        private Form ShowForm(string phoneNumber)
+        public Form ShowForm()
         {
-            var form = new FormTelegramMessenger(this);
-            form.PhoneNumber = phoneNumber;
-            return form;
+            return new FormTelegramMessenger(this);
         }
     }
 }

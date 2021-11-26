@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Windows.Forms;
 
-namespace FurnitureFactoryView
+namespace TelegramPluginWindowsForms
 {
     public partial class FormDialogCode : Form
     {

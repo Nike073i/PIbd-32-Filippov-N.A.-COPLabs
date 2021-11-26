@@ -24,6 +24,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PdfReportPlugin", "PdfRepor
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelegramMessengerPlugin", "TelegramMessengerPlugin\TelegramMessengerPlugin.csproj", "{040A9044-F23B-43D2-9F16-48BE60D35FE9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TelegramPluginWindowsForms", "TelegramPluginWindowsForms\TelegramPluginWindowsForms.csproj", "{8B559FC4-3DA4-432C-99A4-E68FB625EF70}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -62,6 +64,10 @@ Global
 		{040A9044-F23B-43D2-9F16-48BE60D35FE9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{040A9044-F23B-43D2-9F16-48BE60D35FE9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{040A9044-F23B-43D2-9F16-48BE60D35FE9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8B559FC4-3DA4-432C-99A4-E68FB625EF70}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8B559FC4-3DA4-432C-99A4-E68FB625EF70}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8B559FC4-3DA4-432C-99A4-E68FB625EF70}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8B559FC4-3DA4-432C-99A4-E68FB625EF70}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
