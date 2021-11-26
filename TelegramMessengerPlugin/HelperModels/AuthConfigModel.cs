@@ -1,4 +1,4 @@
-﻿namespace FurnitureFactoryBusinessLogic.PluginLogics.HelperModels
+﻿namespace TelegramMessengerPlugin.HelperModels
 {
     public class AuthConfigModel
     {

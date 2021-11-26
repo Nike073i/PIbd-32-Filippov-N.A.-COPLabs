@@ -56,14 +56,12 @@
     <Compile Include="Interfaces\IOrganizationTypeStorage.cs" />
     <Compile Include="Interfaces\ISupplierStorage.cs" />
     <Compile Include="PluginLogics\Enums\TypeChart.cs" />
-    <Compile Include="PluginLogics\HelperModels\AuthConfigModel.cs" />
     <Compile Include="PluginLogics\HelperModels\ChartConfigModel.cs" />
     <Compile Include="PluginLogics\HelperModels\ImageConfigModel.cs" />
     <Compile Include="PluginLogics\HelperModels\ConnectConfigurationModel.cs" />
     <Compile Include="PluginLogics\HelperModels\MessageConfigModel.cs" />
     <Compile Include="PluginLogics\HelperModels\ParagraphConfigModel.cs" />
     <Compile Include="PluginLogics\HelperModels\TableConfigModel.cs" />
-    <Compile Include="PluginLogics\HelperModels\User.cs" />
     <Compile Include="PluginLogics\Interfaces\IMessengerPlugin.cs" />
     <Compile Include="PluginLogics\Interfaces\IReportPlugin.cs" />
     <Compile Include="PluginLogics\Managers\MessengerPluginManager.cs" />
