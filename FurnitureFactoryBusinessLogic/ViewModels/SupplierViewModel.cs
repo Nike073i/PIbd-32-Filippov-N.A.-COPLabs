@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace FurnitureFactoryBusinessLogic.ViewModels
+﻿namespace FurnitureFactoryBusinessLogic.ViewModels
 {
     public class SupplierViewModel
     {

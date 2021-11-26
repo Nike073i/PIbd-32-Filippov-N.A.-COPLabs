@@ -25,7 +25,7 @@ namespace FurnitureFactoryView
             var reportPlugin = _manager.plugins[comboBoxAvailablePlugins.Text];
             if (!reportPlugin.AddParagraph(new ParagraphConfigModel()
             {
-                Text = "Абзац №1. Стартовая проверка",
+                Text = "Абзац №1. Добавление первого абзаца с жирным, курсивным и подчеркнытым шрифтом размером 25",
                 Bold = true,
                 Italic = true,
                 TextSize = 25,
@@ -34,7 +34,7 @@ namespace FurnitureFactoryView
             })) return false;
             if (!reportPlugin.AddParagraph(new ParagraphConfigModel()
             {
-                Text = "Абзац №2. Одобрение не требуется",
+                Text = "Абзац №2. Добавление второго абзаца с жирным, курсивным шрифтом",
                 Bold = true,
                 Italic = true,
                 SpaceAfterCm = 2

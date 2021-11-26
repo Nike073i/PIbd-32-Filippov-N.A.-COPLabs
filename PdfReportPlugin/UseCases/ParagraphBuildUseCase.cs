@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using FurnitureFactoryBusinessLogic.PluginLogics.HelperModels;
+﻿using FurnitureFactoryBusinessLogic.PluginLogics.HelperModels;
 using MigraDoc.DocumentObjectModel;
 
 namespace PdfReportPlugin.UseCases
